@@ -15,6 +15,9 @@ categories:
 `/etc/nginx/nginx.conf`主配置文件修改
 
 ```nginx
+
+worker_processes  auto;
+
 http {
   # 引入子配置文件
   index index.php index.htm index.html;
@@ -97,3 +100,4 @@ server {
 
 * http://blog.csdn.net/benbendy1984/article/details/6025663
 * http://nginx.org/en/docs/http/ngx_http_autoindex_module.html
+* [中文文档](https://github.com/oopsguy/nginx-docs)

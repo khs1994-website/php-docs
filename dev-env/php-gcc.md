@@ -15,6 +15,14 @@ Debian9 Ubuntu17.04 出现错误请详细查看后边说明(PHP 7.1.9不会报�
 
 <!--more-->
 
+# macOS
+
+```bash
+$ brew tap homebrew/homebrew-php
+
+$ brew install php71
+```
+
 # 安装依赖包
 
 ## RedHat
@@ -138,7 +146,7 @@ $ make install
 # Systemd 服务
 
 用 `systemctl` 命令来管理 `PHP-FPM`。以下路径根据实际自己修改。  
-  
+
 修改 `/usr/local/php/etc/php-fpm.conf`
 
 ```
