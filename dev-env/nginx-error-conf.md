@@ -11,10 +11,13 @@ categories:
 - MySQL
 ---
 
-官方原文：https://www.nginx.com/resources/wiki/start/topics/tutorials/config_pitfalls/  
-原翻译者：http://www.7rack.info/Nginx-Config-Pitfalls.html
+新老用户都可能遇到 nginx 配置陷阱。下面我们列出频繁出现的问题，以及如何解决。
 
-新老用户都可能遇到陷阱。下面我们列出频繁出现的问题，以及如何解决。 在 Freenode IRC #nginx 频道，我们经常看到这些问题。
+<!--more-->
+
+原文：https://www.nginx.com/resources/wiki/start/topics/tutorials/config_pitfalls/
+
+翻译：http://www.7rack.info/Nginx-Config-Pitfalls.html
 
 # 关于本指南
 
@@ -42,7 +45,7 @@ $ namei -om /path/to/check
 
 ## BAD
 
-```bash
+```nginx
 server {
     server_name www.example.com;
     location / {
@@ -64,7 +67,7 @@ server {
 
 ## GOOD
 
-```bash
+```nginx
 server {
     server_name www.example.com;
     root /var/www/nginx-default/;
@@ -84,7 +87,7 @@ server {
 
 ## BAD
 
-```bash
+```nginx
 http {
     index index.php index.htm index.html;
     server {
@@ -111,7 +114,7 @@ http {
 
 ## GOOD
 
-```bash
+```nginx
 http {
     index index.php index.htm index.html;
     server {
@@ -140,7 +143,7 @@ http {
 
 ## BAD
 
-```
+```nginx
 server {
     server_name example.com *.example.com;
         if ($host ~* ^www\.(.+)) {
@@ -156,7 +159,7 @@ server {
 
 ## GOOD
 
-```bash
+```nginx
 server {
     server_name www.example.com;
     return 301 $scheme://example.com$request_uri;
@@ -176,7 +179,7 @@ server {
 
 ## BAD
 
-```
+```nginx
 server {
     root /var/www/example.com;
     location / {
@@ -189,7 +192,7 @@ server {
 
 ## GOOD
 
-```bash
+```nginx
 server {
     root /var/www/example.com;
     location / {
@@ -206,7 +209,7 @@ server {
 
 “Front Controller 模式”设计是受欢迎的，且用在许多最流行的 PHP 软件包中。 很多实例比应有的更复杂。让 Drupal, Joomla 等运行，使用：
 
-```bash
+```nginx
 try_files $uri $uri/ /index.php?q=$uri&$args;
 ```
 
@@ -217,7 +220,7 @@ try_files $uri $uri/ /index.php?q=$uri&$args;
 
 一些软件甚至不用查询字符串，而且可以从REQUEST_URI读取（WordPress支持，例如）：
 
-```bash
+```nginx
 try_files $uri $uri/ /index.php;
 ```
 
@@ -231,7 +234,7 @@ try_files $uri $uri/ /index.php;
 
 出问题的区域通常如下：
 
-```bash
+```nginx
 location ~* \.php$ {
     fastcgi_pass backend;
     # [...]
@@ -246,7 +249,7 @@ location ~* \.php$ {
 * 在php.ini中设置cgi.fix_pathinfo=0。使得 PHP 解释器仅尝试给出的路径，如果文件没有找到就停止处理。
 * 保证 NGINX 仅传给后端指定的 PHP
 
-```bash
+```nginx
 location ~* (file_a|file_b|file_c)\.php$ {
     fastcgi_pass backend;
     # [...]
@@ -275,19 +278,20 @@ location ~* \.php$ {
     # [...]
 }
 ```
+
 # Script Filename 中的 FastCGI Path
 
 一些指南倾向使用绝对路径得到信息。这在 PHP 区块很常见。当你从源安装 NGINX ，通常你能够把 include fastcgi_params;加入到配置中。该文件通常在 NGINX 配置目录/etc/nginx/。
 
 ## GOOD
 
-```bash
+```nginx
 fastcgi_param  SCRIPT_FILENAME    $document_root$fastcgi_script_name;
 ```
 
 ## BAD
 
-```bash
+```nginx
 fastcgi_param  SCRIPT_FILENAME    /var/www/yoursite.com/$fastcgi_script_name;
 ```
 
@@ -299,19 +303,19 @@ $document_root在哪里设置？是通过 root 指令在 server 区块设置。r
 
 ## BAD
 
-```bash
+```nginx
 rewrite ^/(.*)$ http://example.com/$1 permanent;
 ```
 
 ## GOOD
 
-```bash
+```nginx
 rewrite ^ http://example.com$request_uri? permanent;
 ```
 
 ## BETTER
 
-```bash
+```nginx
 return 301 http://example.com$request_uri;
 ```
 
@@ -323,13 +327,13 @@ rewrite 是简单，记得添加scheme。
 
 ## BAD
 
-```bash
+```nginx
 rewrite ^ example.com permanent;
 ```
 
 ## GOOD
 
-```bash
+```nginx
 rewrite ^ http://example.com permanent;
 ```
 
@@ -339,7 +343,7 @@ rewrite ^ http://example.com permanent;
 
 ## BAD
 
-```bash
+```nginx
 server {
     server_name _;
     root /var/www/site;
@@ -355,7 +359,7 @@ server {
 
 ## GOOD
 
-```bash
+```nginx
 server {
     server_name _;
     root /var/www/site;
@@ -372,7 +376,7 @@ server {
 
 ## Also GOOD
 
-```bash
+```nginx
 server {
     server_name _;
     root /var/www/site;
@@ -418,7 +422,7 @@ sendfile off;
 
 永远不要这样做！！！
 
-```bash
+```nginx
 server {
     root /;
 
@@ -447,7 +451,7 @@ Ubuntu、Debian 等其他操作系统中NGINX包，作为易于安装的包会�
 
 ## BAD
 
-```bash
+```nginx
 upstream {
     server http://someserver;
 }
@@ -466,7 +470,7 @@ upstream 区块也有同样的问题。并不是总要在 upstream 区块避免�
 
 ## GOOD
 
-```bash
+```nginx
 upstream {
     server http://10.48.41.12;
 }
@@ -481,6 +485,6 @@ server {
 
 由于 SSLv3 的POODLE漏洞，建议在 SSL 的网站不启用 SSLv3。你可以很简单的禁用 SSLv3，只提供 TLS 协议。
 
-```bash
+```nginx
 ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
 ```

@@ -13,6 +13,10 @@ categories:
 - Apache
 ---
 
+本文介绍了手动编译安装 Apache 的具体步骤。
+
+<!--more-->
+
 # yum 方式安装
 
 ```bash
@@ -22,11 +26,10 @@ $ rpm -Uvh ius-release*rpm
 $ yum install httpd24u
 ```
 
-<!--more-->
-
 # 编译安装
 
 ## 安装所需软件
+
 ```bash
 $ yum install gcc gcc-c++ make uuid-devel libuuid-devel unzip -y
 ```
@@ -38,6 +41,7 @@ $ yum install gcc gcc-c++ make uuid-devel libuuid-devel unzip -y
 >3.apr-iconv包中的文件主要用于实现iconv编码。目前的大部分编码转换过程都是与本地编码相关的。  。在进行转换之前必须能够正确地设置本地编码。因此假如两个非本地编码A和B需要转换，则转换过程大致为A->Local以及Local->B或者B->Local以及Local->A。    
 
 ## 安装apr
+
 ```bash
 $ wget http://mirrors.tuna.tsinghua.edu.cn/apache//apr/apr-1.5.2.tar.gz
 $ tar zxvf apr-1.5.2.tar.gz
@@ -49,6 +53,7 @@ $ make
 $ make install
 
 ```
+
 ## 安装apr-iconv
 
 ```bash
@@ -76,7 +81,9 @@ $ unzip  -o pcre-8.38.zip
 $ cd pcre-8.38
 $ ./configure --prefix=/usr/local/pcre
 ```
+
 ## Apache
+
 ```bash
 # 替换下载地址
 $ wget url
@@ -93,14 +100,15 @@ $ ./configure --prefix=/usr/local/apache  \
 
 # Systemd 服务
 
-简单来说就是可以用 `systemctl` 命令来管理 `apache`  
+简单来说就是可以用 `systemctl` 命令来管理 `apache`
+
 `yum`方式安装会生成 `httpd.service` 文件，编译安装使用 `apache.service`
 
 ```bash
 $ vi /lib/systemd/system/apache.service
 ```
 
-```
+```yaml
 [Unit]
 Description=The Apache HTTP Server
 After=network.target remote-fs.target nss-lookup.target

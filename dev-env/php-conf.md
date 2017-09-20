@@ -11,13 +11,15 @@ categories:
 - php-dev-env
 ---
 
+本文简要介绍了 PHP 常用配置。
+
+<!--more-->
+
 # PHP-FPM后台执行
 
 ```bash
 daemonize = yes
 ```
-
-<!--more-->
 
 # macOS
 

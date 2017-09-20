@@ -11,14 +11,16 @@ categories:
 - php-dev-env
 ---
 
+本文简要介绍了手动搭建 LNMP 开发环境的步骤。
+
+<!--more-->
+
 # MySQL
 
 `mysql-community-client-5.7.13-1.el7.x86_64.rpm`  
 `mysql-community-common-5.7.13-1.el7.x86_64.rpm`  
 `mysql-community-libs-5.7.13-1.el7.x86_64.rpm`  
 `mysql-community-server-5.7.13-1.el7.x86_64.rpm`  
-
-<!--more-->
 
 ```bash
 $ rpm -qa | grep mariadb
@@ -39,7 +41,7 @@ $ ALTER USER 'root'@'localhost' IDENTIFIED BY 'MyNewPass4!';
 
 ## 添加远程登录用户
 
-```bash
+```sql
 $  GRANT ALL PRIVILEGES ON *.* TO 'admin'@'%' IDENTIFIED BY 'mytest' WITH GRANT OPTION;
 ```
 # MySQL 5.5

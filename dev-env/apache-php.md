@@ -13,18 +13,18 @@ categories:
 - Apache
 ---
 
+本文简要介绍了 Apache 解析 PHP 文件。 
+
+<!--more-->
+
 # 模块方式
 
-`/usr/local/apache/modules/` 有`libphp7.so`文件
-
-PHP7编译安装时加上参数 `--with-apxs2=/usr/local/apache/bin/apxs`
+`/usr/local/apache/modules/` 有 `libphp7.so` 文件。PHP7编译安装时加上参数 `--with-apxs2=/usr/local/apache/bin/apxs`
 
 ```apacheconf
 LoadModule php7_module        modules/libphp7.so
 AddType application/x-httpd-php .php
 ```
-
-<!--more-->
 
 # PHP-FPM
 

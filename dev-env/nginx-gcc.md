@@ -13,17 +13,19 @@ categories:
 - Nginx
 ---
 
+本文介绍了手动编译安装 nginx 的具体步骤。
+
+<!--more-->
+
 # 安装依赖包
 
-## RedHat
+RedHat 系
 
 ```bash
 $ yum install -y gcc gcc-c++ pcre-devel openssl-devel zlib-devel
 ```
 
-<!--more-->
-
-## Debian
+Debian 系
 
 ```bash
 $ sudo apt install libpcre3 libpcre3-dev libssl-dev zlib1g-dev zlib1g
@@ -112,12 +114,9 @@ $ sudo nginx
 
 # Systemd 服务
 
-简单来说就是可以用 `systemctl` 命令来管理 `Nginx`。  
-以下路径根据实际自己修改。
+在 `/lib/systemd/system/` 下增加 `nginx.service` 文件，以下路径根据实际自己修改。
 
-```bash
-$ vi /lib/systemd/system/nginx.service
-
+```yaml
 [Unit]
 Description=nginx - high performance web server
 Documentation=http://nginx.org/en/docs/

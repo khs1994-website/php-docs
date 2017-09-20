@@ -11,9 +11,11 @@ categories:
 - php-dev-env
 ---
 
-Debian9 Ubuntu17.04 出现错误请详细查看后边说明(PHP 7.1.9不会报错了)。出现错误强烈建议使用 https://stackoverflow.com 进行搜索！
+本文介绍了手动编译安装 PHP 的具体步骤。
 
 <!--more-->
+
+Debian9 Ubuntu17.04 出现错误请详细查看后边说明(PHP 7.1.9不会报错了)。出现错误强烈建议使用 https://stackoverflow.com 进行搜索！
 
 # macOS
 
@@ -139,23 +141,21 @@ $ make install
 
 将源文件中的 `php.ini-development` 复制到安装目录中的 `lib` 子目录 ，并改名为 php.ini。
 
-将安装目录中的 `etc`子目录中的 `php-fpm.conf.default` 复制为 `php-fpm.conf`。
+将安装目录中的 `etc` 子目录中的 `php-fpm.conf.default` 复制为 `php-fpm.conf`。
 
 将 `php-fpm.d` 中的 `www.conf.default` 复制为 `www.conf`。
 
 # Systemd 服务
 
-用 `systemctl` 命令来管理 `PHP-FPM`。以下路径根据实际自己修改。  
-
 修改 `/usr/local/php/etc/php-fpm.conf`
 
-```
+```bash
 pid = /var/run/php-fpm.pid
 ```
 
-```bash
-$ vi /lib/systemd/system/php7-fpm.service
+在 `/lib/systemd/system/` 下增加 `php7-fpm.service` 文件，以下路径根据实际自己修改。  
 
+```yaml
 [Unit]
 Description=The PHP FastCGI Process Manager
 After=syslog.target network.target
