@@ -40,7 +40,7 @@ $ ALTER USER 'root'@'localhost' IDENTIFIED BY 'MyNewPass4!';
 ## 添加远程登录用户
 
 ```bash
-$  GRANT ALL PRIVILEGES ON *.* TO 'admin'@'%' IDENTIFIED BY 'Apple!23' WITH GRANT OPTION;
+$  GRANT ALL PRIVILEGES ON *.* TO 'admin'@'%' IDENTIFIED BY 'mytest' WITH GRANT OPTION;
 ```
 # MySQL 5.5
 

@@ -1,6 +1,8 @@
 <!-- ex_nonav -->
 # khs1994.com PHP技术文档
 
+[![Build Status](https://travis-ci.org/khs1994-website/php-docs.svg?branch=master)](https://travis-ci.org/khs1994-website/php-docs) [![Build Status](https://travis-ci.org/khs1994-website/php-docs.svg?branch=gitbook)](https://travis-ci.org/khs1994-website/php-docs)
+
 * CI/CD Powered By GitHub & Travis CI & Docker
 
 * 文档中的内容欢迎大家通过 E-mail 与我交流 <a href="mailto:khs1994@khs1994.com">khs1994@khs1994.com</a>
