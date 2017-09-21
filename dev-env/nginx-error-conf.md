@@ -1,6 +1,6 @@
 ---
 title: Nginx 配置陷阱和常见错误(转载)
-date: 2017-07-25 12:00:00
+date: 2017-05-04 12:00:00
 updated:
 comments: true
 tags:

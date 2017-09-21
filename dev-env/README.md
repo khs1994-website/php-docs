@@ -1,6 +1,6 @@
 ---
 title: LAMP CentOS7 开发环境配置
-date: 2017-05-01 14:00:00
+date: 2017-05-01 12:00:00
 updated:
 comments: true
 tags:
