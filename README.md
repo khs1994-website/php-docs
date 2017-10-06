@@ -1,4 +1,5 @@
 <!-- ex_nonav -->
+
 # khs1994.com PHP技术文档
 
 [![Build Status](https://travis-ci.org/khs1994-website/php-docs.svg?branch=master)](https://travis-ci.org/khs1994-website/php-docs) [![Build Status](https://travis-ci.org/khs1994-website/php-docs.svg?branch=gitbook)](https://travis-ci.org/khs1994-website/php-docs)
@@ -10,8 +11,8 @@
 # 分支策略
 
 |分支|说明|功能|
-|--|--|--|
-|`master`  |[发布分支](https://github.com/khs1994-website/php-docs/tree/release) |定期接收 `gitbook` 分支 `PR`|
+|:--|:--|:--|
+|`master`  |[发布分支](https://github.com/khs1994-website/php-docs/tree/release) |接收 `gitbook` 分支 `PR`，每月发布上个月的版本|
 |`gitbook` |[编辑分支](https://github.com/khs1994-website/php-docs/tree/gitbook) |接收日常变更                |
 |`gh-pages`|[静态分支](https://github.com/khs1994-website/php-docs/tree/master)  |托管静态 `HTML` 文件        |
 
