@@ -22,3 +22,24 @@ $ composer global require "laravel/installer"
 
 $ laravel new blog
 ```
+
+# 密钥
+
+一般情况下安装程序会自动设置好，如果提示错误，请执行以下命令：
+
+```bash
+$ php artisan key:generate
+```
+
+# phpredis (pecl)
+
+`config/database.php`
+
+```php
+'redis' => [
+
+        //'client' => 'predis',
+        'client' => 'phpredis',
+
+        ...
+```

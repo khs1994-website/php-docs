@@ -18,4 +18,5 @@
     * [PhpStorm + Docker](ide/phpstorm-docker.md)
 * [ThinkPHP](thinkphp/README.md)
 * [Laravel](laravel/README.md)
+    * [env](laravel/env.md)
     * [PhpStorm配置](laravel/ide.md)
