@@ -34,17 +34,32 @@ $ sudo apt install libpcre3 libpcre3-dev libssl-dev zlib1g-dev zlib1g
 # 编译
 
 ```bash
-$ ./configure --prefix=/etc/nginx  --sbin-path=/etc/nginx/sbin/nginx \
+$ ./configure --prefix=/etc/nginx  \
+      --sbin-path=/etc/nginx/sbin/nginx \
       --conf-path=/etc/nginx/nginx.conf \
-      --with-http_ssl_module --with-http_realip_module \
-      --with-http_addition_module --with-http_sub_module \
-      --with-http_dav_module --with-http_flv_module --with-http_mp4_module \
-      --with-http_gunzip_module --with-http_gzip_static_module \
-      --with-http_random_index_module --with-http_secure_link_module \
-      --with-http_stub_status_module --with-http_auth_request_module \
-      --with-threads --with-stream --with-stream_ssl_module \
-      --with-http_slice_module --with-mail --with-mail_ssl_module \
-      --with-file-aio --with-http_v2_module
+      --user=nginx \
+      --group=nginx \
+      --with-http_ssl_module \
+      --with-http_realip_module \
+      --with-http_addition_module \
+      --with-http_sub_module \
+      --with-http_dav_module \
+      --with-http_flv_module \
+      --with-http_mp4_module \
+      --with-http_gunzip_module \
+      --with-http_gzip_static_module \
+      --with-http_random_index_module \
+      --with-http_secure_link_module \
+      --with-http_stub_status_module \
+      --with-http_auth_request_module \
+      --with-threads \
+      --with-stream \
+      --with-stream_ssl_module \
+      --with-http_slice_module \
+      --with-mail \
+      --with-mail_ssl_module \
+      --with-file-aio \
+      --with-http_v2_module
 ```
 
 # 错误排查
@@ -94,8 +109,8 @@ $ make
 $ sudo mkdir -p /etc/nginx
 $ sudo chown $USER /etc/nginx
 $ sudo chgrp $USER /etc/nginx
-$ groupadd -r nginx
-$ useradd -r -g nginx -s /bin/false -M nginx
+$ groupadd -r nginx \
+  && useradd -r -g nginx -s /bin/false -M nginx
 
 # 开始编译安装
 
