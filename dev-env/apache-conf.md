@@ -13,12 +13,13 @@ categories:
 - Apache
 ---
 
-# https
-
-## 子配置文件
-`/usr/local/apache/conf/extra/httpd-ssl.conf`
+本文简要介绍了 Apache 配置 https 、子域名。
 
 <!--more-->
+
+# https
+
+子配置文件位于 `/usr/local/apache/conf/extra/httpd-ssl.conf`
 
 ```apacheconf
 <VirtualHost _default_:443>
@@ -50,11 +51,10 @@ categories:
 
 SSLEngine off
 ```
+
 # 多域名配置
 
-## 主配置文件修改
-
-`/usr/local/apache/conf/httpd.conf`
+修改主配置文件 `/usr/local/apache/conf/httpd.conf`
 
 ```apacheconf
 # 多端口监听
@@ -65,9 +65,7 @@ Listen 8080
 Include conf/extra/httpd-vhosts.conf
 ```
 
-## 子配置文件
-
-`/usr/local/apache/conf/extra/httpd-vhosts.conf`
+子配置文件位于 `/usr/local/apache/conf/extra/httpd-vhosts.conf`
 
 ### 官方示例配置
 

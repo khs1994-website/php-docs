@@ -1,6 +1,6 @@
 ---
 title: Nginx 编译安装
-date: 2017-05-06 13:00:00
+date: 2017-05-05 13:00:00
 updated:
 comments: true
 tags:
@@ -13,17 +13,19 @@ categories:
 - Nginx
 ---
 
+本文介绍了手动编译安装 nginx 的具体步骤。
+
+<!--more-->
+
 # 安装依赖包
 
-## RedHat
+RedHat 系
 
 ```bash
 $ yum install -y gcc gcc-c++ pcre-devel openssl-devel zlib-devel
 ```
 
-<!--more-->
-
-## Debian
+Debian 系
 
 ```bash
 $ sudo apt install libpcre3 libpcre3-dev libssl-dev zlib1g-dev zlib1g
@@ -32,17 +34,32 @@ $ sudo apt install libpcre3 libpcre3-dev libssl-dev zlib1g-dev zlib1g
 # 编译
 
 ```bash
-$ ./configure --prefix=/etc/nginx  --sbin-path=/etc/nginx/sbin/nginx \
+$ ./configure --prefix=/etc/nginx  \
+      --sbin-path=/etc/nginx/sbin/nginx \
       --conf-path=/etc/nginx/nginx.conf \
-      --with-http_ssl_module --with-http_realip_module \
-      --with-http_addition_module --with-http_sub_module \
-      --with-http_dav_module --with-http_flv_module --with-http_mp4_module \
-      --with-http_gunzip_module --with-http_gzip_static_module \
-      --with-http_random_index_module --with-http_secure_link_module \
-      --with-http_stub_status_module --with-http_auth_request_module \
-      --with-threads --with-stream --with-stream_ssl_module \
-      --with-http_slice_module --with-mail --with-mail_ssl_module \
-      --with-file-aio --with-http_v2_module
+      --user=nginx \
+      --group=nginx \
+      --with-http_ssl_module \
+      --with-http_realip_module \
+      --with-http_addition_module \
+      --with-http_sub_module \
+      --with-http_dav_module \
+      --with-http_flv_module \
+      --with-http_mp4_module \
+      --with-http_gunzip_module \
+      --with-http_gzip_static_module \
+      --with-http_random_index_module \
+      --with-http_secure_link_module \
+      --with-http_stub_status_module \
+      --with-http_auth_request_module \
+      --with-threads \
+      --with-stream \
+      --with-stream_ssl_module \
+      --with-http_slice_module \
+      --with-mail \
+      --with-mail_ssl_module \
+      --with-file-aio \
+      --with-http_v2_module
 ```
 
 # 错误排查
@@ -92,8 +109,8 @@ $ make
 $ sudo mkdir -p /etc/nginx
 $ sudo chown $USER /etc/nginx
 $ sudo chgrp $USER /etc/nginx
-$ groupadd -r nginx
-$ useradd -r -g nginx -s /bin/false -M nginx
+$ groupadd -r nginx \
+  && useradd -r -g nginx -s /bin/false -M nginx
 
 # 开始编译安装
 
@@ -112,12 +129,9 @@ $ sudo nginx
 
 # Systemd 服务
 
-简单来说就是可以用 `systemctl` 命令来管理 `Nginx`。  
-以下路径根据实际自己修改。
+在 `/lib/systemd/system/` 下增加 `nginx.service` 文件，以下路径根据实际自己修改。
 
-```bash
-$ vi /lib/systemd/system/nginx.service
-
+```yaml
 [Unit]
 Description=nginx - high performance web server
 Documentation=http://nginx.org/en/docs/

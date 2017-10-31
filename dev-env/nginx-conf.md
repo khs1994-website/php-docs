@@ -12,9 +12,16 @@ categories:
 - Nginx
 ---
 
-`/etc/nginx/nginx.conf`主配置文件修改
+本文详细介绍了 nginx 常用配置。
+
+<!--more-->
+
+修改主配置文件 `/etc/nginx/nginx.conf`
 
 ```nginx
+
+worker_processes  auto;
+
 http {
   # 引入子配置文件
   index index.php index.htm index.html;
@@ -23,8 +30,6 @@ http {
   # 将 sever 块内容全部注释
 }
 ```
-
-<!--more-->
 
 # 命令
 
@@ -61,13 +66,11 @@ server {
 }       
 ```
 
-listen 指令后面有一个参数 `default_server` ，这个参数是在 0.8.21 版本以后才有的，而之前是 default 指令。Nginx的虚拟主机是通过HTTP请求中的Host值来找到对应的虚拟主机配置，如果找不到呢？那Nginx就会将请求送到指定了`default_server`的 节点来处理，如果没有指定为`default_server`的话，就跑到localhost的节点，如果没有localhost的节点，那只好 404 了。
+listen 指令后面有一个参数 `default_server` ，这个参数是在 0.8.21 版本以后才有的，而之前是 default 指令。Nginx的虚拟主机是通过 HTTP 请求中的 Host 值来找到对应的虚拟主机配置，如果找不到，那 Nginx 就会将请求送到指定了 `default_server` 的节点来处理，如果没有指定为 `default_server` 的话，就跑到 localhost 的节点，如果没有 localhost 的节点，那只好 404 了。
 
 # 目录浏览功能
 
-Nginx默认是不允许列出整个目录的。如需此功能，打开nginx.conf文件或你要启用目录浏览虚拟主机的配置文件，
-在server或location 段里添加上autoindex on;来启用目录流量，下面会分情况进行说明。
-另外Nginx的目录流量有两个比较有用的参数，可以根据自己的需求添加：
+Nginx 默认是不允许列出整个目录的。如需此功能，在配置文件中 server 或 location 段里添加上 `autoindex on;` 来启用目录浏览。
 
 ```nginx
 autoindex on;
@@ -97,3 +100,4 @@ server {
 
 * http://blog.csdn.net/benbendy1984/article/details/6025663
 * http://nginx.org/en/docs/http/ngx_http_autoindex_module.html
+* [中文文档](https://github.com/oopsguy/nginx-docs)

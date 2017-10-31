@@ -13,8 +13,7 @@ categories:
 - Nginx
 ---
 
-首先确保你的网站是可以访问的。（Nginx配置好80端口）  
-申请证书`let's Encrypt`会访问网站上的文件来确认网站归属！（当然也可以通过DNS确认）
+首先确保你的网站是可以访问的（nginx 配置好80端口），申请证书时 `let's Encrypt` 会访问网站上的某一文件来确认网站归属（当然也可以通过DNS确认）。
 
 <!--more-->
 
@@ -77,9 +76,9 @@ $ ./letsencrypt-auto certonly --email 邮箱 \
 
 生成的证书位于`/etc/letsencrypt/live/`
 
-```nginx
-# Nginx 配置
+nginx 配置如下
 
+```nginx
 ssl_certificate /etc/letsencrypt/live/域名/fullchain.pem;    
 ssl_certificate_key /etc/letsencrypt/live/域名/privkey.pem;
 ```

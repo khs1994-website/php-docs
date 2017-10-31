@@ -1,6 +1,6 @@
 ---
-title: laravel 框架 IDE 配置实现智能提示
-date: 2017-07-22 13:00:00
+title: PhpStorm 配置 Laravel 智能提示
+date: 2017-07-02 13:00:00
 updated:
 comments: true
 tags:
@@ -11,21 +11,23 @@ categories:
 - Laravel
 ---
 
+本文介绍了 PhpStorm 下的 Laravel 智能提示。
+
+<!--more-->
+
 # 配置composer
 
-设置中搜索`composer`进行设置
+设置中搜索 `composer` 进行设置
 
 # 安装 laravel-ide-helper
 
 GitHub地址：https://github.com/barryvdh/laravel-ide-helper
 
-<!--more-->
-
 ```bash
 $ composer require barryvdh/laravel-ide-helper
 ```
 
-`config/app.php`中`providers`中添加以下内容
+`config/app.php` 中 `providers` 中添加以下内容
 
 ```bash
 Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,

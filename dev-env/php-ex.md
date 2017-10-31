@@ -11,14 +11,16 @@ categories:
 - Redis
 ---
 
+本文记录 PHP 扩展及其简单安装方法。
+
+<!--more-->
+
 扩展列表
 
 * php-reids
 * php-memcached
 * php-mongodb
 * pdo-mysql
-
-<!--more-->
 
 # php-reids
 
@@ -121,5 +123,5 @@ $ pecl install memcached
 
 # 相关链接
 
-* 官方文档：http://php.net/manual/zh/install.pecl.php
+* [官方文档](http://php.net/manual/zh/install.pecl.php)
 * http://blog.csdn.net/jt521xlg/article/details/47757109

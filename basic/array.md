@@ -9,6 +9,10 @@ categories:
 - PHP
 ---
 
+本文列举了 PHP 数组相关函数。
+
+<!--more-->
+
 # 判断数组某一值是否存在
 
 ```php
@@ -27,5 +31,3 @@ var_dump(in_array(23, $name['desc']));
 //返回键名
 var_dump(array_search(34,$name['desc']));
 ```
-
-<!--more-->
