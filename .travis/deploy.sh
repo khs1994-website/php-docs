@@ -4,7 +4,7 @@ cd repo
 git ls-files | while read file; do touch -d $(git log -1 --format="@%ct" "$file") "$file"; done
 docker run -it --rm \
   -v $PWD:/tmp/gitbook-src \
-  khs1994/gitbook:1.0.0
+  khs1994/gitbook
 
 # Clone the repository
 git clone -b "$DEPLOY_BRANCH" "$REPO" .deploy_git
