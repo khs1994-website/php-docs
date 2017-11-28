@@ -44,39 +44,40 @@ $ ALTER USER 'root'@'localhost' IDENTIFIED BY 'MyNewPass4!';
 ```sql
 $  GRANT ALL PRIVILEGES ON *.* TO 'admin'@'%' IDENTIFIED BY 'mytest' WITH GRANT OPTION;
 ```
+
 # MySQL 5.5
 
-```bash
-$ vi /etc/mysql/my.conf
+`/etc/mysql/my.conf`
 
+```yaml
 [mysqld]
 bind-address=127.0.0.1 改为 bind-address=0.0.0.0
 ```
 
 # PHP
 
-## PHP5
-
-```bash
-$ yum install php56u
-```
-
-## PHP7
-
-```bash
-$ rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm
-$ yum install php70w
-$ yum install php70w-mysqlnd #PHP与数据库连接
-```
-
-## PHP-FPM
-
-# 安装PHP-FPM
-
-## PHP5.6版
+## PHP 5
 
 ```bash
 $ yum install php56u-fpm
-$ systemctl start php-fpm.service #开启PHP-FPM服务
-$ systemctl enable php-fpm.service #开机自启动
+```
+
+## PHP 7
+
+```bash
+$ rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm
+$ yum install php70w-fpm
+$ yum install php70w-mysqlnd #PHP与数据库连接
+```
+
+## 启动服务
+
+```bash
+# 开启 PHP-FPM 服务
+
+$ systemctl start php-fpm.service
+
+# 开机自启动
+
+$ systemctl enable php-fpm.service
 ```

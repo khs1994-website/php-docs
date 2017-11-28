@@ -47,7 +47,7 @@ $ pecl install extname
 
 $ pecl install extname-beta
 
-#指定版本
+# 指定版本
 
 $ pecl install extname-0.1
 ```
@@ -80,7 +80,7 @@ $ cd /usr/local/php/lib/php/extensions/no-debug-zts-20160303
 
 在里边可以看到 `redis.so` 文件
 
-其他扩展的`编译安装`方法类似，下面不再介绍。
+其他扩展的 `编译安装` 方法类似，这里不再介绍。
 
 ## 修改配置文件
 

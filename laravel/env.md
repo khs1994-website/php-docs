@@ -28,12 +28,14 @@ categories:
 
 开发环境加载 `.env.development`
 
-在 `php-fpm.d/www.conf` 添加环境变量( Docker 中可以直接设置环境变量，本机不行，这里不再探讨)
+在 `php-fpm.d/www.conf` 添加环境变量
 
 ```yaml
 env[APP_ENV]=development;
 env[APP_ENV]=production;
 ```
+
+也可以设置系统环境变量( Docker 中可以直接设置环境变量，本机不行，这里不再探讨)。
 
 查看 `phpinfo()` 页面，搜索查看 `Environment` 与预设环境相匹配即可。
 

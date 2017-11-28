@@ -34,13 +34,13 @@ $ yum install httpd24u
 $ yum install gcc gcc-c++ make uuid-devel libuuid-devel unzip -y
 ```
 
->1.apr中包含了一些通用的开发组件，包括mmap，DSO等等  
+`apr` 中包含了一些通用的开发组件，包括 mmap，DSO 等等  
 
->2.apr-util该目录中也是包含了一些常用的开发组件。这些组件与apr目录下的相比，它们与apache的关系更加密切一些。比如存储段和存储段组，加密等等。
+`apr-util` 该目录中也是包含了一些常用的开发组件。这些组件与 apr 目录下的相比，它们与 apache 的关系更加密切一些。比如存储段和存储段组，加密等等。
 
->3.apr-iconv包中的文件主要用于实现iconv编码。目前的大部分编码转换过程都是与本地编码相关的。  。在进行转换之前必须能够正确地设置本地编码。因此假如两个非本地编码A和B需要转换，则转换过程大致为A->Local以及Local->B或者B->Local以及Local->A。    
+`apr-iconv` 包中的文件主要用于实现 iconv 编码。目前的大部分编码转换过程都是与本地编码相关的。在进行转换之前必须能够正确地设置本地编码。因此假如两个非本地编码 A 和 B 需要转换，则转换过程大致为 A->Local 以及 Local->B 或者 B->Local 以及 Local->A。    
 
-## 安装apr
+## 安装 apr
 
 ```bash
 $ wget http://mirrors.tuna.tsinghua.edu.cn/apache//apr/apr-1.5.2.tar.gz
@@ -54,7 +54,7 @@ $ make install
 
 ```
 
-## 安装apr-iconv
+## 安装 apr-iconv
 
 ```bash
 $ wget http://mirrors.tuna.tsinghua.edu.cn/apache//apr/apr-iconv-1.2.1.tar.gz
@@ -63,7 +63,7 @@ $ cd apr-iconv-1.2.1
 $ ./configure --prefix=/usr/local/apr-iconv --with-apr=/usr/local/apr
 ```
 
-## 安装apr-util
+## 安装 apr-util
 
 ```bash
 $ wget http://mirrors.tuna.tsinghua.edu.cn/apache//apr/apr-util-1.5.4.tar.gz
@@ -102,11 +102,10 @@ $ ./configure --prefix=/usr/local/apache  \
 
 简单来说就是可以用 `systemctl` 命令来管理 `apache`
 
-`yum`方式安装会生成 `httpd.service` 文件，编译安装使用 `apache.service`
+`yum` 方式安装会生成 `httpd.service` 文件，编译安装使用 `apache.service`
 
-```bash
-$ vi /lib/systemd/system/apache.service
-```
+`/lib/systemd/system/apache.service`
+
 
 ```yaml
 [Unit]

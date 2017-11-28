@@ -23,23 +23,28 @@ categories:
 worker_processes  auto;
 
 http {
-  # 引入子配置文件
+  # 配置首页
   index index.php index.htm index.html;
-  # 配置 index
+  # 引入子配置文件
   include /etc/nginx/conf.d/*.conf;
-  # 将 sever 块内容全部注释
 }
 ```
 
 # 命令
 
 ```bash
-# stop是快速停止nginx，可能并不保存相关信息，quit是完整有序的停止nginx，并保存相关信息
+# stop 是快速停止 nginx，可能并不保存相关信息，quit 是完整有序的停止 nginx，并保存相关信息
+
 $ nginx -s stop
+
 $ nginx -s quit
+
 # 重新打开日志文件命令
+
 $ nginx -s reopen
+
 # 重新载入配置文件
+
 $ nginx -s reload
 ```
 
@@ -99,5 +104,7 @@ server {
 # 相关链接
 
 * http://blog.csdn.net/benbendy1984/article/details/6025663
+
 * http://nginx.org/en/docs/http/ngx_http_autoindex_module.html
-* [中文文档](https://github.com/oopsguy/nginx-docs)
+
+* [Nginx 中文文档](https://github.com/oopsguy/nginx-docs)

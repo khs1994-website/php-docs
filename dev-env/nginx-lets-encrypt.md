@@ -65,6 +65,8 @@ $ acme.sh --installcert -d login.khs1994.com \
 
 # 官方工具（不建议使用）
 
+会安装很多依赖软件。
+
 ```bash
 $ git clone https://github.com/letsencrypt/letsencrypt
 $ cd letsencrypt
