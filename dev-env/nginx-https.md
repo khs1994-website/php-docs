@@ -13,7 +13,9 @@ categories:
 - Nginx
 ---
 
-本文详细介绍了 HSTS 、HPKP 等 HTTPS 配置。
+本文详细介绍了 HTTPS 配置。
+
+GitHub：https://github.com/khs1994-website/nginx-https
 
 <!--more-->
 
@@ -21,32 +23,15 @@ categories:
 
 # HSTS
 
-HTTP严格传输安全（HTTP Strict transport security，HSTS），配置浏览器对整个域名空间使用HTTPS来加密
+HTTP 严格传输安全（HTTP Strict transport security，HSTS），配置浏览器对整个域名空间使用 HTTPS 来加密
 
 ```nginx
 add_header Strict-Transport-Security "max-age=31536000; includeSubdomains; preload";
 ```
 
-# HPKP
+# HPKP(废弃)
 
-公钥固定（Public Key Pinning）是指一个证书链中必须包含一个白名单中的公钥，也就是说只有被列入白名单的证书签发机构（CA）才能为某个域名*.example.com签发证书，而不是你的浏览器中所存储的任何 CA 都可以为之签发。
-
-```bash
-# 将中级证书内容写入 `lets.pem`
-
-$ openssl x509 -noout -in lets.pem  \
-    -pubkey | openssl asn1parse -noout \
-    -inform pem -out public.key
-
-$ openssl dgst -sha256 -binary public.key | openssl enc -base64
-
-# 或者从https://myssl.com 证书详情，查看Pin值
-```
-
-```nginx
-add_header Public-Key-Pins 'pin-sha256="IiSbZ4pMDEyXvtl7Lg8K3FNmJcTAhKUTrB2FQOaAO/s="; pin-sha256="YLh1dUR9y6Kja30RrAn7JKnbQG/uEtLMkBgFF2Fuihg="; max-age=31536000; includeSubDomains; report-uri="https:/dev.khs1994.com/hpkp"';
-```
-
+[谷歌浏览器开发团队宣布将停止支持 HPKP 公钥固定](https://www.landiannews.com/archives/41904.html)
 
 # 证书加密类型
 

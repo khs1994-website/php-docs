@@ -67,7 +67,7 @@ Include conf/extra/httpd-vhosts.conf
 
 子配置文件位于 `/usr/local/apache/conf/extra/httpd-vhosts.conf`
 
-### 官方示例配置
+## 官方示例配置
 
 ```apacheconf
 <VirtualHost *:80>
@@ -88,9 +88,9 @@ Include conf/extra/httpd-vhosts.conf
 </VirtualHost>
 ```
 
-### 实际配置
+## 实际配置
 
-`基于端口` `基于IP` `基于域名`
+### 基于端口
 
 ```apacheconf
 <VirtualHost *:8080>
@@ -135,6 +135,8 @@ Include conf/extra/httpd-vhosts.conf
 </VirtualHost>
 ```
 
+### 基于IP
+
 ```apacheconf
 <VirtualHost *:80>
       ServerAdmin khs1994@khs1994.com
@@ -148,6 +150,8 @@ Include conf/extra/httpd-vhosts.conf
       RewriteRule ^(.*)?$ https://%{SERVER_NAME}$1 [L,R]
 </VirtualHost>
 ```
+
+### 基于域名
 
 ```apacheconf
 <VirtualHost *:80>

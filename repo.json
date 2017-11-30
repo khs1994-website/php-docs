@@ -1,9 +1,0 @@
-{
-  "repo": {
-    "github": "git@github.com:khs1994-website/php-docs.git",
-    "aliyun": "git@code.aliyun.com:khs1994-website/php-docs.git"
-  },
-  "branch": "gitbook",
-  "deploy-branch": "gh-pages",
-  "description": "khs1994.com PHP技术文档"
-}
