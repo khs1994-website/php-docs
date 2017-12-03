@@ -28,7 +28,7 @@ categories:
 
 ## pecl 命令安装
 
-下面列举了一些常用参数，更多参数使用 `pecl help` 查看
+下面列举了一些常用参数，更多参数使用 `pecl help` 查看，注意 `pecl install [ext1] [ext2] ...` 一次可以安装多个扩展。
 
 ```bash
 $ pecl channel-update pecl.php.net
