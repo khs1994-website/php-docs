@@ -1,6 +1,6 @@
 ---
 title: PHP Cookie
-date: 2017-08-15 13:00:00
+date: 2016-10-11 13:00:00
 updated:
 comments: true
 tags:

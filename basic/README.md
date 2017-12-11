@@ -1,6 +1,6 @@
 ---
 title: PHP 编码规范
-date: 2017-10-04 13:00:00
+date: 2016-10-05 13:00:00
 updated:
 comments: true
 tags:
@@ -50,6 +50,14 @@ PHP 编码规范。
 # 常量
 
 大写 + 下划线
+
+# 开发步骤
+
+* 初始化 git 仓库，新建 `.gitignore` 文件
+
+* 编写 `composer.json`
+
+* 新建 `src` 文件
 
 # More Information
 

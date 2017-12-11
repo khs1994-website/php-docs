@@ -1,6 +1,6 @@
 ---
 title: Nginx 配置
-date: 2017-05-04 13:00:00
+date: 2016-09-16 13:00:00
 updated:
 comments: true
 tags:

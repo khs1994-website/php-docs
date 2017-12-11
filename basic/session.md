@@ -1,6 +1,6 @@
 ---
 title: PHP Session
-date: 2017-08-16 13:00:00
+date: 2016-10-12 13:00:00
 updated:
 comments: true
 tags:

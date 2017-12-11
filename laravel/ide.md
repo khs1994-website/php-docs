@@ -1,6 +1,6 @@
 ---
 title: PhpStorm 配置 Laravel 智能提示
-date: 2017-07-02 13:00:00
+date: 2017-03-02 13:00:00
 updated:
 comments: true
 tags:

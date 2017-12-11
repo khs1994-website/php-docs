@@ -1,6 +1,6 @@
 ---
 title: Nginx 编译安装
-date: 2017-05-05 13:00:00
+date: 2016-09-15 13:00:00
 updated:
 comments: true
 tags:
