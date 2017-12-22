@@ -98,13 +98,11 @@ $ ./configure --prefix=/usr/local/apache  \
       --with-pcre=/usr/local/pcre
 ```
 
-# Systemd 服务
-
-简单来说就是可以用 `systemctl` 命令来管理 `apache`
+# systemd
 
 `yum` 方式安装会生成 `httpd.service` 文件，编译安装使用 `apache.service`
 
-`/lib/systemd/system/apache.service`
+新建 `/lib/systemd/system/apache.service` 文件。
 
 
 ```yaml

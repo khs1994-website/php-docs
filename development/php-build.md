@@ -193,7 +193,7 @@ RedHat: apache
 
 将源文件中的 `php.ini-development` 复制到安装目录中的 `lib` 子目录 ，并改名为 `php.ini`。
 
-在源文件夹中执行以下命令，复制 `Systemd服务` 文件。
+在源文件夹中执行以下命令，复制 `systemd` 文件。
 
 ```bash
 $ cp sapi/fpm/php-fpm.serviceq /usr/lib/systemd/system/
@@ -204,7 +204,7 @@ $ systemctl daemon-reload
 
 将 `php-fpm.d` 中的 `www.conf.default` 复制为 `www.conf`。
 
-# Systemd 服务
+# systemd
 
 已经在上一步中配置，这里贴出文件内容，便于学习。
 

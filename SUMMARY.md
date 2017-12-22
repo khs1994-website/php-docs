@@ -20,6 +20,7 @@
     * [数组](basic/array.md)
     * [Cookie](basic/cookie.md)
     * [Session](basic/session.md)
+    * [Shell](basic/shell.md)
 * [PDO](pdo/README.md)
     * [MySQL](pdo/mysql/README.md)  
 * [ThinkPHP](thinkphp/README.md)

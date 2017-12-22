@@ -120,14 +120,14 @@ $ make install
 
 # 启动
 
-将 /etc/nginx/sbin 加入 PATH 或者软链接到 PATH ,之后启动
+将 `/etc/nginx/sbin` 加入 `PATH` 或者软链接到 `PATH` ,之后启动
 
 ```bash
 $ sudo nginx -t
 $ sudo nginx
 ```
 
-# Systemd 服务
+# systemd
 
 在 `/lib/systemd/system/` 下增加 `nginx.service` 文件，以下路径根据实际自己修改。
 
