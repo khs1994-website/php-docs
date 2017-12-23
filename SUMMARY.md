@@ -15,6 +15,7 @@
     * [PHP 扩展记录](development/php-ex.md)
     * [PhpStorm + Xdebug](development/xdebug-macos.md)
     * [PhpStorm + Docker](development/phpstorm-docker.md)
+    * [WSL](development/wsl.md)
 * [基础](basic/README.md)
     * [路径](basic/path.md)
     * [数组](basic/array.md)

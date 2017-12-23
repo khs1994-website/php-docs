@@ -85,10 +85,14 @@ $ ./configure --prefix=/usr/local/pcre
 ## Apache
 
 ```bash
-# 替换下载地址
+# 替换 url 为实际的下载地址
+
 $ wget url
+
 $ tar zxvf httpd-2.4.20.tar.gz
+
 $ cd httpd-2.4.20
+
 $ ./configure --prefix=/usr/local/apache  \
       --enable-defalte --enable-expires \
       --enable-headers --enable-modules=most \

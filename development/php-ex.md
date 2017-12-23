@@ -124,4 +124,5 @@ $ pecl install memcached
 # 相关链接
 
 * [官方文档](http://php.net/manual/zh/install.pecl.php)
+
 * http://blog.csdn.net/jt521xlg/article/details/47757109

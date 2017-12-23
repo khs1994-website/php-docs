@@ -106,25 +106,27 @@ $ sudo apt install zlib1g-dev zlib1g
 
 ```bash
 $ make
-$ sudo mkdir -p /etc/nginx
-$ sudo chown $USER /etc/nginx
-$ sudo chgrp $USER /etc/nginx
+
 $ groupadd -r nginx \
   && useradd -r -g nginx -s /bin/false -M nginx
 
-# 开始编译安装
-
-$ make
-$ make install
+$ sudo make install
 ```
 
-# 启动
+## 加入环境变量
 
-将 `/etc/nginx/sbin` 加入 `PATH` 或者软链接到 `PATH` ,之后启动
+编辑 `~/.bash_profile`
 
 ```bash
-$ sudo nginx -t
-$ sudo nginx
+export PATH=/etc/nginx/sbin:$PATH
+```
+
+编辑 `/etc/sudoers`
+
+>注意：必须编辑此文件，否则 sudo 会找不到命令。
+
+```bash
+Defaults	secure_path="/etc/nginx/sbin:..."
 ```
 
 # systemd
@@ -148,6 +150,14 @@ PrivateTmp=true
 
 [Install]
 WantedBy=multi-user.target
+```
+
+# 启动
+
+```bash
+$ sudo nginx -t
+
+$ sudo nginx
 ```
 
 # 相关链接

@@ -15,18 +15,24 @@ categories:
 
 <!--more-->
 
-# PHP-FPM后台执行
+# PHP-FPM 后台执行
 
 ```bash
 daemonize = yes
 ```
 
+忽略配置文件，通过命令方式指定后台或前台运行。
+
+```bash
+$ sudo php-fpm -D | -F
+```
+
 # macOS
 
 ```bash
-$ brew install php71
+$ brew install php72
 # shell 脚本 ，建议使用以下命令 启动、停止、重启 php-fpm
-$ php71-fpm {start|stop|force-quit|restart|reload|status|configtest}
+$ php72-fpm {start|stop|force-quit|restart|reload|status|configtest}
 ```
 
 # `php.ini`
