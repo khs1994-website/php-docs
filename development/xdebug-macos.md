@@ -5,10 +5,10 @@ updated:
 comments: true
 tags:
 - PHP
-- PhpStorm
+- php-dev-env
 categories:
 - PHP
-- IDE
+- php-dev-env
 ---
 
 # 场景

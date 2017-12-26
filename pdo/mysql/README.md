@@ -5,8 +5,12 @@ updated:
 comments: true
 tags:
 - PHP
+- PDO
+- MySQL
 categories:
 - PHP
+- PDO
+- MySQL
 ---
 
 # 连接

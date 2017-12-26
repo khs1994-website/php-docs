@@ -7,6 +7,7 @@ tags:
 - PHP
 categories:
 - PHP
+- Basic
 ---
 
 本文列举了 PHP 数组相关函数。

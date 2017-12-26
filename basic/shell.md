@@ -7,6 +7,7 @@ tags:
 - PHP
 categories:
 - PHP
+- Basic
 ---
 
 主要有 `exec()` `shell_exec()` `system()`。

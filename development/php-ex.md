@@ -5,10 +5,10 @@ updated:
 comments: true
 tags:
 - PHP
-- Redis
+- php-dev-env
 categories:
 - PHP
-- Redis
+- php-dev-env
 ---
 
 本文记录 PHP 扩展及其简单安装方法。

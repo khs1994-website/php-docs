@@ -93,7 +93,7 @@ $ tar zxvf httpd-2.4.20.tar.gz
 
 $ cd httpd-2.4.20
 
-$ ./configure --prefix=/usr/local/apache  \
+$ ./configure --prefix=/usr/local/apache2  \
       --enable-defalte --enable-expires \
       --enable-headers --enable-modules=most \
       --enable-so --with-mpm=worker \
@@ -118,8 +118,8 @@ Documentation=man:apachectl(8)
 
 [Service]
 Type=simple
-ExecStart=/usr/local/apache/bin/httpd -DFOREGROUND
-ExecReload=/usr/local/apache/bin/httpd -k graceful
+ExecStart=/usr/local/apache2/bin/httpd -DFOREGROUND
+ExecReload=/usr/local/apache2/bin/httpd -k graceful
 ExecStop=/bin/kill -WINCH ${MAINPID}
 # We want systemd to give httpd some time to finish gracefully, but still want
 # it to kill httpd after TimeoutStopSec if something went wrong during the

@@ -7,6 +7,7 @@ tags:
 - PHP
 categories:
 - PHP
+- Basic
 ---
 
 `Cookie` 保存在客户端，分为 `内存 Cookie` 和 `硬盘 Cookie`。

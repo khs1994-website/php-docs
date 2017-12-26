@@ -5,10 +5,10 @@ updated:
 comments: true
 tags:
 - PHP
-- ThinkPHP
+- PHP_Release
 categories:
 - PHP
-- ThinkPHP
+- Release
 ---
 
 官方文档说明：http://php.net/manual/zh/migration71.deprecated.php

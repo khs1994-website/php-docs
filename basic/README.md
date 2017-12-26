@@ -7,6 +7,7 @@ tags:
 - PHP
 categories:
 - PHP
+- Basic
 ---
 
 PHP 编码规范。

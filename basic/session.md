@@ -7,6 +7,7 @@ tags:
 - PHP
 categories:
 - PHP
+- Basic
 ---
 
 `Session` 保存在服务端。保存在超全局变量 `$_SESSION`。

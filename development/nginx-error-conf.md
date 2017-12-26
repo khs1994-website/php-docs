@@ -5,10 +5,12 @@ updated:
 comments: true
 tags:
 - PHP
-- MySQL
+- php-dev-env
+- Nginx
 categories:
 - PHP
-- MySQL
+- php-dev-env
+- Nginx
 ---
 
 新老用户都可能遇到 nginx 配置陷阱。下面我们列出频繁出现的问题，以及如何解决。

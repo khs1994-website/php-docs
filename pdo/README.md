@@ -5,8 +5,10 @@ updated:
 comments: true
 tags:
 - PHP
+- PDO
 categories:
 - PHP
+- PDO
 ---
 
 统一各种数据库的访问。

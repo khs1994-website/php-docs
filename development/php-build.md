@@ -15,7 +15,7 @@ categories:
 
 <!--more-->
 
-Debian9 Ubuntu17.04 出现错误请详细查看后边说明(PHP 7.1.9不会报错了)。出现错误强烈建议使用 https://stackoverflow.com 进行搜索！
+Debian9 Ubuntu17.04 出现错误请详细查看后边说明(PHP 7.1.9 不会报错了)。出现错误强烈建议使用 https://stackoverflow.com 进行搜索！
 
 # macOS
 
@@ -124,7 +124,9 @@ $ ./configure --prefix=/usr/local/php \
     # --with-password-argon2 \
 ```
 
-若编译 `Apache` 模块请添加 `--with-apxs2=/usr/local/apache/bin/apxs` 参数。
+若编译 `Apache` 模块请添加 `--with-apxs2=/usr/local/apache2/bin/apxs` 参数。
+
+>注意：`Apache` 模块方式运行 `PHP` 太古老，请采用新的 `PHP-FPM` 模式！https://www.khs1994.com/php/development/apache-php.html
 
 # 错误排查
 

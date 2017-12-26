@@ -5,10 +5,10 @@ updated:
 comments: true
 tags:
 - PHP
-- PhpStorm
+- php-dev-env
 categories:
 - PHP
-- IDE
+- php-dev-env
 ---
 
 在 `PhpStorm | Preferences | Build, Execution, Deployment | Docker` 设置 Docker。
@@ -26,4 +26,5 @@ categories:
 # 相关链接
 
 * https://www.jetbrains.com/help/phpstorm/docker-2.html?search=docker
+
 * https://confluence.jetbrains.com/display/PhpStorm/Docker+Support+in+PhpStorm

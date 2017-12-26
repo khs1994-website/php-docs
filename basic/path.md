@@ -7,6 +7,7 @@ tags:
 - PHP
 categories:
 - PHP
+- Basic
 ---
 
 主要包括 `getcwd()` `__FILE__` `__DIR__`
