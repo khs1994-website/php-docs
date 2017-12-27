@@ -178,6 +178,8 @@ Defaults	secure_path="/usr/local/php/bin:/usr/local/php/sbin:..."
 
 ```bash
 $ sudo pecl update-channels
+
+$ pecl config-set php_ini /usr/local/php/etc/php.ini
 ```
 
 ## 配置
@@ -254,7 +256,7 @@ server {
 $ sudo pecl install redis
 ```
 
-编辑配置文件 `/usr/local/php/lib/php.ini` 在其最后添加
+编辑配置文件 `/usr/local/php/etc/php.ini` 在其最后添加
 
 >温馨提示：shift+g 即可在 vim 中跳到行尾。
 
