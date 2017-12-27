@@ -9,15 +9,17 @@ categories:
 - PHP
 ---
 
->本文暂时废弃。
-
 `Windows Subsystem for Linux`（简称 `WSL` ）是一个为在 Windows 10 上能够原生运行 Linux 二进制可执行文件（ELF 格式）的兼容层。
+
+>强烈推荐在 `Windows` 使用 `Docker` 进行 `LNMP` 开发：https://github.com/khs1994-docker/lnmp
 
 <!--more-->
 
 如何启用 `WSL` 这里不再赘述，下方执行命令过程中出错，可以使用 `sudo` 再次尝试执行。
 
-本文基于如下软件
+>注意。PHP-FPM 暂时只能通过监听 socket ,不能设置 `listen 127.0.0.1:9000`！
+
+基于如下软件
 
 * `WSL` Ubuntu 16.04.3
 
@@ -107,8 +109,8 @@ $ ./configure --prefix=/usr/local/php \
     --with-config-file-scan-dir=/usr/local/php/etc/conf.d \
     --disable-cgi \
     --enable-fpm \
-    --with-fpm-user=www-data \
-    --with-fpm-group=www-data \
+    --with-fpm-user=nginx \
+    --with-fpm-group=nginx \
     --enable-ftp \
     --with-curl \
     --with-gd \
@@ -178,6 +180,35 @@ Defaults	secure_path="/usr/local/php/bin:/usr/local/php/sbin:..."
 $ sudo pecl update-channels
 ```
 
+## 配置
+
+将源文件中的 `php.ini-development` 复制到安装目录中的 `etc` 子目录 ，并改名为 `php.ini`。
+
+将安装目录中的 `etc` 子目录中的 `php-fpm.conf.default` 复制为 `php-fpm.conf`。
+
+将安装目录中的 `etc/php-fpm.d` 子目录中的 `www.conf.default` 复制为 `www.conf`。
+
+>非常重要！
+
+编辑 `/usr/local/php/etc/php-fpm.d/www.conf`
+
+```bash
+
+# 务必与 nginx 运行用户一致
+
+user = nginx
+group = nginx
+
+# 编译安装默认为 IP:端口 ，apt 反之
+# listen = 127.0.0.1:9000
+
+listen = /run/php-fpm.sock
+
+listen.owner = nginx
+listen.group = nginx
+listen.mode = 0660
+```
+
 ## 启动
 
 ```bash
@@ -192,4 +223,41 @@ $ sudo php-fpm -D | -F
 
 ```bash
 $ docker run -it -d --name wsl-lnmp-mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=mytest -e MYSQL_DATABASE=test --mount src=wsl-lnmp-mysql-data,target=/var/lib/mysql mysql
+```
+
+# nginx 配置
+
+编辑 `/etc/nginx/conf.d/php.conf`
+
+```nginx
+server {
+  server_name 127.0.0.1;
+  listen 80;
+  root /app/test;
+  index index.html index.php;
+  location / {
+    try_files $uri $uri/ /index.php?$query_string;
+  }
+  location ~ .*\.php(\/.*)*$ {
+    # fastcgi_pass  127.0.0.1:9000;
+    fastcgi_pass  unix:/run/php-fpm.sock;
+    fastcgi_index  index.php;
+    fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;
+    include fastcgi_params;
+  }
+}
+```
+
+# 尝试通过 pecl 安装 PHP 扩展
+
+```bash
+$ sudo pecl install redis
+```
+
+编辑配置文件 `/usr/local/php/lib/php.ini` 在其最后添加
+
+>温馨提示：shift+g 即可在 vim 中跳到行尾。
+
+```bash
+extension=redis.so
 ```

@@ -234,7 +234,7 @@ RedHat: apache
 
 # 复制配置文件
 
-将源文件中的 `php.ini-development` 复制到安装目录中的 `lib` 子目录 ，并改名为 `php.ini`。
+将源文件中的 `php.ini-development` 复制到安装目录中的 `etc` 子目录 ，并改名为 `php.ini`。
 
 在源文件夹中执行以下命令，复制 `systemd` 文件。
 
