@@ -1,14 +1,14 @@
 ---
 title: macOS PhpStorm Xdebug 使用详解
-date: 2017-08-02 12:00:00
+date: 2017-03-05 12:00:00
 updated:
 comments: true
 tags:
 - PHP
-- PhpStorm
+- php-dev-env
 categories:
 - PHP
-- IDE
+- php-dev-env
 ---
 
 # 场景

@@ -1,14 +1,14 @@
 ---
 title: PHP 扩展记录
-date: 2017-07-26 16:00:00
+date: 2016-09-23 16:00:00
 updated:
 comments: true
 tags:
 - PHP
-- Redis
+- php-dev-env
 categories:
 - PHP
-- Redis
+- php-dev-env
 ---
 
 本文记录 PHP 扩展及其简单安装方法。
@@ -28,7 +28,7 @@ categories:
 
 ## pecl 命令安装
 
-下面列举了一些常用参数，更多参数使用 `pecl help` 查看
+下面列举了一些常用参数，更多参数使用 `pecl help` 查看，注意 `pecl install [ext1] [ext2] ...` 一次可以安装多个扩展。
 
 ```bash
 $ pecl channel-update pecl.php.net
@@ -124,4 +124,5 @@ $ pecl install memcached
 # 相关链接
 
 * [官方文档](http://php.net/manual/zh/install.pecl.php)
+
 * http://blog.csdn.net/jt521xlg/article/details/47757109

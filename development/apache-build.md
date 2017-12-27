@@ -1,6 +1,6 @@
 ---
 title: Apache 编译
-date: 2017-05-02 13:00:00
+date: 2016-09-10 13:00:00
 updated:
 comments: true
 tags:
@@ -85,11 +85,15 @@ $ ./configure --prefix=/usr/local/pcre
 ## Apache
 
 ```bash
-# 替换下载地址
+# 替换 url 为实际的下载地址
+
 $ wget url
+
 $ tar zxvf httpd-2.4.20.tar.gz
+
 $ cd httpd-2.4.20
-$ ./configure --prefix=/usr/local/apache  \
+
+$ ./configure --prefix=/usr/local/apache2  \
       --enable-defalte --enable-expires \
       --enable-headers --enable-modules=most \
       --enable-so --with-mpm=worker \
@@ -98,13 +102,11 @@ $ ./configure --prefix=/usr/local/apache  \
       --with-pcre=/usr/local/pcre
 ```
 
-# Systemd 服务
-
-简单来说就是可以用 `systemctl` 命令来管理 `apache`
+# systemd
 
 `yum` 方式安装会生成 `httpd.service` 文件，编译安装使用 `apache.service`
 
-`/lib/systemd/system/apache.service`
+新建 `/lib/systemd/system/apache.service` 文件。
 
 
 ```yaml
@@ -116,8 +118,8 @@ Documentation=man:apachectl(8)
 
 [Service]
 Type=simple
-ExecStart=/usr/local/apache/bin/httpd -DFOREGROUND
-ExecReload=/usr/local/apache/bin/httpd -k graceful
+ExecStart=/usr/local/apache2/bin/httpd -DFOREGROUND
+ExecReload=/usr/local/apache2/bin/httpd -k graceful
 ExecStop=/bin/kill -WINCH ${MAINPID}
 # We want systemd to give httpd some time to finish gracefully, but still want
 # it to kill httpd after TimeoutStopSec if something went wrong during the

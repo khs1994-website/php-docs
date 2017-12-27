@@ -1,9 +1,10 @@
 ---
 title: let's Encrypt SSL 证书配置详解
-date: 2017-07-28 13:00:00
+date: 2016-09-20 13:00:00
 updated:
 comments: true
 tags:
+- PHP
 - php-dev-env
 - Nginx
 - HTTPS
@@ -13,7 +14,7 @@ categories:
 - Nginx
 ---
 
-首先确保你的网站是可以访问的（nginx 配置好80端口），申请证书时 `let's Encrypt` 会访问网站上的某一文件来确认网站归属（当然也可以通过DNS确认）。
+首先确保你的网站是可以访问的（ nginx 配置好80端口），申请证书时 `let's Encrypt` 会访问网站上的某一文件来确认网站归属（当然也可以通过 DNS 确认）。
 
 <!--more-->
 

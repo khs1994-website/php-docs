@@ -1,6 +1,6 @@
 ---
 title: Apache PHP 配置
-date: 2017-05-03 13:00:00
+date: 2016-09-12 13:00:00
 updated:
 comments: true
 tags:
@@ -13,15 +13,17 @@ categories:
 - Apache
 ---
 
-本文简要介绍了 Apache 解析 PHP 文件。
+本文简要介绍了 `Apache` 解析 `PHP` 文件。
 
 <!--more-->
 
 # 模块方式
 
-`/usr/local/apache/modules/` 有 `libphp7.so` 文件。
+>该方式太老，不建议使用
 
-PHP7 编译安装时加上参数 `--with-apxs2=/usr/local/apache/bin/apxs`
+`/usr/local/apache2/modules/` 有 `libphp7.so` 文件。
+
+PHP7 编译安装时加上参数 `--with-apxs2=/usr/local/apache2/bin/apxs`
 
 ```apacheconf
 LoadModule php7_module        modules/libphp7.so
@@ -42,6 +44,8 @@ DirectoryIndex  index.php  index.html
 
 ## 配置
 
+在子配置文件中写入以下内容
+
 ```apacheconf
 <VirtualHost *:80>
     DocumentRoot "/var/www/htdocs"
@@ -52,5 +56,11 @@ DirectoryIndex  index.php  index.html
     <FilesMatch \.php$>
         SetHandler "proxy:fcgi://127.0.0.1:9000"
     </FilesMatch>
+
+    <Directory "/app/test" >
+      Options Indexes FollowSymLinks
+      AllowOverride None
+      Require all granted
+    </Directory>    
 </VirtualHost>
 ```

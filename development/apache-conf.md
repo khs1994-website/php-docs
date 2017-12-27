@@ -1,6 +1,6 @@
 ---
 title: Apache 配置
-date: 2017-05-01 13:00:00
+date: 2016-09-11 13:00:00
 updated:
 comments: true
 tags:
@@ -13,66 +13,64 @@ categories:
 - Apache
 ---
 
-本文简要介绍了 Apache 配置 https 、子域名。
+本文简要介绍了 `Apache` 配置 `https` 、子域名。
 
 <!--more-->
 
+如果启动出现错误，搜索一下错误信息，一般启用某些模块就行了。
+
 # https
 
-子配置文件位于 `/usr/local/apache/conf/extra/httpd-ssl.conf`
+修改主配置文件 `/usr/local/apache2/conf/httpd.conf`
 
 ```apacheconf
-<VirtualHost _default_:443>
-   DocumentRoot "/var/www/t"
-    ServerName a.khs1994.com:443
+LoadModule socache_shmcb_module modules/mod_socache_shmcb.so
 
-    ErrorLog logs/ssl_error_log
-    TransferLog logs/ssl_access_log
-    LogLevel warn
-    SSLEngine on
-    SSLProtocol all -SSLv2
-    SSLCipherSuite HIGH:MEDIUM:!aNULL:!MD5
-
-    SSLCertificateFile /etc/httpd/conf/1_a.khs1994.com_cert.crt
-    SSLCertificateKeyFile /etc/httpd/conf/2_a.khs1994.com.key
-
-    <Files ~ "\.(cgi|shtml|phtml|php3?)$">
-      SSLOptions +StdEnvVars
-    </Files>
-    <Directory "/var/www/cgi-bin">
-      SSLOptions +StdEnvVars
-      </Directory>
-      BrowserMatch "MSIE [2-5]" \
-          nokeepalive ssl-unclean-shutdown \
-          downgrade-1.0 force-response-1.0
-          CustomLog logs/ssl_request_log \
-          "%t %h %{SSL_PROTOCOL}x %{SSL_CIPHER}x \"%r\" %b"
-</VirtualHost>  
-
-SSLEngine off
+LoadModule ssl_module modules/mod_ssl.so
 ```
+
+为了方便这里不启用 `/usr/local/apache2/conf/extra/httpd-ssl.conf`
+
+直接在 `/usr/local/apache2/conf/extra/httpd-vhosts.conf` 增加内容
+
+```apacheconf
+Listen 443
+
+SSLCipherSuite HIGH:MEDIUM:!MD5:!RC4:!3DES
+SSLProxyCipherSuite HIGH:MEDIUM:!MD5:!RC4:!3DES
+
+SSLHonorCipherOrder on
+
+SSLProtocol all -SSLv3
+SSLProxyProtocol all -SSLv3
+
+SSLSessionCache        "shmcb:/usr/local/apache2/logs/ssl_scache(512000)"
+SSLSessionCacheTimeout 300
+```
+
+更多配置详情：https://github.com/khs1994-docker/lnmp-nginx-apache2-demo/blob/master/httpd-vhosts.conf
 
 # 多域名配置
 
-修改主配置文件 `/usr/local/apache/conf/httpd.conf`
+修改主配置文件 `/usr/local/apache2/conf/httpd.conf`
 
 ```apacheconf
-# 多端口监听
-Listen 80
-Listen 8080
-# 去掉 # 号
 # Virtual hosts
 Include conf/extra/httpd-vhosts.conf
 ```
 
-子配置文件位于 `/usr/local/apache/conf/extra/httpd-vhosts.conf`
+修改子配置文件 `/usr/local/apache2/conf/extra/httpd-vhosts.conf`
+
+```apacheconf
+Listen 8080
+```
 
 ## 官方示例配置
 
 ```apacheconf
 <VirtualHost *:80>
     ServerAdmin webmaster@dummy-host.example.com
-    DocumentRoot "/usr/local/apache/docs/dummy-host.example.com"
+    DocumentRoot "/usr/local/apache2/docs/dummy-host.example.com"
     ServerName dummy-host.example.com
     ServerAlias www.dummy-host.example.com
     ErrorLog "logs/dummy-host.example.com-error_log"
@@ -81,7 +79,7 @@ Include conf/extra/httpd-vhosts.conf
 
 <VirtualHost *:80>
     ServerAdmin webmaster@dummy-host2.example.com
-    DocumentRoot "/usr/local/apache/docs/dummy-host2.example.com"
+    DocumentRoot "/usr/local/apache2/docs/dummy-host2.example.com"
     ServerName dummy-host2.example.com
     ErrorLog "logs/dummy-host2.example.com-error_log"
     CustomLog "logs/dummy-host2.example.com-access_log" common
@@ -90,13 +88,9 @@ Include conf/extra/httpd-vhosts.conf
 
 ## 实际配置
 
-### 基于端口
+### 403 错误
 
 ```apacheconf
-<VirtualHost *:8080>
-      ServerAdmin khs1994@khs1994.com
-      DocumentRoot "/var/www/html"
-# 出现 403 错误增加以下内容，第一行路径注意修改    
 <Directory "/var/www/html">
     #
     # Possible values for the Options directive are "None", "All",
@@ -124,18 +118,35 @@ Include conf/extra/httpd-vhosts.conf
     #
     Require all granted
 </Directory>
+```
 
+### 基于端口
+
+```apacheconf
+<VirtualHost *:8080>
+      ServerAdmin khs1994@khs1994.com
+      DocumentRoot "/var/www/html"
       ServerName khs1994.com
+
       ErrorLog "logs/khs1994.com-error_log"
       CustomLog "logs/khs1994.com-access_log" common
-      #https跳转
+
+      # https 跳转
       RewriteEngine on
       RewriteCond %{HTTP_HOST} !^khs1994.com[NC]
       RewriteRule ^(.*)$ http://www.khs1994.com$1 [L,R=301]
+
+
+      # 403 错误  
+      <Directory "/app/test" >
+        Options Indexes FollowSymLinks
+        AllowOverride None
+        Require all granted
+      </Directory>
 </VirtualHost>
 ```
 
-### 基于IP
+### 基于 IP
 
 ```apacheconf
 <VirtualHost *:80>

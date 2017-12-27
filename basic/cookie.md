@@ -1,12 +1,13 @@
 ---
 title: PHP Cookie
-date: 2017-08-15 13:00:00
+date: 2016-10-11 13:00:00
 updated:
 comments: true
 tags:
 - PHP
 categories:
 - PHP
+- Basic
 ---
 
 `Cookie` 保存在客户端，分为 `内存 Cookie` 和 `硬盘 Cookie`。

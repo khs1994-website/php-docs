@@ -1,12 +1,13 @@
 ---
 title: PHP Session
-date: 2017-08-16 13:00:00
+date: 2016-10-12 13:00:00
 updated:
 comments: true
 tags:
 - PHP
 categories:
 - PHP
+- Basic
 ---
 
 `Session` 保存在服务端。保存在超全局变量 `$_SESSION`。

@@ -1,6 +1,6 @@
 ---
 title: LAMP CentOS7 开发环境配置
-date: 2017-05-01 12:00:00
+date: 2016-09-05 12:00:00
 updated:
 comments: true
 tags:
@@ -47,7 +47,7 @@ $  GRANT ALL PRIVILEGES ON *.* TO 'admin'@'%' IDENTIFIED BY 'mytest' WITH GRANT 
 
 # MySQL 5.5
 
-`/etc/mysql/my.conf`
+编辑 `/etc/mysql/my.conf` 文件。
 
 ```yaml
 [mysqld]

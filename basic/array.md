@@ -1,12 +1,13 @@
 ---
 title: PHP 数组相关函数
-date: 2017-08-14 12:00:00
+date: 2016-10-10 12:00:00
 updated:
 comments: true
 tags:
 - PHP
 categories:
 - PHP
+- Basic
 ---
 
 本文列举了 PHP 数组相关函数。

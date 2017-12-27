@@ -1,14 +1,16 @@
 ---
 title: Nginx 配置陷阱和常见错误(转载)
-date: 2017-05-04 12:00:00
+date: 2016-09-17 12:00:00
 updated:
 comments: true
 tags:
 - PHP
-- MySQL
+- php-dev-env
+- Nginx
 categories:
 - PHP
-- MySQL
+- php-dev-env
+- Nginx
 ---
 
 新老用户都可能遇到 nginx 配置陷阱。下面我们列出频繁出现的问题，以及如何解决。
@@ -63,7 +65,7 @@ server {
 }
 ```
 
-这有效。把root放在location区块可以生效而且完全有效。错误之处在于开始添加location区块， 如果你在每个location区块添加root指令，没有匹配location区块将没有root。下面看看正确的配置。
+这有效。把 root 放在 location 区块可以生效而且完全有效。错误之处在于开始添加 location 区块，如果你在每个 location 区块添加 root 指令，没有匹配 location 区块将没有 root。下面看看正确的配置。
 
 ## GOOD
 
@@ -110,7 +112,7 @@ http {
     }
 }
 ```
-为什么在不需要时重复那么多行。简单的使用一次 “index” 指令。仅仅需要添加到http{}区块，将会被继承。
+为什么在不需要时重复那么多行。简单的使用一次 index 指令。仅仅需要添加到 http{} 区块，将会被继承。
 
 ## GOOD
 
@@ -137,7 +139,7 @@ http {
 
 # 使用 If
 
-有几个页面介绍使用 if 语句。它叫做IfIsEvil，你真的应该看看。让我们看看使用 if 的坏处。[If Is Evil](https://www.nginx.com/resources/wiki/start/topics/depth/ifisevil/)
+有几个页面介绍使用 if 语句。它叫做 IfIsEvil，你真的应该看看。让我们看看使用 if 的坏处。[If Is Evil](https://www.nginx.com/resources/wiki/start/topics/depth/ifisevil/)
 
 # Server Name (if)
 
@@ -155,7 +157,7 @@ server {
 }
 ```
 
-这里有3个问题。第一个是if，我们关心的。当 NGINX 接受一个请求不管是子域名 www.example.com 还是 example.com，if指令总是会判断。因为你要求 NGINX 检查每个请求的 Host 头。 这样效率低下，你应该避免。像下面一样使用2个server指令。
+这里有3个问题。第一个是 if，我们关心的。当 NGINX 接受一个请求不管是子域名 www.example.com 还是 example.com，if 指令总是会判断。因为你要求 NGINX 检查每个请求的 Host 头。 这样效率低下，你应该避免。像下面一样使用 2 个 server 指令。
 
 ## GOOD
 
@@ -171,11 +173,11 @@ server {
 
 ```
 
-除了配置文件更易于阅读，这种方法减少 NGINX 处理需求。我们摆脱了虚假的if，同时使用 $scheme,没有硬编码 URI 的结构，可以是 http 或者 https。
+除了配置文件更易于阅读，这种方法减少 NGINX 处理需求。我们摆脱了虚假的 if，同时使用 $scheme,没有硬编码 URI 的结构，可以是 http 或者 https。
 
 # 检查文件 (if) 存在
 
-使用 if 去检查文件是否存在是糟糕的。如果你使用最新版本的 NGINX ，应该看看try_files,更 易使用。
+使用 if 去检查文件是否存在是糟糕的。如果你使用最新版本的 NGINX ，应该看看 try_files,更易使用。
 
 ## BAD
 
@@ -201,9 +203,9 @@ server {
 }
 ```
 
-这里我们判断$uri是否存在不再需要if。使用try_files意味着可以依序测试。 如果$uri不存在，尝试$uri/，如果还不存在，尝试备用的location。
+这里我们判断 $uri 是否存在不再需要 if。使用 try_files 意味着可以依序测试。 如果 $uri 不存在，尝试 $uri/，如果还不存在，尝试备用的 location。
 
-在这个案例中，会先查看$uri文件是否存在，存在就返回。如果不存在，就检查该目录是否存在。 如果不存在，将返回index.html,你必须确定存在该文件。
+在这个案例中，会先查看 $uri 文件是否存在，存在就返回。如果不存在，就检查该目录是否存在。 如果不存在，将返回 index.html,你必须确定存在该文件。
 
 # Front Controller 模式 WEB 应用
 
@@ -218,7 +220,7 @@ try_files $uri $uri/ /index.php?q=$uri&$args;
 * “q” 是 Drupal、Joomla、WordPress 使用的参数
 * “page” 是 CMS Made Simple 使用的参数
 
-一些软件甚至不用查询字符串，而且可以从REQUEST_URI读取（WordPress支持，例如）：
+一些软件甚至不用查询字符串，而且可以从 REQUEST_URI 读取（ WordPress 支持，例如）：
 
 ```nginx
 try_files $uri $uri/ /index.php;
@@ -226,11 +228,11 @@ try_files $uri $uri/ /index.php;
 
 当然你的情况可能不同，你可能根据需求添加复杂的规则，但一个基本的网站，这些将完美的工作。 你可以从简单的开始。
 
-如果你不在乎目录是否存在，你也可以决定跳过目录检查，从中删除$uri/。
+如果你不在乎目录是否存在，你也可以决定跳过目录检查，从中删除 $uri/。
 
 # 把不受控制的请求给 PHP
 
-很多对 PHP 的 NGINX 配置样例把每个以.php结尾的 URI 给 PHP 解释器。请注意在大多数 PHP 设置中，这将是个严重的安全问题，因为它允许任意第三方代码执行。
+很多对 PHP 的 NGINX 配置样例把每个以 .php 结尾的 URI 给 PHP 解释器。请注意在大多数 PHP 设置中，这将是个严重的安全问题，因为它允许任意第三方代码执行。
 
 出问题的区域通常如下：
 
@@ -240,13 +242,13 @@ location ~* \.php$ {
     # [...]
 }
 ```
-这里每一个以.php结尾文件的请求将会给FastCGI后端。 这里的问题是如果全路径并不指向文件系统上实际的文件，默认的 PHP 配置会试图猜测你需要执行哪个文件。
+这里每一个以 .php 结尾文件的请求将会给 FastCGI 后端。 这里的问题是如果全路径并不指向文件系统上实际的文件，默认的 PHP 配置会试图猜测你需要执行哪个文件。
 
-例如，如果请求不存在的文件/forum/avatar/1232.jpg/file.php，但/forum/avatar/1232.jpg存在， PHP 解释器将处理/forum/avatar/1232.jpg。如果它包含 PHP 代码，这段代码将相应的执行。
+例如，如果请求不存在的文件 /forum/avatar/1232.jpg/file.php，但 /forum/avatar/1232.jpg 存在， PHP 解释器将处理 /forum/avatar/1232.jpg。如果它包含 PHP 代码，这段代码将相应的执行。
 
 下面的选项可以避免上述情况：
 
-* 在php.ini中设置cgi.fix_pathinfo=0。使得 PHP 解释器仅尝试给出的路径，如果文件没有找到就停止处理。
+* 在 php.ini 中设置 cgi.fix_pathinfo=0。使得 PHP 解释器仅尝试给出的路径，如果文件没有找到就停止处理。
 * 保证 NGINX 仅传给后端指定的 PHP
 
 ```nginx
@@ -319,7 +321,7 @@ rewrite ^ http://example.com$request_uri? permanent;
 return 301 http://example.com$request_uri;
 ```
 
-第一个 rewrite 捕获在第一个/之后的 URI。通过使用内建变量$request_uri，我们可以有效的避免做任何捕获或者匹配。
+第一个 rewrite 捕获在第一个/之后的 URI。通过使用内建变量 $request_uri，我们可以有效的避免做任何捕获或者匹配。
 
 # Rewrite 丢失 http://
 
@@ -355,7 +357,7 @@ server {
 }
 ```
 
-令人讨厌的，在这种情况下把所有的请求都给 PHP 处理。为什么？Apache 也许是这样做，但你不必。让我这么说吧... try_files指令存在的原因，它按特定的顺序尝试文件。意味着 NGINX 可以先尝试提供静态内容。如果不能，继续尝试。 这样 PHP 根本不参与，快的多。特别是如果你通过 PHP 提供 1MB 图片的时间是直接提供的1000倍，让我们看看该怎么做。
+令人讨厌的，在这种情况下把所有的请求都给 PHP 处理。为什么？Apache 也许是这样做，但你不必。让我这么说吧... try_files 指令存在的原因，它按特定的顺序尝试文件。意味着 NGINX 可以先尝试提供静态内容。如果不能，继续尝试。 这样 PHP 根本不参与，快的多。特别是如果你通过 PHP 提供 1MB 图片的时间是直接提供的1000倍，让我们看看该怎么做。
 
 ## GOOD
 
@@ -406,17 +408,17 @@ server {
 
 # VirtualBox
 
-如果这不起作用,而且你在 VirtualBox 中的虚拟机中运行 NGINX，也许是sendfile()引起的问题。 简单的注释掉sendfile指令，或者设置为“off”。
+如果这不起作用,而且你在 VirtualBox 中的虚拟机中运行 NGINX，也许是 sendfile()引起的问题。 简单的注释掉 sendfile 指令，或者设置为 off。
 
 sendfile off;
 
 # 缺失的 HTTP 头
 
-如果你没有明确的设置underscores_in_headers on，NGINX 将会默默地忽略掉带有下划线的头信息（根据 HTTP 标准是完全有效的）。 这样做为了防止头信息映射到 CGI 变量过程中破折号和下划线都映射成下划线引起歧义。
+如果你没有明确的设置 underscores_in_headers on，NGINX 将会默默地忽略掉带有下划线的头信息（根据 HTTP 标准是完全有效的）。 这样做为了防止头信息映射到 CGI 变量过程中破折号和下划线都映射成下划线引起歧义。
 
 # 没有使用标准的 Document Root Locations
 
-有些目录在任何文件系统中不应该用于托管数据。其中包括/和/root。你不应该使用这些作为网站根目录。
+有些目录在任何文件系统中不应该用于托管数据。其中包括 `/` 和 `/root`。你不应该使用这些作为网站根目录。
 
 这样作让你的隐私数据毫无预期的返回给请求。
 
@@ -435,17 +437,17 @@ server {
     }
 }
 ```
-当一个请求/foo，因为文件找不到将代理到 php 。这看起来正常，直到请求/etc/passwd。是的，你给了服务器上所有用户列表。 在某些情况下，Nginx 服务器进程被设置以 root 用户运行。是的，我们现在有你的用户列表以及密码 hash 密码，以及如何 hash 的。
+当一个请求 /foo，因为文件找不到将代理到 php 。这看起来正常，直到请求 /etc/passwd。是的，你给了服务器上所有用户列表。 在某些情况下，Nginx 服务器进程被设置以 root 用户运行。是的，我们现在有你的用户列表以及密码 hash 密码，以及如何 hash 的。
 
 文件系统层级标准定义了数据应该存在哪里。你应该看看。 简而言之，你的 web 内容可以存放在/var/www/、/srv、/usr/share/www。
 
 # 使用默认的 Document Root
 
-Ubuntu、Debian 等其他操作系统中NGINX包，作为易于安装的包会提供默认的配置文件用作一个例子，而且会包含网站根目录存储基本的 HTML 文件。
+Ubuntu、Debian 等其他操作系统中 NGINX 包，作为易于安装的包会提供默认的配置文件用作一个例子，而且会包含网站根目录存储基本的 HTML 文件。
 
-多数系统包不检查默认的Document Root中文件是否存在或者修改。这样会在软件包升级时导致代码丢失。经验丰富的系统管理员没有期望在 升级期间默认的document root内容保持不变。
+多数系统包不检查默认的 Document Root中文件是否存在或者修改。这样会在软件包升级时导致代码丢失。经验丰富的系统管理员没有期望在 升级期间默认的 document root 内容保持不变。
 
-你不应该对将网站的关键文件使用默认的document root。在你的系统升级或者更新 NGINX 包时有很大可能性会导致默认的document root 内容会改变。
+你不应该对将网站的关键文件使用默认的 document root。在你的系统升级或者更新 NGINX 包时有很大可能性会导致默认的 document root 内容会改变。
 
 # 使用 Hostname 去解析地址
 
@@ -483,7 +485,7 @@ server {
 
 # HTTPS 中使用 SSLv3
 
-由于 SSLv3 的POODLE漏洞，建议在 SSL 的网站不启用 SSLv3。你可以很简单的禁用 SSLv3，只提供 TLS 协议。
+由于 SSLv3 的 POODLE 漏洞，建议在 SSL 的网站不启用 SSLv3。你可以很简单的禁用 SSLv3，只提供 TLS 协议。
 
 ```nginx
 ssl_protocols TLSv1 TLSv1.1 TLSv1.2;

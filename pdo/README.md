@@ -1,12 +1,14 @@
 ---
 title: PHP 数据库抽象层 PDO
-date: 2017-07-03 13:00:00
+date: 2017-04-01 13:00:00
 updated:
 comments: true
 tags:
 - PHP
+- PDO
 categories:
 - PHP
+- PDO
 ---
 
 统一各种数据库的访问。

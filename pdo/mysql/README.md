@@ -1,12 +1,16 @@
 ---
 title: PHP PDO MySQL
-date: 2017-07-04 13:00:00
+date: 2017-04-02 13:00:00
 updated:
 comments: true
 tags:
 - PHP
+- PDO
+- MySQL
 categories:
 - PHP
+- PDO
+- MySQL
 ---
 
 # 连接
