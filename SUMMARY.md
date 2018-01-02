@@ -22,6 +22,7 @@
     * [Cookie](basic/cookie.md)
     * [Session](basic/session.md)
     * [Shell](basic/shell.md)
+    * [json 和 xml](basic/json_xml.md)
 * [PDO](pdo/README.md)
     * [MySQL](pdo/mysql/README.md)  
 * [ThinkPHP](thinkphp/README.md)

@@ -9,9 +9,9 @@ categories:
 - PHP
 ---
 
-`Windows Subsystem for Linux`（简称 `WSL` ）是一个为在 Windows 10 上能够原生运行 Linux 二进制可执行文件（ELF 格式）的兼容层。
+>本文暂时废弃。强烈推荐在 `Windows` 使用 `Docker` 进行 `LNMP` 开发：https://github.com/khs1994-docker/lnmp
 
->强烈推荐在 `Windows` 使用 `Docker` 进行 `LNMP` 开发：https://github.com/khs1994-docker/lnmp
+`Windows Subsystem for Linux`（简称 `WSL` ）是一个为在 Windows 10 上能够原生运行 Linux 二进制可执行文件（ELF 格式）的兼容层。
 
 <!--more-->
 
