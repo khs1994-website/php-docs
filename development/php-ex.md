@@ -89,12 +89,13 @@ $ vi /usr/locla/php/etc/php.ini
 
 # 文件最后增加如下内容,路径根据实际修改
 
-# zend 扩展必须加上绝对路径
+# 普通扩展直接写文件名
 
-extension=/usr/local/php/lib/php/extensions/no-debug-zts-20160303/redis.so
-
-# 根据实际测试，不加路径也是可以的
 extension=redis.so
+
+# zend 扩展必须写绝对路径
+
+extension=/usr/local/php/lib/php/extensions/no-debug-zts-20160303/xdebug.so
 ```
 
 ## 测试

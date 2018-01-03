@@ -14,7 +14,9 @@ categories:
 
 ## `json_encode()`
 
->将数组编码为 json
+>将 `数组` 编码为 `json`
+
+<!--more-->
 
 ```php
 json_encode($value [, $options, $depth]);
