@@ -11,6 +11,8 @@ categories:
 
 # 开发一个 SDK
 
+<!--more-->
+
 ```json
 {
   "name": "khs1994/qq-login",

@@ -15,6 +15,8 @@ categories:
 
 # 连接
 
+<!--more-->
+
 ```php
 // 数据源
 

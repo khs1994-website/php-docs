@@ -31,5 +31,6 @@
 * [Laravel](laravel/README.md)
     * [env](laravel/env.md)
     * [PhpStorm 配置](laravel/ide.md)
+    * [数据库](laravel/database.md)
 * [版本变更](release/readme.md)
     * [7.2 废弃 mcrypt](mcrypt.md)   
