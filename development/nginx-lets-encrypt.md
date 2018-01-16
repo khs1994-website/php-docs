@@ -1,5 +1,5 @@
 ---
-title: let's Encrypt SSL 证书配置详解
+title: Let's Encrypt SSL 证书配置详解
 date: 2016-09-20 13:00:00
 updated:
 comments: true
@@ -7,7 +7,7 @@ tags:
 - PHP
 - php-dev-env
 - Nginx
-- HTTPS
+- https
 categories:
 - PHP
 - php-dev-env
@@ -18,13 +18,13 @@ categories:
 
 <!--more-->
 
-# 第三方小工具
+# 第三方小工具 `acme.sh`
 
 GitHub: https://github.com/Neilpang/acme.sh
 
 请仔细阅读 `README.md`。
 
-## 安装
+## 安装 `acme.sh`
 
 ```bash
 $ git clone https://github.com/Neilpang/acme.sh.git
