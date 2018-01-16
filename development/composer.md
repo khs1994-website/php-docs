@@ -9,9 +9,15 @@ categories:
 - PHP
 ---
 
-# 开发一个 SDK
+GitHub：https://github.com/composer/composer
+
+官方网站：https://getcomposer.org/
 
 <!--more-->
+
+# 开发一个 SDK
+
+GitHub：https://github.com/khs1994-php/php-sdk-example
 
 ```json
 {
@@ -33,7 +39,7 @@ categories:
     "php": ">=7.0"
   },
   "require-dev": {
-    "phpunit/phpunit": "~4.0|~5.0"
+    "phpunit/phpunit": "~5.0|~6.0"
   },
   "autoload": {
     "psr-4": {
