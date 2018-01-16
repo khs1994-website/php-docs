@@ -35,7 +35,7 @@ env[APP_ENV]=development;
 env[APP_ENV]=production;
 ```
 
-也可以设置系统环境变量( Docker 中可以直接设置环境变量，本机不行，这里不再探讨)。
+也可以设置系统环境变量( `Docker` 中可以直接设置环境变量，本机不行，这里不再探讨)。
 
 查看 `phpinfo()` 页面，搜索查看 `Environment` 与预设环境相匹配即可。
 

@@ -37,7 +37,7 @@ $ pecl channel-update pecl.php.net
 
 $ pecl config-show
 
-$ pecl config-set php.ini /data/usr/local/php/lib/php.ini
+$ pecl config-set php_ini /usr/local/php/etc/php.ini
 
 # 安装扩展
 
@@ -85,14 +85,17 @@ $ cd /usr/local/php/lib/php/extensions/no-debug-zts-20160303
 ## 修改配置文件
 
 ```bash
-$ vi /usr/locla/php/lib/php.ini
+$ vi /usr/locla/php/etc/php.ini
 
 # 文件最后增加如下内容,路径根据实际修改
 
-extension=/usr/local/php/lib/php/extensions/no-debug-zts-20160303/redis.so
+# 普通扩展直接写文件名
 
-# 根据实际测试，不加路径也是可以的
 extension=redis.so
+
+# zend 扩展必须写绝对路径
+
+extension=/usr/local/php/lib/php/extensions/no-debug-zts-20160303/xdebug.so
 ```
 
 ## 测试

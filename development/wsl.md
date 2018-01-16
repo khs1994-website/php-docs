@@ -9,9 +9,9 @@ categories:
 - PHP
 ---
 
-`Windows Subsystem for Linux`（简称 `WSL` ）是一个为在 Windows 10 上能够原生运行 Linux 二进制可执行文件（ELF 格式）的兼容层。
+>本文暂时废弃。强烈推荐在 `Windows` 使用 `Docker` 进行 `LNMP` 开发：https://github.com/khs1994-docker/lnmp
 
->强烈推荐在 `Windows` 使用 `Docker` 进行 `LNMP` 开发：https://github.com/khs1994-docker/lnmp
+`Windows Subsystem for Linux`（简称 `WSL` ）是一个为在 Windows 10 上能够原生运行 Linux 二进制可执行文件（ELF 格式）的兼容层。
 
 <!--more-->
 
@@ -178,6 +178,8 @@ Defaults	secure_path="/usr/local/php/bin:/usr/local/php/sbin:..."
 
 ```bash
 $ sudo pecl update-channels
+
+$ pecl config-set php_ini /usr/local/php/etc/php.ini
 ```
 
 ## 配置
@@ -254,7 +256,7 @@ server {
 $ sudo pecl install redis
 ```
 
-编辑配置文件 `/usr/local/php/lib/php.ini` 在其最后添加
+编辑配置文件 `/usr/local/php/etc/php.ini` 在其最后添加
 
 >温馨提示：shift+g 即可在 vim 中跳到行尾。
 

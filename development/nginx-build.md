@@ -131,7 +131,7 @@ Defaults	secure_path="/etc/nginx/sbin:..."
 
 # systemd
 
-在 `/lib/systemd/system/` 下增加 `nginx.service` 文件，以下路径根据实际自己修改。
+在 `/etc/systemd/system/` 下增加 `nginx.service` 文件，以下路径根据实际自己修改。
 
 ```yaml
 [Unit]

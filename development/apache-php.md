@@ -17,6 +17,18 @@ categories:
 
 <!--more-->
 
+# PHP-FPM
+
+```apacheconf
+LoadModule proxy_module modules/mod_proxy.so
+LoadModule proxy_fcgi_module modules/mod_proxy_fcgi.so
+
+AddType application/x-httpd-php  .php
+AddType application/x-httpd-php-source  .phps
+
+DirectoryIndex  index.php  index.html
+```
+
 # 模块方式
 
 >该方式太老，不建议使用
@@ -28,18 +40,6 @@ PHP7 编译安装时加上参数 `--with-apxs2=/usr/local/apache2/bin/apxs`
 ```apacheconf
 LoadModule php7_module        modules/libphp7.so
 AddType application/x-httpd-php .php
-```
-
-# PHP-FPM
-
-```apacheconf
-LoadModule proxy_module modules/mod_proxy.so
-LoadModule proxy_fcgi_module modules/mod_proxy_fcgi.so
-
-AddType application/x-httpd-php  .php
-AddType application/x-httpd-php-source  .phps
-
-DirectoryIndex  index.php  index.html
 ```
 
 ## 配置

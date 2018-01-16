@@ -15,7 +15,9 @@ categories:
 
 <!--more-->
 
-Debian9 Ubuntu17.04 出现错误请详细查看后边说明(PHP 7.1.9 不会报错了)。出现错误强烈建议使用 https://stackoverflow.com 进行搜索！
+# 修订记录
+
+* Debian9 Ubuntu17.04 出现错误请详细查看后边说明(PHP 7.1.9 不会报错了)。出现错误强烈建议使用 https://stackoverflow.com 进行搜索！
 
 # macOS
 
@@ -32,13 +34,20 @@ $ brew install php71
 ```bash
 $ yum install gcc \
               gcc-c++ \
-              libxml2 libxml2-devel \
-              openssl openssl-devel \
-              libcurl libcurl-devel \
-              freetype freetype-devel \
-              libjpeg libjpeg-devel \
-              libpng libpng-devel \
-              libxslt libxslt-devel \
+              libxml2 \
+              libxml2-devel \
+              openssl \
+              openssl-devel \
+              libcurl \
+              libcurl-devel \
+              freetype \
+              freetype-devel \
+              libjpeg \
+              libjpeg-devel \
+              libpng \
+              libpng-devel \
+              libxslt \
+              libxslt-devel \
               systemd-devel \
               libicu-devel \
               libedit-devel
@@ -239,7 +248,7 @@ RedHat: apache
 在源文件夹中执行以下命令，复制 `systemd` 文件。
 
 ```bash
-$ cp sapi/fpm/php-fpm.serviceq /usr/lib/systemd/system/
+$ cp sapi/fpm/php-fpm.serviceq /etc/systemd/system/
 $ systemctl daemon-reload
 ```
 

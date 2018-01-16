@@ -106,7 +106,7 @@ $ ./configure --prefix=/usr/local/apache2  \
 
 `yum` 方式安装会生成 `httpd.service` 文件，编译安装使用 `apache.service`
 
-新建 `/lib/systemd/system/apache.service` 文件。
+新建 `/etc/systemd/system/apache.service` 文件。
 
 
 ```yaml

@@ -15,7 +15,7 @@ categories:
 
 <!--more-->
 
-# 配置composer
+# 配置 composer
 
 设置中搜索 `composer` 进行设置
 

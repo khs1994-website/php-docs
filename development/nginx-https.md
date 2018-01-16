@@ -7,7 +7,7 @@ tags:
 - PHP
 - php-dev-env
 - Nginx
-- HTTPS
+- https
 categories:
 - PHP
 - php-dev-env
@@ -39,16 +39,34 @@ add_header Strict-Transport-Security "max-age=31536000; includeSubdomains; prelo
 `RSA`  
 `ECC`
 
+# HTTPS 配置生成工具
+
+GitHub：https://github.com/mozilla/server-side-tls
+
+* https://mozilla.github.io/server-side-tls/ssl-config-generator/
+
+国内加速访问
+
+GitHub：https://github.com/khs1994-website/server-side-tls
+
+https://khs1994.gitee.io/server-side-tls/ssl-config-generator/
+
+https://khs1994-website.github.io/server-side-tls/ssl-config-generator/
+
 # SSL 测试网站
 
-https://myssl.com/  
-https://httpsecurityreport.com/?report=www.khs1994.com  
-https://www.ssllabs.com/ssltest/index.html  
+* https://myssl.com/
+
+* https://httpsecurityreport.com/?report=www.khs1994.com  
+
+* https://www.ssllabs.com/ssltest/index.html
 
 # 相关链接
 
-* [HTTPS 配置生成工具](https://mozilla.github.io/server-side-tls/ssl-config-generator/)
 * https://www.fujieace.com/jingyan/nginx/hsts-hpkp.html
+
 * https://linux.cn/article-5282-1.html
+
 * http://www.scalescale.com/tips/nginx/hsts-nginx/
+
 * https://imququ.com/post/ecc-certificate.html

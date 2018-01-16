@@ -15,7 +15,7 @@ categories:
 
 <!--more-->
 
-项目根目录编写 `Dockerfile` `docker-compose.yml`
+项目根目录编写 `Dockerfile` 或 `docker-compose.yml`
 
 点击 `Run | Edit configurations` 中添加 `Docker Deployment`
 

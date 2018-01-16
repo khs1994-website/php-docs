@@ -1,5 +1,5 @@
 ---
-title: let's Encrypt SSL 证书配置详解
+title: Let's Encrypt SSL 证书配置详解
 date: 2016-09-20 13:00:00
 updated:
 comments: true
@@ -7,24 +7,24 @@ tags:
 - PHP
 - php-dev-env
 - Nginx
-- HTTPS
+- https
 categories:
 - PHP
 - php-dev-env
 - Nginx
 ---
 
-首先确保你的网站是可以访问的（ nginx 配置好80端口），申请证书时 `let's Encrypt` 会访问网站上的某一文件来确认网站归属（当然也可以通过 DNS 确认）。
+首先确保你的网站是可以访问的（ nginx 配置好 80 端口），申请证书时 `let's Encrypt` 会访问网站上的某一文件来确认网站归属（当然也可以通过 DNS 确认）。
 
 <!--more-->
 
-# 第三方小工具
+# 第三方小工具 `acme.sh`
 
 GitHub: https://github.com/Neilpang/acme.sh
 
-请仔细阅读`README.md`
+请仔细阅读 `README.md`。
 
-## 安装
+## 安装 `acme.sh`
 
 ```bash
 $ git clone https://github.com/Neilpang/acme.sh.git
@@ -40,29 +40,40 @@ $ ./acme.sh --install
 
 ## 生成
 
-请使用绝对路径或将 `~/.acme.sh/`加入`PATH`
+请使用绝对路径或将 `~/.acme.sh/` 加入 `PATH`
 
 ```bash
-$ acme.sh  --issue  -d mydomain.com -d www.mydomain.com  \
-    --webroot  /home/wwwroot/mydomain.com/
+$ acme.sh  --issue \
+    -d mydomain.com \
+    -d www.mydomain.com  \
+    --webroot /home/wwwroot/mydomain.com/
 
 # ECC证书
 
-$ acme.sh --issue -w /home/wwwroot/example.com \
-    -d example.com -d www.example.com \
+$ acme.sh --issue \
+    -w /home/wwwroot/example.com \
+    -d example.com \
+    -d www.example.com \
 		--keylength ec-256
 ```
 
-生成的文件位于`~/.acme.sh/域名/`
+生成的文件位于 `~/.acme.sh/域名/`。
 
 ## 转移证书文件
 
+### nginx
+
 ```bash
-$ acme.sh --installcert -d login.khs1994.com \
+$ acme.sh --install-cert \
+    -d login.khs1994.com \
     --key-file /data/etc/nginx/conf.d/lets-acme/login.khs1994.com.key \
     --fullchain-file /data/etc/nginx/conf.d/lets-acme/login.khs1994.com.cer \
 		--ecc
 ```
+
+### apache
+
+请查看官方文档。
 
 # 官方工具（不建议使用）
 
@@ -77,7 +88,7 @@ $ ./letsencrypt-auto certonly --email 邮箱 \
 		--agree-tos
 ```
 
-生成的证书位于`/etc/letsencrypt/live/`
+生成的证书位于 `/etc/letsencrypt/live/`
 
 nginx 配置如下
 
