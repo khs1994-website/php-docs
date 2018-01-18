@@ -1,12 +1,14 @@
 ---
 title: PHP 依赖管理工具 Composer
-date: 2016-12-02 12:00:00
+date: 2016-11-25 12:00:00
 updated:
 comments: true
 tags:
 - PHP
+- Composer
 categories:
 - PHP
+- Composer
 ---
 
 GitHub：https://github.com/composer/composer

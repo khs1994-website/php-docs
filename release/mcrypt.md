@@ -5,7 +5,6 @@ updated:
 comments: true
 tags:
 - PHP
-- PHP_Release
 categories:
 - PHP
 - Release

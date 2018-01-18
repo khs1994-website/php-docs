@@ -12,7 +12,23 @@ categories:
 
 本文详细记录了 PHP 使用 `curl` 遇到的问题。
 
+官方文档：http://php.net/manual/zh/book.curl.php
+
 <!--more-->
+
+设置网址
+
+```php
+curl_setopt($ch, CURLOPT_URL, $url);
+```
+
+# post
+
+```php
+curl_setopt($ch, CURLOPT_POST, 1);
+
+curl_setopt($ch, CURLOPT_POSTFIELDS, $data)
+```
 
 # https
 
