@@ -42,6 +42,14 @@ string system(string $command [, int $return_value])
 
 成功则返回命令输出的最后一行， 失败则返回 `FALSE`
 
+# 反引号
+
+反引号不能在双引号字符串中使用。
+
+```php
+echo `ls`;
+```
+
 # 其他
 
 请查看：http://php.net/manual/zh/ref.exec.php

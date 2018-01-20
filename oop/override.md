@@ -31,4 +31,4 @@ categories:
 
 * `__call(string $name,array $arguments)` 在对象中调用不可访问的方法
 
-* `__callStatic(string $name,array $arguments)`
+* `__callStatic(string $name,array $arguments)` 在对象中调用不可访问的静态方法
