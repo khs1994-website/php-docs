@@ -75,3 +75,7 @@ class Calculator
 ```bash
 $ phpunit --skeleton Calculator.php
 ```
+
+# 示例
+
+* https://github.com/khs1994-php/tencent-ai
