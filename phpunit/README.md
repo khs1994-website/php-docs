@@ -76,6 +76,12 @@ class Calculator
 $ phpunit --skeleton Calculator.php
 ```
 
+# 命令参数
+
+```bash
+--coverage-* # clover crap4j html php text  为运行的测试生成带有代码覆盖率信息的日志文件
+```
+
 # 示例
 
 * https://github.com/khs1994-php/tencent-ai

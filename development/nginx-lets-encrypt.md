@@ -81,7 +81,9 @@ $ acme.sh --install-cert \
 
 ```bash
 $ git clone https://github.com/letsencrypt/letsencrypt
+
 $ cd letsencrypt
+
 $ ./letsencrypt-auto certonly --email 邮箱 \
     -d 域名 -d 域名 \
 		--webroot -w 网站目录完整路径 \

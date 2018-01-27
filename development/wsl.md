@@ -94,10 +94,15 @@ $ sudo apt install autoconf \
 
 ```bash
 $ cd /usr/local
+
 $ sudo chmod 777 src
+
 $ cd src
+
 $ wget -O php-7.2.0.tar.gz http://hk1.php.net/get/php-7.2.0.tar.gz/from/this/mirror
+
 $ tar -zxvf php-7.2.0.tar.gz
+
 $ cd php-7.2.0
 ```
 

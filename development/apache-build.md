@@ -21,8 +21,11 @@ categories:
 
 ```bash
 $ yum install wget epel-release
+
 $ wget https://centos7.iuscommunity.org/ius-release.rpm
-$ rpm -Uvh ius-release*rpm
+
+$ rpm -Uvh ius-release.rpm
+
 $ yum install httpd24u
 ```
 
@@ -44,12 +47,17 @@ $ yum install gcc gcc-c++ make uuid-devel libuuid-devel unzip -y
 
 ```bash
 $ wget http://mirrors.tuna.tsinghua.edu.cn/apache//apr/apr-1.5.2.tar.gz
+
 $ tar zxvf apr-1.5.2.tar.gz
+
 $ cd apr-1.5.2
+
 $ ./configure --prefix=/usr/local/apr
 
 #下同
+
 $ make
+
 $ make install
 
 ```
@@ -58,8 +66,11 @@ $ make install
 
 ```bash
 $ wget http://mirrors.tuna.tsinghua.edu.cn/apache//apr/apr-iconv-1.2.1.tar.gz
+
 $ tar -zxvf apr-iconv-1.2.1.tar.gz
+
 $ cd apr-iconv-1.2.1
+
 $ ./configure --prefix=/usr/local/apr-iconv --with-apr=/usr/local/apr
 ```
 
@@ -67,8 +78,11 @@ $ ./configure --prefix=/usr/local/apr-iconv --with-apr=/usr/local/apr
 
 ```bash
 $ wget http://mirrors.tuna.tsinghua.edu.cn/apache//apr/apr-util-1.5.4.tar.gz
+
 $ tar zxvf apr-util-1.5.4.tar.gz
+
 $ cd apr-util-1.5.4
+
 $ ./configure --prefix=/usr/local/apr-util --with-apr=/usr/local/apr \
     --with-apr-iconv=/usr/local/apr-iconv/bin/apriconv
 ```
@@ -77,8 +91,11 @@ $ ./configure --prefix=/usr/local/apr-util --with-apr=/usr/local/apr \
 
 ```bash
 $ wget  http://120.52.73.44/nchc.dl.sourceforge.net/project/pcre/pcre/8.38/pcre-8.38.zip
+
 $ unzip  -o pcre-8.38.zip
+
 $ cd pcre-8.38
+
 $ ./configure --prefix=/usr/local/pcre
 ```
 

@@ -93,6 +93,7 @@ upstream fzjh {
     server 111.206.227.118 weight=2;
     server 123.206.62.18;
 }
+
 server {
     listen 80;
     server_name f.khs1994.com;

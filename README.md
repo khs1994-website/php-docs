@@ -8,13 +8,11 @@
 
 * 文档中的内容欢迎大家通过 E-mail 与我交流 <a href="mailto:khs1994@khs1994.com">khs1994@khs1994.com</a>
 
-# 分支策略
+# 通过 Docker 阅读
 
-|分支|说明|功能|
-|:--|:--|:--|
-|`master`  |[发布分支](https://github.com/khs1994-website/php-docs/tree/master)    |接收 `gitbook` 分支 `PR`，每月发布上个月的版本|
-|`gitbook` |[编辑分支](https://github.com/khs1994-website/php-docs/tree/gitbook)   |接收日常变更                |
-|`gh-pages`|[静态分支](https://github.com/khs1994-website/php-docs/tree/gh-pages)  |托管静态 `HTML` 文件        |
+```bash
+$ docker run -it --rm -p 4000:80 khs1994/php-docs
+```
 
 # 排版规范
 

@@ -24,9 +24,13 @@ categories:
 
 ```bash
 $ rpm -qa | grep mariadb
+
 $ rpm -e --nodeps mariadb-libs-5.5.37-1.el7_0.x86_64
+
 $ yum install *.rpm
+
 $ service mysqld start
+
 $ service mysqld status
 ```
 
@@ -34,6 +38,7 @@ $ service mysqld status
 
 ```bash
 $ sudo grep 'temporary password' /var/log/mysqld.log
+
 $ mysql -uroot -p
 
 $ ALTER USER 'root'@'localhost' IDENTIFIED BY 'MyNewPass4!';
@@ -66,8 +71,10 @@ $ yum install php56u-fpm
 
 ```bash
 $ rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm
+
 $ yum install php70w-fpm
-$ yum install php70w-mysqlnd #PHP与数据库连接
+
+$ yum install php70w-mysqlnd # PHP与数据库连接
 ```
 
 ## 启动服务

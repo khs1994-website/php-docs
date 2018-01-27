@@ -21,7 +21,7 @@ categories:
 
 # 安装 laravel-ide-helper
 
-GitHub地址：https://github.com/barryvdh/laravel-ide-helper
+GitHub：https://github.com/barryvdh/laravel-ide-helper
 
 ```bash
 $ composer require barryvdh/laravel-ide-helper
