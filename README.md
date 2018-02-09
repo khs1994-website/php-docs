@@ -1,5 +1,3 @@
-<!-- ex_nonav -->
-
 # khs1994.com PHP 技术文档
 
 [![Build Status](https://travis-ci.org/khs1994-website/php-docs.svg?branch=master)](https://travis-ci.org/khs1994-website/php-docs) [![Build Status](https://travis-ci.org/khs1994-website/php-docs.svg?branch=gitbook)](https://travis-ci.org/khs1994-website/php-docs)
@@ -14,9 +12,15 @@
 $ docker run -it --rm -p 4000:80 khs1994/php-docs
 ```
 
+然后浏览器打开 `127.0.0.1:4000`
+
 # 排版规范
 
 本文档遵循 [中文排版指南](https://github.com/sparanoid/chinese-copywriting-guidelines) 规范。
+
+# LNMP
+
+[khs1994.com](https://khs1994.com) 由 [khs1994-docker/lnmp](https://github.com/khs1994-docker/lnmp) 提供 LNMP 容器化解决方案。
 
 # PHP-FIG
 

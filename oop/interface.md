@@ -29,15 +29,19 @@ interface D
 
 interface A
 {
-    // 接口常量不能被子类覆盖
+    // 接口常量不能被子类或子接口覆盖
 
-    const A=1;
+    const VERSION='0.0.1';
 
     // 接口中的方法都没有具体实现
 
     public function fun1();
 
     public function fun2($num);
+}
+
+interface C extends D{
+  public function fun3();
 }
 
 // 一个类可以实现多个接口

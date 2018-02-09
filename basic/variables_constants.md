@@ -72,7 +72,7 @@ define('FOO', 'bar');
 const FOO = 'bar';
 ```
 
-const 不能用在函数内、循环内、if 语句之内。
+`const` 不能用在函数内、循环内、if 语句之内。
 
 ## 获取常量
 

@@ -21,20 +21,10 @@ GitHub：https://github.com/sebastianbergmann/phpunit
 
 # 安装
 
-`composer` 引入，执行命令或直接编辑文件。
+`composer` 引入执行命令。
 
 ```bash
 $ composer require --dev phpunit/phpunit
-```
-
-```json
-{
-
-"require-dev": {
-        "phpunit/phpunit": "^6.2"
-}
-
-}
 ```
 
 # 使用

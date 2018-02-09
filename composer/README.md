@@ -17,39 +17,19 @@ GitHub：https://github.com/composer/composer
 
 <!--more-->
 
+# 安装
+
+https://github.com/composer/composer/releases 下载，之后移入 `PATH` (`/usr/local/bin`)，改名为 `composer`
+
+## macOS
+
+```bash
+$ brew install composer
+```
+
 # 开发一个 SDK
 
 GitHub：https://github.com/khs1994-php/php-sdk-example
-
-```json
-{
-  "name": "khs1994/qq-login",
-  "description": "QQ Login SDK",
-  "keywords": [
-    "qq",
-    "oauth"
-  ],
-  "homepage": "https://github.com/khs1994-php/qq-login",
-  "type": "library",
-  "license": "MIT",
-  "authors": [{
-    "name": "khs1994",
-    "email": "khs1994@khs1994.com",
-    "homepage": "https://khs1994.com"
-  }],
-  "require": {
-    "php": ">=7.0"
-  },
-  "require-dev": {
-    "phpunit/phpunit": "~5.0|~6.0"
-  },
-  "autoload": {
-    "psr-4": {
-      "QQLogin\\": "src/QQLogin/"
-    }
-  }
-}
-```
 
 ## GitHub 设置
 
@@ -61,24 +41,12 @@ git 仓库设置中 `Integration & services` 中搜索添加 `Packagist`。
 
 # 在项目中使用
 
-```json
-{
-  "require":{
-    "khs1994/qq-login":"*"
-  }
-}
-```
-
-之后引入
-
 ```bash
-$ composer install | update
-```
+$ composer require khs1994/qq-login @dev
 
-或使用命令行
+# 只在开发环境使用某包
 
-```bash
-$ composer require "khs1994/qq-login:dev-master"
+$ composer require --dev phpunit/phpunit
 ```
 
 ## 自动加载
@@ -87,7 +55,6 @@ $ composer require "khs1994/qq-login:dev-master"
 <?php
 require 'vendor/autoload.php';
 
-...
 ```
 
 ## `dist` 和 `源码`

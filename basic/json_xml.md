@@ -10,17 +10,23 @@ categories:
 - Basic
 ---
 
-# json
+本文介绍了 JSON 与 XML 相关函数。
+
+<!--more-->
+
+# JSON
 
 ## `json_encode()`
 
 >将 `数组` 编码为 `json`
 
-<!--more-->
-
 ```php
 json_encode($value [, $options, $depth]);
 ```
+
+### `$options`
+
+中文 `JSON_UNESCAPED_UNICODE` 以字面编码多字节 Unicode 字符（默认是编码成 `\uXXXX`）
 
 ## `json_decode()`
 
@@ -30,4 +36,4 @@ json_encode($value [, $options, $depth]);
 json_decode($json [, $assoc, $depth, $options]);
 ```
 
-# xml
+# XML

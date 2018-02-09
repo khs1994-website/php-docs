@@ -13,6 +13,7 @@
     * [JSON 和 XML](basic/json_xml.md)
     * [日期](basic/date.md)
     * [文件](basic/file.md)
+    * [错误和异常](basic/error_exception.md)
 * [正则表达式](preg/README.md)
 * [OOP](oop/README.md)
     * [多继承 trait](oop/trait.md)

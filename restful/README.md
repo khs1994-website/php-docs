@@ -25,15 +25,17 @@ categories:
 
 # 请求方法
 
-* `get` 获取
+* `get` 获取 =》查(SELECT)
 
-* `post` 附加新的资源 (新建)
+* `post` 附加新的资源 (新建) =》增 (CREATE)
+
+* `put` 请求服务器存储一个资源，并用 REQUEST-URI 作为其标识 更新 =》改 (UPDATE) 改全部信息
+
+* `patch` 在服务器更新资源（客户端提供改变的属性）更新 => 改 (UPDATE) 改部分信息
+
+* `delete` 请求服务器删除 REQUEST-URI 所标识的资源 =》删 (DELETE)
 
 * `head` 请求获取由 REQUEST-URI 所标识的资源的响应信息报头
-
-* `put` 请求服务器存储一个资源，并用 REQUEST-URI 作为其标识（更新）
-
-* `delete` 请求服务器删除 REQUEST-URI 所标识的资源
 
 * `options` 请求查询服务器的性能，或者查询与资源相关的选项与需求
 
@@ -63,7 +65,15 @@ categories:
 
 ## 过滤信息
 
-`url?offset=10`
+`url?offset=10` 指定返回记录的开始位置
+
+`url?limit=10` 指定返回记录的数量
+
+`url?page=2&per_page=100` 指定第几页，以及每页的记录数。
+
+`url?sortby=name&order=asc` 指定返回结果按照哪个属性排序，以及排序顺序。
+
+`url?animal_type_id=1` 指定筛选条件
 
 ## 状态码
 
