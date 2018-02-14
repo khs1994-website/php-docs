@@ -7,6 +7,11 @@ docker run -it --rm \
   khs1994/gitbook
 
 sudo chmod -R 777 _book
+
+docker build -t khs1994/php-docs .
+
+docker push khs1994/php-docs
+
 cd _book
 git init
 git remote add origin "$REPO"

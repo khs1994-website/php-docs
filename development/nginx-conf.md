@@ -15,6 +15,10 @@ categories:
 
 本文详细介绍了 nginx 常用配置。
 
+官方文档：https://www.nginx.com/resources/wiki/start/topics/examples/full/
+
+GitHub：https://github.com/khs1994-website/https
+
 <!--more-->
 
 修改主配置文件 `/etc/nginx/nginx.conf`
@@ -25,8 +29,12 @@ worker_processes  auto;
 
 http {
   # 配置首页
+  # 在 http 段配置好，就不用在 server 段里配置了
+
   index index.php index.htm index.html;
+
   # 引入子配置文件
+
   include /etc/nginx/conf.d/*.conf;
 }
 ```
@@ -34,7 +42,7 @@ http {
 # 命令
 
 ```bash
-# stop 是快速停止 nginx，可能并不保存相关信息，quit 是完整有序的停止 nginx，并保存相关信息
+# stop 是快速停止 nginx，可能并不保存相关信息，quit 是完整有序的停止 nginx 并保存相关信息
 
 $ nginx -s stop
 
@@ -53,12 +61,18 @@ $ nginx -s reload
 
 ```nginx
 server{
+  root           /var/www2/www;
+
   location ~ \.php$ {
-      root           /var/www2/www;
-      fastcgi_pass   phpfpm:9000;
-      fastcgi_index  index.php;
-      fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;
-      include        fastcgi_params;
+      fastcgi_pass    phpfpm:9000;
+      fastcgi_index   index.php;
+
+      # 包管理工具 apt yum 安装的 nginx 不包含 fastcgi.conf
+      # 必须使用注释的配置
+      # fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;
+      # include        fastcgi_params;
+
+      include          fastcgi.conf;
   }
 }
 ```
@@ -80,9 +94,13 @@ Nginx 默认是不允许列出整个目录的。如需此功能，在配置文�
 
 ```nginx
 autoindex on;
-#默认为on，显示出文件的确切大小，单位是bytes。改为off后，显示出文件的大概大小，单位是kB或者MB或者GB
+
+# 默认为on，显示出文件的确切大小，单位是bytes。改为off后，显示出文件的大概大小，单位是kB或者MB或者GB
+
 autoindex_exact_size off;
-#默认为off，显示的文件时间为GMT时间。改为on后，显示的文件时间为文件的服务器时间
+
+# 默认为off，显示的文件时间为GMT时间。改为on后，显示的文件时间为服务器时间
+
 autoindex_localtime on;
 ```
 
@@ -93,6 +111,7 @@ upstream fzjh {
     server 111.206.227.118 weight=2;
     server 123.206.62.18;
 }
+
 server {
     listen 80;
     server_name f.khs1994.com;

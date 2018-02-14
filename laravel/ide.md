@@ -21,22 +21,39 @@ categories:
 
 # 安装 laravel-ide-helper
 
-GitHub地址：https://github.com/barryvdh/laravel-ide-helper
+GitHub：https://github.com/barryvdh/laravel-ide-helper
+
+仅在开发环境中使用
 
 ```bash
-$ composer require barryvdh/laravel-ide-helper
+$ composer require --dev barryvdh/laravel-ide-helper
 ```
 
-`config/app.php` 中 `providers` 中添加以下内容
+在 `app/Providers/AppServiceProvider.php` 中添加如下内容
 
-```bash
-Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
+```php
+public function register()
+{
+    if ($this->app->environment() !== 'production') {
+        $this->app->register(\Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class);
+    }
+    // ...
+}
 ```
 
 通过命令行生成 `_ide_helper.php` 文件
 
 ```bash
 $ php artisan ide-helper:generate
+$ php artisan ide-helper:meta
+$ php artisan optimize
+```
+
+在 `.gitignore` 中添加如下内容
+
+```bash
+.phpstorm.meta.php
+_ide_helper.php
 ```
 
 # 插件

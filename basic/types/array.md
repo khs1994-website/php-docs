@@ -1,6 +1,6 @@
 ---
 title: PHP 数组相关函数
-date: 2016-10-10 12:00:00
+date: 2016-10-7 12:00:00
 updated:
 comments: true
 tags:
@@ -8,11 +8,40 @@ tags:
 categories:
 - PHP
 - Basic
+- Types
 ---
 
 本文列举了 PHP 数组相关函数。
 
 <!--more-->
+
+# 数组长度
+
+```php
+int count(mixed $var [, int $mode = COUNT_NORMAL]);
+```
+
+此函数也可以返回对象的属性个数。
+
+# 字符串与数组转化
+
+## 一维数组转化为字符串
+
+```php
+string implode( string $glue, array $array);
+```
+
+返回一个字符串，由 `$glue`（默认为空） 分隔开的数组的值。
+
+## 分隔字符串，返回数组
+
+```php
+array explode( string $delimiter , string $string [, int $limit]);
+```
+
+使用特定的分隔符 (`$delimiter`) 分隔字符串 (`$string`)，返回一个数组。
+
+`$limit` 限制返回数组的元素个数，如果结果大于 `$limit`，则最后一个元素包含剩余的结果。
 
 # 判断数组某一值是否存在
 

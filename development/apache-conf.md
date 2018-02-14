@@ -15,9 +15,59 @@ categories:
 
 本文简要介绍了 `Apache` 配置 `https` 、子域名。
 
+GitHub：https://github.com/khs1994-website/https
+
 <!--more-->
 
 如果启动出现错误，搜索一下错误信息，一般启用某些模块就行了。
+
+# 访问控制
+
+一般出现 403 错误，可能是访问控制出了问题，对照说明检查一下配置。
+
+## 2.2.x
+
+使用 `Order`(排序), `Allow`(允许), `Deny`(拒绝),`Satisfy`(满足)指令来实现。
+
+## 2.4.x
+
+`Require`
+
+## 对比
+
+```apacheconf
+Order deny,allow  # 排序，先拒绝后允许
+Deny from all     # 拒绝所有
+
+Require all denied # 拒绝所有
+
+Order allow,deny # 排序，先允许后拒绝
+Allow from all   # 允许所有
+
+Require all granted # 允许所有
+
+Order Deny,Allow        # 排序，先拒绝后允许
+Deny from all           # 拒绝所有
+Allow from splaybow.com # 允许 splaybow.com
+
+Require host splaybow.com # 允许 splaybow.com
+```
+
+```apacheconf
+Require all granted             # 允许所有来源访问
+
+Require all denied              # 拒绝所有来源访问
+
+Require expr expression         # 允许表达式为true时访问
+
+Require ip 10 172.20 192.168.2  # 允许特定IP段访问，多个段之前用空格隔开。每个段使用开头几项表示
+
+Require host splaybow.com       # 只允许来自域名splaybow.com的主机访问
+```
+
+## 参考资料
+
+* http://www.splaybow.com/post/apache-forbidden-directory-require.html
 
 # https
 
@@ -50,126 +100,39 @@ SSLSessionCacheTimeout 300
 
 更多配置详情：https://github.com/khs1994-docker/lnmp-nginx-apache2-demo/blob/master/httpd-vhosts.conf
 
-# 多域名配置
+# 多主机配置
 
 修改主配置文件 `/usr/local/apache2/conf/httpd.conf`
 
 ```apacheconf
-# Virtual hosts
+# Virtual hosts 取消注释
 Include conf/extra/httpd-vhosts.conf
 ```
 
 修改子配置文件 `/usr/local/apache2/conf/extra/httpd-vhosts.conf`
 
+基于 域名、IP、端口来实现多主机，具体看示例配置。
+
+# 目录列表
+
+是否显示目录列表
+
 ```apacheconf
-Listen 8080
+<Directory "/app">
+
+Options Indexes FollowSymLinks
+
+<Directory "/app">
 ```
 
-## 官方示例配置
+# 重写
 
 ```apacheconf
-<VirtualHost *:80>
-    ServerAdmin webmaster@dummy-host.example.com
-    DocumentRoot "/usr/local/apache2/docs/dummy-host.example.com"
-    ServerName dummy-host.example.com
-    ServerAlias www.dummy-host.example.com
-    ErrorLog "logs/dummy-host.example.com-error_log"
-    CustomLog "logs/dummy-host.example.com-access_log" common
-</VirtualHost>
+<Directory "/app">
 
-<VirtualHost *:80>
-    ServerAdmin webmaster@dummy-host2.example.com
-    DocumentRoot "/usr/local/apache2/docs/dummy-host2.example.com"
-    ServerName dummy-host2.example.com
-    ErrorLog "logs/dummy-host2.example.com-error_log"
-    CustomLog "logs/dummy-host2.example.com-access_log" common
-</VirtualHost>
-```
+AllowOverride None
+AllowOverride All
+AllowOverride FileInfo AuthConfig Limit
 
-## 实际配置
-
-### 403 错误
-
-```apacheconf
-<Directory "/var/www/html">
-    #
-    # Possible values for the Options directive are "None", "All",
-    # or any combination of:
-    #   Indexes Includes FollowSymLinks SymLinksifOwnerMatch ExecCGI MultiViews
-    #
-    # Note that "MultiViews" must be named *explicitly* --- "Options All"
-    # doesn't give it to you.
-    #
-    # The Options directive is both complicated and important.  Please see
-    # http://httpd.apache.org/docs/2.4/mod/core.html#options
-    # for more information.
-    #
-    Options Indexes FollowSymLinks
-
-    #
-    # AllowOverride controls what directives may be placed in .htaccess files.
-    # It can be "All", "None", or any combination of the keywords:
-    #   AllowOverride FileInfo AuthConfig Limit
-    #
-    AllowOverride None
-
-    #
-    # Controls who can get stuff from this server.
-    #
-    Require all granted
-</Directory>
-```
-
-### 基于端口
-
-```apacheconf
-<VirtualHost *:8080>
-      ServerAdmin khs1994@khs1994.com
-      DocumentRoot "/var/www/html"
-      ServerName khs1994.com
-
-      ErrorLog "logs/khs1994.com-error_log"
-      CustomLog "logs/khs1994.com-access_log" common
-
-      # https 跳转
-      RewriteEngine on
-      RewriteCond %{HTTP_HOST} !^khs1994.com[NC]
-      RewriteRule ^(.*)$ http://www.khs1994.com$1 [L,R=301]
-
-
-      # 403 错误  
-      <Directory "/app/test" >
-        Options Indexes FollowSymLinks
-        AllowOverride None
-        Require all granted
-      </Directory>
-</VirtualHost>
-```
-
-### 基于 IP
-
-```apacheconf
-<VirtualHost *:80>
-      ServerAdmin khs1994@khs1994.com
-      DocumentRoot "/var/www/html"
-      ServerName www.khs1994.com
-      ErrorLog "logs/www.khs1994.com-error_log"
-      CustomLog "logs/www.khs1994.com-access_log" common
-
-      RewriteEngine on
-      RewriteCond %{SERVER_PORT} !^443$
-      RewriteRule ^(.*)?$ https://%{SERVER_NAME}$1 [L,R]
-</VirtualHost>
-```
-
-### 基于域名
-
-```apacheconf
-<VirtualHost *:80>
-      ServerAdmin khs1994@khs1994.com
-      DocumentRoot "/var/www/bbs"
-      ServerName bbs.khs1994.com
-      ErrorLog "logs/bbs.khs1994.com-error_log"
-      CustomLog "logs/bbs.khs1994.com-access_log" common
-</VirtualHost>
+<Directory "/app">
 ```

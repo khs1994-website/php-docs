@@ -1,0 +1,64 @@
+---
+title: PHP 依赖管理工具 Composer
+date: 2016-11-25 12:00:00
+updated:
+comments: true
+tags:
+- PHP
+- Composer
+categories:
+- PHP
+- Composer
+---
+
+GitHub：https://github.com/composer/composer
+
+官方网站：https://getcomposer.org/
+
+<!--more-->
+
+# 安装
+
+https://github.com/composer/composer/releases 下载，之后移入 `PATH` (`/usr/local/bin`)，改名为 `composer`
+
+## macOS
+
+```bash
+$ brew install composer
+```
+
+# 开发一个 SDK
+
+GitHub：https://github.com/khs1994-php/php-sdk-example
+
+## GitHub 设置
+
+git 仓库设置中 `Integration & services` 中搜索添加 `Packagist`。
+
+`Token` 在 https://packagist.org/profile/ 中查看
+
+`Domain` 为 https://packagist.org
+
+# 在项目中使用
+
+```bash
+$ composer require khs1994/qq-login @dev
+
+# 只在开发环境使用某包
+
+$ composer require --dev phpunit/phpunit
+```
+
+## 自动加载
+
+```php
+<?php
+require 'vendor/autoload.php';
+
+```
+
+## `dist` 和 `源码`
+
+`dist` 用于加了 `tag` 的版本。
+
+想要克隆源码加上 `--prefer-source`
