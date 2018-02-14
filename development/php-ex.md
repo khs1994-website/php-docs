@@ -93,9 +93,9 @@ $ vi /usr/locla/php/etc/php.ini
 
 extension=redis.so
 
-# zend 扩展必须写绝对路径
+# zend 扩展必须写绝对路径，注意替换为自己的实际路径，每个 PHP 版本目录名可能不同
 
-extension=/usr/local/php/lib/php/extensions/no-debug-zts-20160303/xdebug.so
+zend_extension=/usr/local/php/lib/php/extensions/no-debug-zts-20160303/xdebug.so
 ```
 
 ## 测试
@@ -122,7 +122,7 @@ $ pecl install memcached
 
 # pdo-mysql
 
-`PHP` 编译选项 `--with-pdo-mysql` 实现
+`PHP` 编译选项添加 `--with-pdo-mysql`
 
 # 相关链接
 

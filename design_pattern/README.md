@@ -1,6 +1,6 @@
 ---
 title: PHP 设计模式
-date:
+date: 2018-01-31 13:00:00
 updated:
 comments: true
 tags:

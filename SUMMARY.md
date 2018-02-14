@@ -40,6 +40,7 @@
 * [ThinkPHP](thinkphp/README.md)
 * [HTTP](http/README.md)   
 * [开发环境](development/README.md)
+    * [WNAMP 开发环境配置](development/wnamp.md)
     * [Apache 编译](development/apache-build.md)
     * [Apache PHP](development/apache-php.md)
     * [Apache 配置](development/apache-conf.md)

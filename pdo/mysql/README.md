@@ -153,6 +153,7 @@ $stmt=execute([$username]);
 `bindParam()`
 
 ```php
+// :var 占位
 $stmt->bindParam(':username',$username);
 
 $username='usernmae';
@@ -172,6 +173,10 @@ $stmt->execute();
 
 ```php
 $username='username';
+
+// :var 占位
+
+$stmt->bindValue(':var',$username);
 
 // ? 占位
 

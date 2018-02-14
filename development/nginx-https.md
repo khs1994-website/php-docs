@@ -16,7 +16,7 @@ categories:
 
 本文详细介绍了 HTTPS 配置。
 
-GitHub：https://github.com/khs1994-website/nginx-https
+GitHub：https://github.com/khs1994-website/https
 
 <!--more-->
 

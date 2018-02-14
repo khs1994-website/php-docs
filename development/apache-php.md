@@ -15,6 +15,8 @@ categories:
 
 本文简要介绍了 `Apache` 解析 `PHP` 文件。
 
+GitHub：https://github.com/khs1994-website/https
+
 <!--more-->
 
 # PHP-FPM
@@ -39,7 +41,9 @@ PHP7 编译安装时加上参数 `--with-apxs2=/usr/local/apache2/bin/apxs`
 
 ```apacheconf
 LoadModule php7_module        modules/libphp7.so
+
 AddType application/x-httpd-php .php
+AddType application/x-httpd-php-source  .phps
 ```
 
 ## 配置
