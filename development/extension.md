@@ -1,5 +1,5 @@
 ---
-title: PHP 扩展记录
+title: PHP 扩展安装配置
 date: 2016-09-23 16:00:00
 updated:
 comments: true

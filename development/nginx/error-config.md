@@ -1,19 +1,19 @@
 ---
-title: Nginx 配置陷阱和常见错误(转载)
+title: NGINX 配置陷阱和常见错误(转载)
 date: 2016-09-17 12:00:00
 updated:
 comments: true
 tags:
 - PHP
 - php-dev-env
-- Nginx
+- NGINX
 categories:
 - PHP
 - php-dev-env
-- Nginx
+- NGINX
 ---
 
-新老用户都可能遇到 nginx 配置陷阱。下面我们列出频繁出现的问题，以及如何解决。
+新老用户都可能遇到 NGINX 配置陷阱。下面我们列出频繁出现的问题，以及如何解决。
 
 <!--more-->
 

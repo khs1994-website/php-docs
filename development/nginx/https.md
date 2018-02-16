@@ -1,17 +1,17 @@
 ---
-title: Nginx HTTPS 配置
+title: NGINX HTTPS 配置
 date: 2016-09-18 13:00:00
 updated:
 comments: true
 tags:
 - PHP
 - php-dev-env
-- Nginx
+- NGINX
 - https
 categories:
 - PHP
 - php-dev-env
-- Nginx
+- NGINX
 ---
 
 本文详细介绍了 HTTPS 配置。

@@ -30,6 +30,18 @@ curl_setopt($ch, CURLOPT_POST, 1);
 curl_setopt($ch, CURLOPT_POSTFIELDS, $data)
 ```
 
+## post 表单
+
+```php
+$data=[
+  $media=new CURLFile($filePath)
+];
+
+# 旧版本是 @加文件名，新版已废弃。
+
+curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+```
+
 # https
 
 ```php

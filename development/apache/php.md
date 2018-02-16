@@ -19,16 +19,45 @@ GitHub：https://github.com/khs1994-website/https
 
 <!--more-->
 
+# 修改默认首页
+
+```apacheconf
+# 搜索 DirectoryIndex 修改，不要再添加 DirectoryIndex！
+
+DirectoryIndex  index.php  index.html
+```
+
 # PHP-FPM
 
 ```apacheconf
 LoadModule proxy_module modules/mod_proxy.so
 LoadModule proxy_fcgi_module modules/mod_proxy_fcgi.so
 
-AddType application/x-httpd-php  .php
-AddType application/x-httpd-php-source  .phps
+# PHP 文件只使用 .php 后缀，避免使用其他后缀！文件伪装除外
 
-DirectoryIndex  index.php  index.html
+AddType application/x-httpd-php  .php
+```
+
+## Apache 配置
+
+```apacheconf
+<VirtualHost *:80>
+    DocumentRoot "/var/www/htdocs"
+    ServerName b.org
+    ServerAlias www.b.org
+
+    ErrorLog "logs/b.org.err"
+    CustomLog "logs/b.org.access" combined
+
+    <FilesMatch \.php$>
+        SetHandler "proxy:fcgi://127.0.0.1:9000"
+    </FilesMatch>
+
+    <Directory "/app/test" >
+      AllowOverride All
+      Require all granted
+    </Directory>    
+</VirtualHost>
 ```
 
 # 模块方式
@@ -43,28 +72,4 @@ PHP7 编译安装时加上参数 `--with-apxs2=/usr/local/apache2/bin/apxs`
 LoadModule php7_module        modules/libphp7.so
 
 AddType application/x-httpd-php .php
-AddType application/x-httpd-php-source  .phps
-```
-
-## 配置
-
-在子配置文件中写入以下内容
-
-```apacheconf
-<VirtualHost *:80>
-    DocumentRoot "/var/www/htdocs"
-    ServerName b.org
-    ServerAlias www.b.org
-    ErrorLog "logs/b.org.err"
-    CustomLog "logs/b.org.access" combined
-    <FilesMatch \.php$>
-        SetHandler "proxy:fcgi://127.0.0.1:9000"
-    </FilesMatch>
-
-    <Directory "/app/test" >
-      Options Indexes FollowSymLinks
-      AllowOverride None
-      Require all granted
-    </Directory>    
-</VirtualHost>
 ```

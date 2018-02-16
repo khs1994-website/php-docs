@@ -1,19 +1,19 @@
 ---
-title: Nginx 配置
+title: NGINX 配置
 date: 2016-09-16 13:00:00
 updated:
 comments: true
 tags:
 - PHP
 - php-dev-env
-- Nginx
+- NGINX
 categories:
 - PHP
 - php-dev-env
-- Nginx
+- NGINX
 ---
 
-本文详细介绍了 nginx 常用配置。
+本文详细介绍了 NGINX 常用配置。
 
 官方文档：https://www.nginx.com/resources/wiki/start/topics/examples/full/
 

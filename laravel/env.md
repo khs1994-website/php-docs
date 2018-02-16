@@ -15,18 +15,16 @@ categories:
 
 <!--more-->
 
-* 开发: development
+* 开发: `development`
 
-* 测试: testing
+* 测试: `testing` （运行 `PHPUnit` 使用该 .env 文件）
 
-* 预上线: staging
+* 预上线: `staging`
 
-* 正式环境: production
+* 正式环境: `production`
 
 
 生产环境加载 `.env.production`
-
-开发环境加载 `.env.development`
 
 以此类推
 
@@ -58,7 +56,7 @@ variables_order = "EGPCS"
 
 # 验证
 
-查看 `phpinfo()` 页面，搜索查看 `Environment` 与预设环境相匹配即可。
+查看 `phpinfo()` 页面，搜索查看 `APP_ENV` 与预设环境相匹配即可。
 
 # More Information
 

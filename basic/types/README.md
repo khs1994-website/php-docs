@@ -47,7 +47,11 @@ PHP 支持三大类 8 种数据类型。
 
 * 回调类型 `callback`
 
-* 伪变量 `$...`
+* array | object
+
+* `void`
+
+* 伪变量 `...$var`
 
 # 相关函数
 
@@ -58,6 +62,8 @@ PHP 支持三大类 8 种数据类型。
 * `is_type` 函数，例如 `is_int` `is_string` 返回布尔类型
 
 * 类型转换，强制转换或 `settype()` 函数
+
+* 转化 `(int) false` 将布尔类型转化为整数
 
 # More Information
 

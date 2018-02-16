@@ -6,7 +6,6 @@ comments: true
 tags:
 - PHP
 - php-dev-env
-- WNAMP
 categories:
 - PHP
 - php-dev-env

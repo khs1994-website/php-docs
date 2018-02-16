@@ -14,6 +14,10 @@ $ docker run -it --rm -p 4000:80 khs1994/php-docs
 
 然后浏览器打开 `127.0.0.1:4000`
 
+# PHP 版本
+
+本文档内容基于 PHP 最新版本(7.2)。
+
 # 排版规范
 
 本文档遵循 [中文排版指南](https://github.com/sparanoid/chinese-copywriting-guidelines) 规范。
