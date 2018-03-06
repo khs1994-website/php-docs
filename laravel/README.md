@@ -20,7 +20,13 @@ categories:
 ```bash
 $ composer global require "laravel/installer"
 
-$ laravel new blog
+$ laravel new blog   // laravel 命令只能安装主线版本
+```
+
+## 安装特定版本
+
+```bash
+$ composer create-project --prefer-dist laravel/laravel=5.5.* blog
 ```
 
 # 密钥

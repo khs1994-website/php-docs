@@ -43,9 +43,13 @@ strtotime('+1 day');
 微秒
 
 ```php
-microtime( [$get_as_float]);
+microtime();
+
+// 返回 0.17627900 1519217007
 
 microtime(true);
+
+// 返回 1519217011.4827
 ```
 
 # 输出时间

@@ -18,36 +18,34 @@ categories:
 
 <!--more-->
 
-# 执行命令所在路径
+# 获取路径
 
-```php
-getcwd()
-```
+* 执行命令所在路径
 
-# 文件所在路径
+  ```php
+  getcwd()
+  ```
 
-```php
-__FILE__
-```
+* 文件所在路径
 
-# 文件所在目录路径
+  ```php
+  __FILE__
+  ```
 
-## 新的
+* 文件所在目录路径
 
-```php
-__DIR__
-```
+  ```php
+  __DIR__
+  ```
 
-## 旧的
-
-```php
-dirname(__FILE__)
-```
+  ```php
+  dirname(__FILE__)
+  ```
 
 # 目录相关函数
 
 ```php
-resource opendir ( string $path [, resource $context ] )
+resource opendir( string $path [, resource $context ] )
 ```
 
 打开一个目录句柄，可用于之后的 `closedir()` `readdir()` `rewinddir()`。
@@ -84,20 +82,56 @@ array scandir ( string $directory [, int $sorting_order [, resource $context ]] 
 
 返回包含文件和目录的数组。
 
-# 文件相关函数
+# 文件操作相关函数
 
-## ch...
+* 更改权限
 
-`chgrp()` `chmod()` `chown()`
+  `chgrp()` `chmod()` `chown()`
 
-## 复制
+* 复制
 
-`copy()`
+  `copy()`
 
-## 删除
+* 删除
 
-`unlink()` `unset()`
+  `unlink()` `unset()`
 
-## 判断
+* 判断
 
-`is_dir()` `is_file()` `is_executable` `is_link()`
+  `is_dir()` `is_file()` `is_executable` `is_link()`
+
+# HTML 上传文件
+
+# 读写文件
+
+官方文档：http://php.net/manual/zh/function.file-get-contents.php
+
+`file_get_contents($filePath)`
+
+`file_put_contents($filePath, $content)` 可以通过设置第三个参数，将内容追加，而不是覆盖。
+
+官方文档：http://php.net/manual/zh/function.stream-get-contents.php
+
+`stream_get_contents($resource)` 读取资源流到一个字符串
+
+`stream_context_create($array)` 创建资源流上下文，参数必须为 `关联数组`
+
+官方文档：http://php.net/manual/zh/function.fopen.php
+
+```php
+$fh = fopen($filePath, $mode);
+
+// 返回类型为资源
+
+fgets($fh); // 读取一行
+
+fread($fh, $length);
+
+fwrite($fh, $string);
+
+fclose($fh);
+
+file($filePath);
+
+// 返回结果为数组，一行一个值
+```

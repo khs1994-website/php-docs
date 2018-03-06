@@ -40,6 +40,14 @@ categories:
 
 `一定不可` 使用关键字 `var` 声明一个属性
 
+### 常量
+
+类常量也可以设置可见性
+
+```php
+public const APP_KEY=1;
+```
+
 ## 函数名
 
 小写 + 下划线 `json_to_array`

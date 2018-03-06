@@ -55,15 +55,15 @@ $name = [
         ]
 ];
 
-//判断某个数组中是否存在指定的 key
+// 判断某个数组中是否存在指定的 key
 
 var_dump(array_key_exists('id', $name['desc']));
 
-//搜索值
+// 搜索值
 
 var_dump(in_array(23, $name['desc']));
 
-//返回键名
+// 搜索值，返回键名
 
 var_dump(array_search(34,$name['desc']));
 ```
@@ -95,11 +95,11 @@ rsort(&$arg [, $sort_flags]);
 
 ksort(&$arg [, $sort_flags]);
 
+krsort(&$arg [, $sort_flags]);
+
 // 按值排序
 
 asort(&$arg [, $sort_flags]);
-
-krsort(&$arg [, $sort_flags]);
 
 arsort(&$arg [, $sort_flags]);
 ```

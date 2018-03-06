@@ -10,14 +10,14 @@ categories:
 - Basic
 ---
 
-主要有 `exec()` `shell_exec()` `system()`。
+主要有 `exec()` `shell_exec()` `system()` `popen()`。
 
 <!--more-->
 
 # `exec()`
 
 ```php
-string exec ( string $command [, array $output [, int $return_var ]] )
+string exec(string $command [, array $output [, int $return_var ]] )
 ```
 
 返回最后一条结果。
@@ -41,6 +41,20 @@ string system(string $command [, int $return_value])
 输出全部结果。
 
 成功则返回命令输出的最后一行， 失败则返回 `FALSE`
+
+# `popen()`
+
+```php
+$ph=popen('ls','r');
+
+// 返回类型为资源
+
+// 读取命令执行结果
+
+var_dump(stream_get_contents($ph));
+
+pclose($ph);
+```
 
 # 反引号
 

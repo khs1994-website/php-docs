@@ -51,6 +51,8 @@ $docker->container->list();
 
 某个类的对象仅允许创建一次。
 
+两私一公。
+
 ```php
 Class D
 {
@@ -63,7 +65,7 @@ Class D
     }
 
     public static function getDocker($arg){
-        if (! self::$docker){
+        if (!(self::$docker instanceof self)){
           // 静态函数中 new 对象
           self::$docker=new self();
         }

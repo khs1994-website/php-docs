@@ -6,6 +6,7 @@
     * [类型](basic/types/README.md)
         * [字符串](basic/types/string.md)
         * [数组](basic/types/array.md)
+    * [流程控制](basic/pm.md)      
     * [函数](basic/function.md)    
     * [curl](basic/curl.md)
     * [Cookie](basic/cookie.md)
@@ -59,7 +60,10 @@
         * [配置](development/nginx/config.md)
         * [NGINX 配置陷阱和常见错误](development/nginx/error-config.md)
         * [NGINX HTTPS](development/nginx/https.md)
-        * [Let's Encrypt SSL证书](development/nginx/lets-encrypt.md)    
+        * [Let's Encrypt SSL证书](development/nginx/lets-encrypt.md)
+    * [Docker](development/docker.md)       
 * 版本变更
-    * 7.2
+    * [7.0](release/7.0/README.md)
+    * [7.1](release/7.1/README.md)
+    * [7.2](release/7.2/README.md)
         * [废弃 mcrypt](release/7.2/mcrypt.md)

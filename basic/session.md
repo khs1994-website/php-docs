@@ -19,7 +19,7 @@ categories:
 在 `PHP` 文件最上方开启 `Session`
 
 ```php
-session_start( [$options]);
+session_start([$options]);
 
 $_SESSION(['username'])='username';
 ```
@@ -29,9 +29,9 @@ $_SESSION(['username'])='username';
 ## 通过 `Cookie` 设置 `Session` 生存期
 
 ```php
-session_id( [$id]);
+session_id([$id]);
 
-session_name( [$name]);
+session_name([$name]);
 
 setcookie(session_name(),session_id(),time()+3600)
 ```

@@ -20,7 +20,7 @@ categories:
 ## composer
 
 ```bash
-$ composer create-project topthink/think tp5 --prefer-dist
+$ composer create-project --prefer-dist topthink/think=5.1.* tp5
 ```
 
 # 添加新的模块

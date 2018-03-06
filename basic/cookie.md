@@ -32,7 +32,7 @@ setcookie($name [, $value, $expires, $path, $domain, $secure, $httponly])
 setrawcookie($name [, $value, $expires, $path, $domain, $secure, $httponly])
 ```
 
-不会对值进行 urlencode() 编码
+不会对值进行 `urlencode()` 编码
 
 # 读取 Cookie
 

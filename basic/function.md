@@ -10,6 +10,8 @@ categories:
 - Basic
 ---
 
+PHP 函数简介。
+
 <!--more-->
 
 # 匿名函数
@@ -54,6 +56,11 @@ function getC(): C
 }
 
 var_dump(getC());
+
+function fun1(): void
+{
+  return;
+}
 ```
 
 # 函数变量

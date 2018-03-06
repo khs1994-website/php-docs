@@ -57,12 +57,30 @@ try {
   echo $e->getMessage(); // Class 'A' not found
 }
 
-// 一个 catch 捕获多个异常。
+// 一个 catch 使用管道（|）捕获多个异常。
 
 ...
 try{}catch (MyException | MyOtherException $e){}
 ...
 ```
+
+## 错误种类
+
+`ArgumentCountError` 参数错误，函数传入参数个数少于函数参数。
+
+`ArithmeticError` 算术运算错误
+
+`DivisionByZeroError` 除数为 0 时错误
+
+`AssertionError` 断言错误
+
+`ParseError` 语法错误
+
+`TypeError` 参数类型错误，类型约束
+
+## 参考链接
+
+* https://segmentfault.com/a/1190000004219265#articleHeader0
 
 # 异常
 
@@ -70,7 +88,8 @@ try{}catch (MyException | MyOtherException $e){}
 try {
   throw new Exception('发生异常');
 } catch (\Exception $e) {
-  echo $e->getMessage(); // 发生异常
+  echo $e->getMessage();
+  // 发生异常
 }
 ```
 
@@ -82,4 +101,4 @@ try {
 
 # 自定义异常类和错误类
 
-示例：https://github.com/khs1994-php/qq-login/blob/master/src/QQLogin/QQError.php
+示例：https://github.com/khs1994-php/qq-login/blob/master/src/QQLogin/Error/QQError.php
