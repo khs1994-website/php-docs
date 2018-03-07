@@ -17,7 +17,7 @@ categories:
 
 * 开发: `development`
 
-* 测试: `testing` （运行 `PHPUnit` 使用该 .env 文件）
+* 测试: `testing` （运行 `PHPUnit` 使用 `.env.testing` 文件）
 
 * 预上线: `staging`
 
@@ -57,6 +57,17 @@ variables_order = "EGPCS"
 # 验证
 
 查看 `phpinfo()` 页面，搜索查看 `APP_ENV` 与预设环境相匹配即可。
+
+# 生产环境优化
+
+```bash
+$ php artisan config:cache   # 配置缓存
+
+$ php artisan route:cache    # 路由缓存
+
+$ php artisan down | up # 启用或关闭维护模式
+
+```
 
 # More Information
 

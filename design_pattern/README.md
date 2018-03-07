@@ -51,7 +51,7 @@ $docker->container->list();
 
 某个类的对象仅允许创建一次。
 
-两私一公。
+三私一公。
 
 ```php
 Class D
@@ -62,6 +62,11 @@ Class D
 
     private function __construct($arg){
         echo $arg;
+    }
+
+    // 禁止对象被克隆
+    private function __clone(){
+
     }
 
     public static function getDocker($arg){
