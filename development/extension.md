@@ -22,6 +22,10 @@ categories:
 * php-mongodb
 * pdo-mysql
 
+# 依赖
+
+安装扩展时可能需要安装一些依赖库，查询出错信息，安装对应的依赖库即可。
+
 # php-reids
 
 第一步：得到扩展文件，第二步：修改 `php.ini` 配置文件，第三步：重启 php-fpm。
@@ -30,26 +34,28 @@ categories:
 
 下面列举了一些常用参数，更多参数使用 `pecl help` 查看，注意 `pecl install [ext1] [ext2] ...` 一次可以安装多个扩展。
 
+以下命令可能需要加上 `sudo`
+
 ```bash
-$ pecl channel-update pecl.php.net
+$ sudo pecl channel-update pecl.php.net
 
 # 设置
 
-$ pecl config-show
+$ sudo pecl config-show
 
-$ pecl config-set php_ini /usr/local/php/etc/php.ini
+$ sudo pecl config-set php_ini /usr/local/php/etc/php.ini
 
 # 安装扩展
 
-$ pecl install extname
+$ sudo pecl install extname
 
 # 测试版
 
-$ pecl install extname-beta
+$ sudo pecl install extname-beta
 
 # 指定版本
 
-$ pecl install extname-0.1
+$ sudo pecl install extname-0.1
 ```
 
 ## 编译安装
@@ -69,7 +75,7 @@ $ ./configure --with-php-config=/usr/local/php/bin/php-config
 
 $ make
 
-$ make install
+$ sudo make install
 ```
 
 通过以上两种方法得到扩展文件，查看：
@@ -87,13 +93,18 @@ $ cd /usr/local/php/lib/php/extensions/no-debug-zts-20160303
 ```bash
 $ vi /usr/locla/php/etc/php.ini
 
+# 注意 php.ini 中只能使用 ; 注释
+
 # 文件最后增加如下内容,路径根据实际修改
 
 # 普通扩展直接写文件名
 
 extension=redis.so
 
-# zend 扩展必须写绝对路径，注意替换为自己的实际路径，每个 PHP 版本目录名可能不同
+# extension=redis  不加扩展名也可以
+
+# zend 扩展 xdebug opcache ,扩展为 zend_extension= ，请不要与普通扩展混淆
+# 注意替换为自己的实际路径，每个 PHP 版本目录名可能不同
 
 zend_extension=/usr/local/php/lib/php/extensions/no-debug-zts-20160303/xdebug.so
 ```
@@ -107,7 +118,7 @@ zend_extension=/usr/local/php/lib/php/extensions/no-debug-zts-20160303/xdebug.so
 mododb 数据库有两个扩展 `mongo`（已废弃，不支持 PHP7） `mongodb`。
 
 ```bash
-$ pecl install mongodb
+$ sudo pecl install mongodb
 ```
 
 # php-memcached
@@ -115,7 +126,7 @@ $ pecl install mongodb
 ```bash
 $ sudo apt install libmemcached-dev
 
-$ pecl install memcached
+$ sudo pecl install memcached
 
 # 提示 libmemcached directory [no] : 回车跳过即可
 ```

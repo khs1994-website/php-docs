@@ -19,6 +19,8 @@ categories:
 
 * Debian9 Ubuntu17.04 出现错误请详细查看后边说明(PHP 7.1.9 不会报错了)。出现错误强烈建议使用 https://stackoverflow.com 进行搜索！
 
+* 本文随着 PHP 版本升级而更新，一些增加、修改已经在注释中列出，注意查看。
+
 # macOS
 
 ```bash
@@ -59,12 +61,16 @@ $ yum install gcc \
 $ sudo apt install autoconf \
                    dpkg-dev \
                    file \
+                   ca-certificates \
+                   curl \
+                   xz-utils \
                    libc6-dev \
                    make \
                    pkg-config \
                    re2c \
                    gcc g++ \
                    libedit-dev \
+                   libsodium-dev \
                    zlib1g-dev \
                    libxml2-dev \
                    libssl-dev \
@@ -74,10 +80,11 @@ $ sudo apt install autoconf \
                    libcurl4-gnutls-dev \
                    libpq-dev \
                    libmemcached-dev \
-                   libzip-dev \
                    libpng-dev \
-                   libjpeg-dev
+                   libjpeg-dev \
+                   libzip-dev
 
+                   # libzip-dev 7.2.0
                    # ubuntu 16.04 没有 libargon2-0 ，17.04 + 才有，php 7.2.0 新特性
                    # libargon2-0 \
 ```
@@ -113,7 +120,6 @@ $ ./configure --prefix=/usr/local/php \
     --enable-bcmath \
     --enable-libxml \
     --enable-inline-optimization \
-    --enable-gd-native-ttf \
     --enable-gd-jis-conv \
     --enable-mbregex \
     --enable-mbstring \
@@ -127,8 +133,14 @@ $ ./configure --prefix=/usr/local/php \
     --enable-zip \
     --enable-calendar \
     --enable-intl \
-    --enable-exif
+    --enable-exif \
+    --with-sodium \
+    --with-libzip
 
+    #
+    # --enable-gd-native-ttf 7.2.0 remove
+    #
+    # --with-libzip 7.2.0 add
     # ubuntu 16.04 没有 libargon2-0 ，17.04 + 才有，php 7.2.0 新特性
     # --with-password-argon2 \
 ```

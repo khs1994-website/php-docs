@@ -64,6 +64,11 @@ server{
   root           /var/www2/www;
 
   location ~ \.php$ {
+      # fastcgi_pass   unix:/run/php-fpm.sock;
+      #
+      # socket 方式不建议使用，WSL 必须用该方式
+      #
+      
       fastcgi_pass    phpfpm:9000;
       fastcgi_index   index.php;
 

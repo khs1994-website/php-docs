@@ -9,23 +9,31 @@ categories:
 - PHP
 ---
 
->本文暂时废弃。强烈推荐在 `Windows` 使用 `Docker` 进行 `LNMP` 开发：https://github.com/khs1994-docker/lnmp
-
 `Windows Subsystem for Linux`（简称 `WSL` ）是一个为在 Windows 10 上能够原生运行 Linux 二进制可执行文件（ELF 格式）的兼容层。
+
+>注意。PHP-FPM 暂时只能通过监听 socket ,不能设置 `listen 127.0.0.1:9000`！
 
 <!--more-->
 
+# 修订记录
+
+* PHP-FPM 与 NGINX 只能通过 `socket` 方式连接，之前页面打开太慢解决不了，查看 GitHub 解决了该问题。
+
+* 解决办法：https://github.com/Microsoft/WSL/issues/2100
+
+# 安装
+
 如何启用 `WSL` 这里不再赘述，下方执行命令过程中出错，可以使用 `sudo` 再次尝试执行。
 
->注意。PHP-FPM 暂时只能通过监听 socket ,不能设置 `listen 127.0.0.1:9000`！
+# 软件列表
 
 基于如下软件
 
 * `WSL` Ubuntu 16.04.3
 
-* `nginx` 1.13.7
+* `nginx` 1.13.9
 
-* `PHP` 7.2.0
+* `PHP` 7.2.3
 
 * `Mysql` 5.7.20
 
@@ -55,6 +63,34 @@ $ sudo nginx
 
 打开 `127.0.0.1` 看到 nginx 默认页面。
 
+## 新增配置文件
+
+apt 安装的 nginx 没有 `fastcgi.conf` 配置文件，我们必须手动加入
+
+```bash
+$ cd /etc/nginx
+
+$ wget https://raw.githubusercontent.com/khs1994-docker/lnmp/master/config/etc/nginx/fastcgi.conf
+```
+
+## 修改主配置文件
+
+https://github.com/Microsoft/WSL/issues/2100
+
+解决 `PHP` 页面打开缓慢
+
+```bash
+$ sudo vi /etc/nginx/nginx.conf
+
+http {
+  ...
+
+  fastcgi_buffering off; # 新加入此项
+
+  ...
+}
+```
+
 # PHP
 
 详细编译说明请查看：https://www.khs1994.com/php/development/php-build.html
@@ -64,15 +100,31 @@ $ sudo nginx
 ## 安装依赖
 
 ```bash
+$ cd /usr/local
+
+$ chown khs1994:khs1994 src  # 替换为自己的用户名
+
+$ cd src
+
+$ wget http://cn2.php.net/distributions/php-7.2.3.tar.gz
+
+$ tar -zxvf php-7.2.3.tar.gz
+
+$ cd php-7.2.3
+
 $ sudo apt install autoconf \
                    dpkg-dev \
                    file \
+                   ca-certificates \
+                   curl \
+                   xz-utils \
                    libc6-dev \
                    make \
                    pkg-config \
                    re2c \
                    gcc g++ \
                    libedit-dev \
+                   libsodium-dev \
                    zlib1g-dev \
                    libxml2-dev \
                    libssl-dev \
@@ -88,22 +140,6 @@ $ sudo apt install autoconf \
 
                    # ubuntu 16.04 没有 libargon2-0 ，17.04 + 才有，php 7.2.0 新特性
                    # libargon2-0 \
-```
-
-## 下载并解压源码包
-
-```bash
-$ cd /usr/local
-
-$ sudo chmod 777 src
-
-$ cd src
-
-$ wget -O php-7.2.0.tar.gz http://hk1.php.net/get/php-7.2.0.tar.gz/from/this/mirror
-
-$ tar -zxvf php-7.2.0.tar.gz
-
-$ cd php-7.2.0
 ```
 
 ## 编译
@@ -137,7 +173,6 @@ $ ./configure --prefix=/usr/local/php \
     --enable-bcmath \
     --enable-libxml \
     --enable-inline-optimization \
-    --enable-gd-native-ttf \
     --enable-gd-jis-conv \
     --enable-mbregex \
     --enable-mbstring \
@@ -151,8 +186,14 @@ $ ./configure --prefix=/usr/local/php \
     --enable-zip \
     --enable-calendar \
     --enable-intl \
-    --enable-exif
+    --enable-exif \
+    --with-sodium \
+    --with-libzip
 
+    #
+    # --enable-gd-native-ttf 7.2.0 remove
+    #
+    # --with-libzip 7.2.0 add
     # ubuntu 16.04 没有 libargon2-0 ，17.04 + 才有，php 7.2.0 新特性
     # --with-password-argon2 \
 ```
@@ -202,6 +243,9 @@ $ pecl config-set php_ini /usr/local/php/etc/php.ini
 ```bash
 
 # 务必与 nginx 运行用户一致
+# 如果你不想编译安装 PHP 而是采用 apt 安装，那么用户名为 www-data
+# 我这里编译安装将用户名设置为了 nginx
+# 总的来说 /etc/nginx/nginx.conf 中的 user 项与 PHP下列配置项中的用户名必须保持一致
 
 user = nginx
 group = nginx
@@ -226,10 +270,16 @@ $ sudo php-fpm -D | -F
 
 # MySQL
 
-使用 `Docker for Windows`
+## 使用 `Docker for Windows`
 
 ```bash
 $ docker run -it -d --name wsl-lnmp-mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=mytest -e MYSQL_DATABASE=test --mount src=wsl-lnmp-mysql-data,target=/var/lib/mysql mysql
+```
+
+## 使用 WSL
+
+```bash
+$ sudo apt install mysql-server
 ```
 
 # nginx 配置
@@ -247,24 +297,36 @@ server {
   }
   location ~ .*\.php(\/.*)*$ {
     # fastcgi_pass  127.0.0.1:9000;
-    fastcgi_pass  unix:/run/php-fpm.sock;
+    #
+    # WSL 中请勿使用该配置
+    #
+
+    fastcgi_pass   unix:/run/php-fpm.sock;
     fastcgi_index  index.php;
     fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;
-    include fastcgi_params;
+    include        fastcgi_params;
   }
 }
 ```
 
 # 尝试通过 pecl 安装 PHP 扩展
 
+执行过程中若提示错误，请使用 `sudo`
+
 ```bash
-$ sudo pecl install redis
+$ sudo pecl update-channels
+
+$ sudo pecl install redis memcached ...
 ```
 
 编辑配置文件 `/usr/local/php/etc/php.ini` 在其最后添加
 
->温馨提示：shift+g 即可在 vim 中跳到行尾。
+> 温馨提示：shift+g 即可在 vim 中跳到行尾。
 
 ```bash
 extension=redis.so
+
+extension=memcached
 ```
+
+> 配置文件中不加扩展的后缀名也可以
