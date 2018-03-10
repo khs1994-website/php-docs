@@ -51,6 +51,7 @@
     * [WSL](development/wsl.md)
     * [MNAMP 开发环境配置](development/mnamp.md)
     * [PHP7 编译](development/build.md)
+    * [PHP7 编译选项](development/configure.md)
     * [PHP7 配置](development/config.md)
     * [PHP 扩展记录](development/extension.md)
     * [PhpStorm + Xdebug](development/xdebug-macos.md)
