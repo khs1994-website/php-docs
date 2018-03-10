@@ -1,3 +1,21 @@
+---
+title: PHP7 编译选项
+date: 2018-03-03 13:00:00
+updated:
+comments: true
+tags:
+- PHP
+- php-dev-env
+categories:
+- PHP
+- php-dev-env
+---
+
+PHP 编译选项（不定时更新）
+
+<!--more-->
+
+```bash
 PHP-7.2.0
 
 `configure' configures this package to adapt to many kinds of systems.
@@ -382,3 +400,4 @@ Use these variables to override the choices made by `configure' or to help
 it to find libraries and programs with nonstandard names/locations.
 
 Report bugs to the package provider.
+```

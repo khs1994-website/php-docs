@@ -1,19 +1,19 @@
 ---
-title: Nginx 编译安装
+title: NGINX 编译安装
 date: 2016-09-15 13:00:00
 updated:
 comments: true
 tags:
 - PHP
 - php-dev-env
-- Nginx
+- NGINX
 categories:
 - PHP
 - php-dev-env
-- Nginx
+- NGINX
 ---
 
-本文介绍了手动编译安装 nginx 的具体步骤。
+本文介绍了手动编译安装 NGINX 的具体步骤。
 
 <!--more-->
 

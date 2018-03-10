@@ -29,9 +29,7 @@ $ rpm -Uvh ius-release.rpm
 $ yum install httpd24u
 ```
 
-# 编译安装
-
-## 安装所需软件
+# 编译安装所需软件
 
 ```bash
 $ yum install gcc gcc-c++ make uuid-devel libuuid-devel unzip -y
@@ -99,7 +97,7 @@ $ cd pcre-8.38
 $ ./configure --prefix=/usr/local/pcre
 ```
 
-## Apache
+# 编译安装 Apache
 
 ```bash
 # 替换 url 为实际的下载地址

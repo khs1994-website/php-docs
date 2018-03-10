@@ -18,36 +18,6 @@ PHP 7 可以通过 `try_catch` 来捕获错误 `Error e` 和异常 `Exception e`
 
 <!--more-->
 
-# 错误
-
-```php
-try {
-  new A;
-} catch (\Error $e) {
-  echo $e->getMessage(); // Class 'A' not found
-}
-```
-
-# 异常
-
-```php
-try {
-  throw new Exception('发生异常');
-} catch (\Exception $e) {
-  echo $e->getMessage(); // 发生异常
-}
-```
-
-# 解读
-
-`Error` 和 `Exception` 都实现了 `Throwable` 接口。
-
-官方文档：http://php.net/manual/en/class.throwable.php （暂无中文翻译）
-
-# 自定义异常类和错误类
-
-示例：https://github.com/khs1994-php/qq-login/blob/master/src/QQLogin/QQError.php
-
 # ini 设置
 
 生产环境中不启用错误显示。
@@ -77,3 +47,58 @@ ini_set("error_log","日志文件路径");
 
 ini_set("log_errors",1);
 ```
+
+# 错误
+
+```php
+try {
+  new A;
+} catch (\Error $e) {
+  echo $e->getMessage(); // Class 'A' not found
+}
+
+// 一个 catch 使用管道（|）捕获多个异常。
+
+...
+try{}catch (MyException | MyOtherException $e){}
+...
+```
+
+## 错误种类
+
+`ArgumentCountError` 参数错误，函数传入参数个数少于函数参数。
+
+`ArithmeticError` 算术运算错误
+
+`DivisionByZeroError` 除数为 0 时错误
+
+`AssertionError` 断言错误
+
+`ParseError` 语法错误
+
+`TypeError` 参数类型错误，类型约束
+
+## 参考链接
+
+* https://segmentfault.com/a/1190000004219265#articleHeader0
+
+# 异常
+
+```php
+try {
+  throw new Exception('发生异常');
+} catch (\Exception $e) {
+  echo $e->getMessage();
+  // 发生异常
+}
+```
+
+# 解读
+
+`Error` 和 `Exception` 都实现了 `Throwable` 接口。
+
+官方文档：http://php.net/manual/en/class.throwable.php （暂无中文翻译）
+
+# 自定义异常类和错误类
+
+示例：https://github.com/khs1994-php/qq-login/blob/master/src/QQLogin/Error/QQError.php

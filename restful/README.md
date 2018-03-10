@@ -13,6 +13,8 @@ categories:
 
 `RESTful` 是一种软件架构风格，其面向资源。基于 HTTP 协议实现。
 
+慕课网：http://www.imooc.com/learn/811
+
 <!--more-->
 
 # 设计概念和准则

@@ -98,8 +98,6 @@ SSLSessionCache        "shmcb:/usr/local/apache2/logs/ssl_scache(512000)"
 SSLSessionCacheTimeout 300
 ```
 
-更多配置详情：https://github.com/khs1994-docker/lnmp-nginx-apache2-demo/blob/master/httpd-vhosts.conf
-
 # 多主机配置
 
 修改主配置文件 `/usr/local/apache2/conf/httpd.conf`
@@ -112,6 +110,14 @@ Include conf/extra/httpd-vhosts.conf
 修改子配置文件 `/usr/local/apache2/conf/extra/httpd-vhosts.conf`
 
 基于 域名、IP、端口来实现多主机，具体看示例配置。
+
+不建议使用以上方式，参考 NGINX 配置方式，我们可以把某一个目录中全部的 `*.conf` 文件包含进来。
+
+```apacheconf
+Include conf/conf.d/*.conf
+```
+
+一个虚拟主机一个文件（`conf/conf.d/*.conf`）。
 
 # 目录列表
 

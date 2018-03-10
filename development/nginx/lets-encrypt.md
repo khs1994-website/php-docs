@@ -6,12 +6,12 @@ comments: true
 tags:
 - PHP
 - php-dev-env
-- Nginx
+- NGINX
 - https
 categories:
 - PHP
 - php-dev-env
-- Nginx
+- NGINX
 ---
 
 首先确保你的网站是可以访问的（ nginx 配置好 80 端口），申请证书时 `let's Encrypt` 会访问网站上的某一文件来确认网站归属（当然也可以通过 DNS 确认）。

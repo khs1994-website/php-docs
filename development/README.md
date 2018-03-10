@@ -11,9 +11,19 @@ categories:
 - php-dev-env
 ---
 
-本文简要介绍了手动搭建 LNMP 开发环境的步骤。
+本文简要介绍了手动搭建 `LNMP` 开发环境的步骤。
 
 <!--more-->
+
+# Docker
+
+使用 Docker 可以很方便的搭建 LNMP 环境，具体请查看以下链接。
+
+[khs1994-docker/lnmp](https://github.com/khs1994-docker/lnmp)
+
+# NGINX
+
+编译安装。
 
 # MySQL
 
@@ -41,16 +51,20 @@ $ sudo grep 'temporary password' /var/log/mysqld.log
 
 $ mysql -uroot -p
 
-$ ALTER USER 'root'@'localhost' IDENTIFIED BY 'MyNewPass4!';
+# 修改密码
+
+$ ALTER USER 'root'@'localhost' IDENTIFIED BY 'NewPassword';
 ```
 
-## 添加远程登录用户
+## 远程登录
+
+### 添加登录用户
 
 ```sql
-$  GRANT ALL PRIVILEGES ON *.* TO 'admin'@'%' IDENTIFIED BY 'mytest' WITH GRANT OPTION;
+$  GRANT ALL PRIVILEGES ON *.* TO 'admin'@'%' IDENTIFIED BY 'MyPassword' WITH GRANT OPTION;
 ```
 
-# MySQL 5.5
+### 修改监听地址
 
 编辑 `/etc/mysql/my.conf` 文件。
 
@@ -61,13 +75,7 @@ bind-address=127.0.0.1 改为 bind-address=0.0.0.0
 
 # PHP
 
-## PHP 5
-
-```bash
-$ yum install php56u-fpm
-```
-
-## PHP 7
+该版本为 `PHP7`。
 
 ```bash
 $ rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm

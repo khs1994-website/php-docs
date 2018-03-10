@@ -9,4 +9,24 @@ categories:
 - HTTP
 ---
 
+`HTTP` 详解。
+
 <!--more-->
+
+# 方法
+
+* `get`
+
+* `post`
+
+* `delete`
+
+* `put`
+
+* `patch`
+
+* `head`
+
+* `options`
+
+# 状态码

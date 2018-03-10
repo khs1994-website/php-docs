@@ -24,3 +24,15 @@ mixed str_replace( mixed $search, mixed $replace , mixed $subject [, int &$count
 `$count` 如果被指定，它的值将被设置为替换发生的次数。
 
 上述函数区分大小写，`str_ireplace()` 不区分大小写。
+
+# 单引号
+
+想要输出 `\`，须输入 `echo '\\'`。
+
+`echo '\r';` 等会原样输出。
+
+# 生成随机字符串
+
+`PHP 7.1`
+
+`session_create_id()`

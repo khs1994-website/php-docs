@@ -14,6 +14,8 @@ categories:
 
 官方文档：http://php.net/manual/zh/book.curl.php
 
+GitHub：https://github.com/khs1994-php/curl
+
 <!--more-->
 
 设置网址
@@ -28,6 +30,18 @@ curl_setopt($ch, CURLOPT_URL, $url);
 curl_setopt($ch, CURLOPT_POST, 1);
 
 curl_setopt($ch, CURLOPT_POSTFIELDS, $data)
+```
+
+## post 表单
+
+```php
+$data=[
+  $media=new CURLFile($filePath)
+];
+
+# 旧版本是 @加文件名，新版已废弃。
+
+curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
 ```
 
 # https
