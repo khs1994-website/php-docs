@@ -13,6 +13,8 @@ categories:
 
 >注意。PHP-FPM 暂时只能通过监听 socket ,不能设置 `listen 127.0.0.1:9000`！
 
+GitHub：https://github.com/khs1994/wsl-php
+
 <!--more-->
 
 # 修订记录
@@ -238,26 +240,38 @@ $ pecl config-set php_ini /usr/local/php/etc/php.ini
 
 >非常重要！
 
-编辑 `/usr/local/php/etc/php-fpm.d/www.conf`
+新建 `/usr/local/php/etc/php-fpm.d/zz-wsl.conf` 文件
 
 ```bash
+[global]
 
-# 务必与 nginx 运行用户一致
-# 如果你不想编译安装 PHP 而是采用 apt 安装，那么用户名为 www-data
-# 我这里编译安装将用户名设置为了 nginx
-# 总的来说 /etc/nginx/nginx.conf 中的 user 项与 PHP下列配置项中的用户名必须保持一致
+error_log = /var/log/php-fpm/error.log
+
+[www]
+
+access.log = /var/log/php-fpm/access.log
+
+;
+; 务必与 nginx 用户名一致
+;
 
 user = nginx
 group = nginx
 
-# 编译安装默认为 IP:端口 ，apt 反之
-# listen = 127.0.0.1:9000
+request_slowlog_timeout = 5
+slowlog = /var/log/php-fpm/slow.log
 
 listen = /run/php-fpm.sock
+
+;
+; 务必与 nginx 用户名一致
+;
 
 listen.owner = nginx
 listen.group = nginx
 listen.mode = 0660
+
+env[APP_ENV] = wsl
 ```
 
 ## 启动

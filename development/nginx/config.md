@@ -68,7 +68,7 @@ server{
       #
       # socket 方式不建议使用，WSL 必须用该方式
       #
-      
+
       fastcgi_pass    phpfpm:9000;
       fastcgi_index   index.php;
 
@@ -123,6 +123,26 @@ server {
     location / {
       proxy_pass http://fzjh;
     }
+}
+```
+
+# alias
+
+假设请求 `url` 为 `http://localhost/appImg/abc.jpg`
+
+```nginx
+server {
+  location ^~ /appImg/ {
+    root /home/nginx; # /home/nginx/appImg/abc.jpg 路径拼接到了一起
+  }
+
+  location ^~ /appImg/ {
+    #
+    # alias 只能用在 location 块中
+    #
+
+    alias /home/nginx/; # 路径后必须加上 / ，/home/nginx/abc.jpg 会丢弃 location 匹配到的路径
+  }
 }
 ```
 

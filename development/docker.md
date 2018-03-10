@@ -15,4 +15,4 @@ categories:
 
 <!--more-->
 
-请查看：https://github.com/khs1994-docker/lnmp/tree/master/app/demo
+请查看：https://github.com/khs1994-docker/php-demo

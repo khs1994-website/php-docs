@@ -19,7 +19,21 @@ GitHub：https://github.com/composer/composer
 
 # 安装
 
-https://github.com/composer/composer/releases 下载，之后移入 `PATH` (`/usr/local/bin`)，改名为 `composer`
+## 下载地址
+
+* https://getcomposer.org/download/
+
+* https://github.com/composer/composer/releases
+
+下载之后移入 `PATH` (`/usr/local/bin`)，改名为 `composer`
+
+## 中国镜像
+
+```bash
+$ composer config -g repo.packagist composer https://packagist.phpcomposer.com
+```
+
+* https://pkg.phpcomposer.com/
 
 ## macOS
 
