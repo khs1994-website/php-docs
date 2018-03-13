@@ -21,13 +21,13 @@ categories:
 
 * 本文随着 PHP 版本升级而更新，一些增加、修改已经在注释中列出，注意查看。
 
-# macOS
+## 用户与用户组
 
-```bash
-$ brew tap homebrew/homebrew-php
+PHP-FPM 系统默认用户与用户组
 
-$ brew install php71
-```
+* Debian：www-data
+
+* RedHat: apache
 
 # 安装依赖包
 
@@ -244,14 +244,6 @@ Defaults	secure_path="/usr/local/php/bin:/usr/local/php/sbin:..."
 ```bash
 $ sudo pecl update-channels
 ```
-
-## 用户组
-
-PHP-FPM 系统默认用户与用户组
-
-Debian：www-data
-
-RedHat: apache
 
 # 复制配置文件
 

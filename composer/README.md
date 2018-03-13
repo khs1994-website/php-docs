@@ -45,6 +45,10 @@ $ brew install composer
 
 GitHub：https://github.com/khs1994-php/php-sdk-example
 
+```bash
+$ composer create-project --prefer-dist khs1994/example sdk @dev
+```
+
 ## GitHub 设置
 
 git 仓库设置中 `Integration & services` 中搜索添加 `Packagist`。
@@ -67,12 +71,13 @@ $ composer require --dev phpunit/phpunit
 
 ```php
 <?php
-require 'vendor/autoload.php';
+
+require __DIR__."/vendor/autoload.php";
 
 ```
 
 ## `dist` 和 `源码`
 
-`dist` 用于加了 `tag` 的版本。
+`dist` 是打包版本 `--prefer-dist`
 
 想要克隆源码加上 `--prefer-source`

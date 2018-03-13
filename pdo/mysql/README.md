@@ -34,15 +34,11 @@ var_dump($pdo);
 
 # `exec()`
 
->执行一条 `SQL` 语句，并返回其受影响的行数。对于 `select` 没有作用。
+>执行一条 `SQL` 语句，并返回其受影响的行数。
 
-* 创建表
+* 对于 `select` 没有作用。
 
-* 插入记录
-
-* 更新
-
-* 删除
+* 可用于 `创建表 数据库` `插入记录` `更新` `删除`
 
 ```php
 $query=<<<EOF
@@ -53,24 +49,27 @@ $res=$pdo->exec($query);
 
 // 最后插入记录的 ID 号
 
-$pdo->lastInsertId();
+$id=$pdo->lastInsertId();
 
 var_dump($res);
 
+var_dump($id);
+
 // 获取错误信息
 
-$pdo->errorCode();
+$pdo->errorCode(); // string
 
-$pdo->errorInfo();
+$pdo->errorInfo(); // array
+
+// 使用 try-catch 捕获 PDOException
+
 ```
 
 # `query()`
 
 > 查询，执行一条 `SQL` 语句，返回一个 `PDOStatement` 对象
 
-* 查询
-
-* 插入
+* `查询` `插入`
 
 ```php
 $sql='select * from tablename';
@@ -80,22 +79,26 @@ $stmt=$pdo->query($sql);
 // 之后通过遍历数组，获取结果
 ```
 
-# `prepare()` `execute()`
+# `prepare()` `PDOStatement::execute()`
 
 * `prepare()` 准备要执行的 `SQL` 语句，返回 `PDOStatement` 对象
 
-* `execute()` 执行预处理过的语句
+* `PDOStatement::execute()` 通过调用该方法处理预处理过的语句
 
 ```php
 $stmt=$pdo->prepare($sql);
 
 $stmt->execute(); // 返回布尔类型
 
-$stmt->fetch(); // 返回关联 + 索引数组，得到结果集中一条记录
+$stmt->fetch(); // 默认返回关联 + 索引数组，得到结果集中一条记录
 
-$stmt->fetch(PDO::FETCH_ASSOC); // 设置返回形式，只返回关联数组，失败返回 false
+// 可以在 fetch 时设置返回形式，只返回关联数组，失败返回 false
 
-$stmt->setFetchMode(PDO::FETCH_ASSOC); // 设置返回形式，和上一种方法二选一
+$stmt->fetchAll(PDO::FETCH_ASSOC);
+
+// 也可以先设置返回形式，再 fetch。和上一种方法二选一
+
+$stmt->setFetchMode(PDO::FETCH_ASSOC);
 
 $stmt->fetchAll(); // 二维数组，返回所有数据，失败返回 false
 ```
@@ -139,9 +142,9 @@ $sql='select * from tablename where username=:username';
 
 $sql='select * from tablename where username=?';
 
-$stmt=$pdo->prepare($sql);
+$stmt=$pdo->prepare($sql); // 返回 PDOStatement 对象
 
-$stmt->execute([':username'=>$usernmae]);
+$stmt->execute([':username'=>$usernmae]); // 调用的是 PDOStatement 对象的 execute 方法
 
 // ? 占位
 
@@ -154,9 +157,11 @@ $stmt=execute([$username]);
 
 ```php
 // :var 占位
-$stmt->bindParam(':username',$username);
-
 $username='usernmae';
+
+$stmt->bindParam(':username',$username); // 第二个参数不能是具体的值，第二个参数是引用类型
+
+$username='usernmae2'; // 实际值为 username2
 
 $stmt->execute();
 
@@ -176,12 +181,18 @@ $username='username';
 
 // :var 占位
 
-$stmt->bindValue(':var',$username);
+$stmt->bindValue(':var',$username); // 第二个参数可以是具体的值
+
+$username='username2'; // 实际值为 username
 
 // ? 占位
 
 $stmt->bindValue(1,$username);
 ```
+
+## 注意以上两者的区别
+
+* 第二个参数是否为引用变量
 
 # 绑定结果中的一列到一个 PHP 变量
 

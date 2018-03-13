@@ -17,6 +17,10 @@ categories:
 
 <!--more-->
 
+# 用户及用户组
+
+* Debian www-data
+
 # yum 方式安装
 
 ```bash

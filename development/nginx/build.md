@@ -17,6 +17,26 @@ categories:
 
 <!--more-->
 
+# 建立用户及用户组
+
+```bash
+$ groupadd -r nginx
+
+$ useradd -r -g nginx -s /bin/false -M nginx
+```
+
+## Alpine 较特殊
+
+```bash
+$ addgroup -S nginx
+
+$ adduser -D -S -h /var/cache/nginx -s /sbin/nologin -G nginx nginx
+```
+
+* http://git.alpinelinux.org/cgit/aports/tree/main/apache2/apache2.pre-install?h=v3.3.2
+* http://git.alpinelinux.org/cgit/aports/tree/main/lighttpd/lighttpd.pre-install?h=v3.3.2
+* http://git.alpinelinux.org/cgit/aports/tree/main/nginx-initscripts/nginx-initscripts.pre-install?h=v3.3.2
+
 # 安装依赖包
 
 RedHat 系
@@ -106,9 +126,6 @@ $ sudo apt install zlib1g-dev zlib1g
 
 ```bash
 $ make
-
-$ groupadd -r nginx \
-  && useradd -r -g nginx -s /bin/false -M nginx
 
 $ sudo make install
 ```
