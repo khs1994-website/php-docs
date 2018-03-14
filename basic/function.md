@@ -50,15 +50,18 @@ declare(strict_types=1);
 
 class C {}
 
-function getC(): C
+function getC(): C // 限定返回类型
 {
     return new C;
 }
 
 var_dump(getC());
 
-// :void 表名函数不返回数据 @since 7.1
-
+/**
+* :void 表名函数不返回数据
+*
+* @since 7.1
+*/
 function fun1(): void
 {
   return;
@@ -89,8 +92,7 @@ $var();   // 调用函数 a
 ```php
 function fun1(...$a)
 {
-  // $a 为数组
-  var_dump($a);
+  var_dump($a); // array
 }
 
 fun1(1, 2, 3, 4);

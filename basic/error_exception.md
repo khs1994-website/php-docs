@@ -10,7 +10,7 @@ categories:
 - Basic
 ---
 
-PHP 7 可以通过 `try_catch` 来捕获错误 `Error e` 和异常 `Exception e`。
+PHP 7 可以通过 `try_catch` 来捕获错误 `Error` 和异常 `Exception`。
 
 官方文档：http://php.net/manual/en/class.exception.php
 
@@ -50,6 +50,8 @@ ini_set("log_errors",1);
 
 # 错误
 
+可以像捕获异常那样来捕获错误。
+
 ```php
 try {
   new A;
@@ -57,26 +59,26 @@ try {
   echo $e->getMessage(); // Class 'A' not found
 }
 
-// 一个 catch 使用管道（|）捕获多个异常。
+// 一个 catch 使用管道（|）捕获多个错误或异常。
 
 ...
 try{}catch (MyException | MyOtherException $e){}
 ...
 ```
 
-## 错误种类
+## 错误与异常种类
 
-`ArgumentCountError` 参数错误，函数传入参数个数少于函数参数。
+* `ArithmeticError` 算术运算错误
 
-`ArithmeticError` 算术运算错误
+    * `DivisionByZeroError` 除数为 0 时错误
 
-`DivisionByZeroError` 除数为 0 时错误
+* `AssertionError` 断言错误
 
-`AssertionError` 断言错误
+* `ParseError` 语法错误
 
-`ParseError` 语法错误
+* `TypeError` 函数类型错误（1.参数类型约束；2.返回值类型约束；3.参数个数少于函数参数）
 
-`TypeError` 参数类型错误，类型约束
+    * `ArgumentCountError` 参数错误，函数传入参数个数少于函数参数。
 
 ## 参考链接
 
@@ -92,6 +94,10 @@ try {
   // 发生异常
 }
 ```
+
+# 版本对比
+
+* https://github.com/khs1994-php/error
 
 # 解读
 

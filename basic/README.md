@@ -1,5 +1,5 @@
 ---
-title: khs1994.com PHP 开发规范
+title: PHP-FIG 规范
 date: 2016-10-20 13:00:00
 updated:
 comments: true
@@ -10,7 +10,11 @@ categories:
 - Basic
 ---
 
-`khs1994.com` PHP 开发规范。
+`PHP-FIG` 规范
+
+* 官方网站 https://www.php-fig.org/
+
+* GitHub https://github.com/php-fig
 
 <!--more-->
 
@@ -38,14 +42,16 @@ categories:
 
 ### 属性
 
-`一定不可` 使用关键字 `var` 声明一个属性
+`一定不可` 使用关键字 `var` 声明一个属性。
+
+类的属性命名可以遵循 大写开头的驼峰式 (`$StudlyCaps`)、小写开头的驼峰式 (`$camelCase`) 又或者是 下划线分隔式 (`$under_score`)，无论遵循哪种命名方式，都应该在一定的范围内保持一致。这个范围可以是整个团队、整个包、整个类或整个方法。
 
 ### 常量
 
-类常量也可以设置可见性
+类常量 大写 + 下划线 `FOO_BAR`
 
 ```php
-public const APP_KEY=1;
+const APP_KEY = 1;
 ```
 
 ## 函数名

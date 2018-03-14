@@ -98,7 +98,7 @@ array scandir ( string $directory [, int $sorting_order [, resource $context ]] 
 
 * 判断
 
-  `is_dir()` `is_file()` `is_executable` `is_link()`
+  `is_dir()` `is_file()` `is_executable()` `is_link()`
 
 # HTML 上传文件
 

@@ -33,6 +33,13 @@ mixed str_replace( mixed $search, mixed $replace , mixed $subject [, int &$count
 
 # 生成随机字符串
 
-`PHP 7.1`
+```php
+/**
+* @since 7.1
+*/
+session_create_id();
+```
 
-`session_create_id()`
+# 其他
+
+* 首字母大写
