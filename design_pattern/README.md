@@ -22,7 +22,7 @@ categories:
 ```php
 class F
 {
-    static function createDocker($arg){
+    public static function createDocker($arg){
         // return new Docker($arg);
 
         // 单例模式
@@ -36,11 +36,11 @@ class F
 
         // 返回对象
 
-        return $docker;
+        //return $docker;
     }
 }
 
-// $docker = A::createDocker($arg);
+$docker = F::createDocker($arg);
 
 $docker = R::get('docker');
 

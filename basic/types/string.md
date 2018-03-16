@@ -42,4 +42,6 @@ session_create_id();
 
 # 其他
 
-* 首字母大写
+* 首字母大写/小写 `ucfirst()` `lcfirst()`
+
+* 字符串中每个单词首字母大写 `ucwords('a b c')`

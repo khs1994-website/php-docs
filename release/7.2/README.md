@@ -15,3 +15,5 @@ GitHub：https://github.com/php/php-src/releases/tag/php-7.2.0
 官方文档：http://cn2.php.net/manual/zh/migration72.php
 
 <!--more-->
+
+**部分列出**

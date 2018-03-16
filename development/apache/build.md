@@ -4,13 +4,11 @@ date: 2016-09-10 13:00:00
 updated:
 comments: true
 tags:
-- PHP
-- php-dev-env
-- Apache
+- HTTPD
 categories:
 - PHP
 - php-dev-env
-- Apache
+- HTTPD
 ---
 
 本文介绍了手动编译安装 Apache 的具体步骤。
