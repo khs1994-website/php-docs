@@ -4,8 +4,6 @@ date: 2016-09-18 13:00:00
 updated:
 comments: true
 tags:
-- PHP
-- php-dev-env
 - NGINX
 - https
 categories:

@@ -21,6 +21,14 @@ categories:
 
 [khs1994-docker/lnmp](https://github.com/khs1994-docker/lnmp)
 
+# Windows
+
+* https://www.khs1994.com/php/development/wnamp.html
+
+# macOS
+
+* https://www.khs1994.com/php/development/mnamp.html
+
 # NGINX
 
 编译安装。

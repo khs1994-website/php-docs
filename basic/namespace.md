@@ -17,9 +17,14 @@ categories:
 ```php
 namespace A\B;  // 定义命名空间，在所有代码之前声明，除了 declare()
 
-// use 关键字导入命名空间
+/**
+* use 关键字导入命名空间
+* namespace 与 use 之间空一行
+*/
 
-// @since 7.2 分组命名空间
+/**
+* @since 7.2 分组命名空间，允许尾部逗号
+*/
 
 use Foo\Bar\{
     Foo,

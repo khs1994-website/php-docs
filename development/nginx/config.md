@@ -5,7 +5,6 @@ updated:
 comments: true
 tags:
 - PHP
-- php-dev-env
 - NGINX
 categories:
 - PHP

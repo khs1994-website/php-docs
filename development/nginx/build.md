@@ -4,8 +4,6 @@ date: 2016-09-15 13:00:00
 updated:
 comments: true
 tags:
-- PHP
-- php-dev-env
 - NGINX
 categories:
 - PHP
@@ -16,6 +14,26 @@ categories:
 本文介绍了手动编译安装 NGINX 的具体步骤。
 
 <!--more-->
+
+# 建立用户及用户组
+
+```bash
+$ groupadd -r nginx
+
+$ useradd -r -g nginx -s /bin/false -M nginx
+```
+
+## Alpine 较特殊
+
+```bash
+$ addgroup -S nginx
+
+$ adduser -D -S -h /var/cache/nginx -s /sbin/nologin -G nginx nginx
+```
+
+* http://git.alpinelinux.org/cgit/aports/tree/main/apache2/apache2.pre-install?h=v3.3.2
+* http://git.alpinelinux.org/cgit/aports/tree/main/lighttpd/lighttpd.pre-install?h=v3.3.2
+* http://git.alpinelinux.org/cgit/aports/tree/main/nginx-initscripts/nginx-initscripts.pre-install?h=v3.3.2
 
 # 安装依赖包
 
@@ -106,9 +124,6 @@ $ sudo apt install zlib1g-dev zlib1g
 
 ```bash
 $ make
-
-$ groupadd -r nginx \
-  && useradd -r -g nginx -s /bin/false -M nginx
 
 $ sudo make install
 ```

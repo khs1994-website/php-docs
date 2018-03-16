@@ -29,10 +29,14 @@ setcookie($name [, $value, $expires, $path, $domain, $secure, $httponly])
 `$httponly` 只使用 HTTP 访问 `Cookie`，如果设置为 `true`，客户端 `JS` 无法操作这个 `Cookie`
 
 ```php
-setrawcookie($name [, $value, $expires, $path, $domain, $secure, $httponly])
-```
 
-不会对值进行 `urlencode()` 编码
+/**
+* 参数相同
+*
+* 不会对值进行 `urlencode()` 编码
+*/
+setrawcookie()
+```
 
 # 读取 Cookie
 

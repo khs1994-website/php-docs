@@ -5,12 +5,11 @@ updated:
 comments: true
 tags:
 - PHP
-- php-dev-env
-- Apache
+- HTTPD
 categories:
 - PHP
 - php-dev-env
-- Apache
+- HTTPD
 ---
 
 本文简要介绍了 `Apache` 解析 `PHP` 文件。

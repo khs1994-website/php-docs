@@ -6,11 +6,11 @@ comments: true
 tags:
 - PHP
 - php-dev-env
-- Apache
+- HTTPD
 categories:
 - PHP
 - php-dev-env
-- Apache
+- HTTPD
 ---
 
 本文简要介绍了 `Apache` 配置 `https` 、子域名。

@@ -25,4 +25,6 @@ categories:
 
 其他请查看这里
 
-https://pecl.php.net/package-search.php?pkg_name=pdo&bool=AND&submit=Search
+* http://php.net/manual/en/pdo.drivers.php
+
+* https://pecl.php.net/package-search.php?pkg_name=pdo&bool=AND&submit=Search
