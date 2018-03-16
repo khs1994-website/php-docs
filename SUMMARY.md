@@ -54,7 +54,7 @@
     * [WSL](development/wsl.md)
     * [MNAMP 开发环境配置](development/mnamp.md)
     * [PHP7 编译](development/build.md)
-    * [PHP7 编译选项](development/configure.md)
+    * [PHP 编译选项](development/configure.md)
     * [PHP7 配置](development/config.md)
     * [PHP 扩展记录](development/extension.md)
     * [PhpStorm + Xdebug](development/xdebug.md)
@@ -64,6 +64,7 @@
         * [配置](development/apache/config.md)
         * [PHP](development/apache/php.md)
     * NGINX
+        * [NGINX 编译选项](development/nginx/configure.md)
         * [编译安装](development/nginx/build.md)
         * [配置](development/nginx/config.md)
         * [NGINX 配置陷阱和常见错误](development/nginx/error-config.md)
