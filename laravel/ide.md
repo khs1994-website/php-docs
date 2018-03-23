@@ -59,3 +59,5 @@ _ide_helper.php
 # 插件
 
 `Laravel Plugin`
+
+IDE 中搜索 Laravel，在插件配置中手动勾选两个配置
