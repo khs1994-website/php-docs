@@ -16,4 +16,6 @@ categories:
 
 * `PHP_EOL` 换行符
 
-* `DIRECTORY_SEPARATOR` 路径分割符（Linux 与 Windows 不同）
+* `DIRECTORY_SEPARATOR` 路径分割符（Linux `/` Windows `\`）
+
+* `PATH_SEPARATOR` 多路径分割符（Linux `:` Windows `;`）

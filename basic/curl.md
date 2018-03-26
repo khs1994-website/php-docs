@@ -18,7 +18,19 @@ GitHub：https://github.com/khs1994-php/curl
 
 <!--more-->
 
-设置网址
+# Windows Curl SSL
+
+https://curl.haxx.se/docs/caextract.html
+
+点击最新的日期，下载文件放到 `c:\cacert-2018-03-07.pem`
+
+`php.ini` 增加如下配置
+
+```bash
+curl.cainfo="c:\cacert-2018-03-07.pem"
+```
+
+# 设置网址
 
 ```php
 curl_setopt($ch, CURLOPT_URL, $url);

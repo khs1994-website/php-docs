@@ -43,7 +43,10 @@ $ sudo pecl channel-update pecl.php.net
 
 $ sudo pecl config-show
 
+# pecl pear 同时设置了 ini 路径才能在使用 pecl 安装扩展时自动生成配置
+
 $ sudo pecl config-set php_ini /usr/local/php/etc/php.ini
+$ sudo pear config-set php_ini /usr/local/php/etc/php.ini
 
 # 安装扩展
 
@@ -101,7 +104,7 @@ $ vi /usr/locla/php/etc/php.ini
 
 extension=redis.so
 
-# extension=redis  不加扩展名也可以
+# extension=redis  不加扩展名（.so）也可以
 
 # zend 扩展 xdebug opcache ,扩展为 zend_extension= ，请不要与普通扩展混淆
 # 注意替换为自己的实际路径，每个 PHP 版本目录名可能不同
