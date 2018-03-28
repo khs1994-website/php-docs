@@ -21,31 +21,39 @@ Laravel 缓存相关介绍。
 
 Cache::store('redis')->
 
-::get()
+    ::get()
 
-::put()
+    ::put()
 
-::add()
+    ::add() // 只存储没有的数据
 
-::has()
+    ::has()
 
-::increment()
+    ::increment()
 
-::decrement()
+    ::decrement()
 
-::pull() // 获取之后删除
+    ::pull() // 获取之后删除
 
-::forever()
+    ::forever()
 
-::forget()
+    ::forget()
 
-::flush() // 清空，全部删除
+    ::flush() // 清空，全部删除
 
-::tags()->
+    ::tags()->
 ```
 
 辅助函数
 
 ```php
-cache()
+// 获取
+
+cache('key');
+
+// 设置
+
+cache('key', 1, $expire);
+
+cache(['key' => 1], $expire)
 ```

@@ -37,6 +37,12 @@ $example();
 # 略
 ```
 
+把第一个参数作为回调函数调用。
+
+* `call_user_func($callback,$parameter,$parameter2)`
+
+* `call_user_func_array($callback,$array)`
+
 # 类型约束
 
 ## 参数

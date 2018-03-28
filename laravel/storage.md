@@ -26,16 +26,15 @@ Storage::disk('local')->
 
 // 默认路径为 storage/app
 
-Srorage::put('public/1.txt',1);
+Srorage::put('public/1.txt', 1); // 写入文件
+
+       ::get('public/1.txt');
+
+       ::exists('public/1.txt');
+
+       ::url('public/1.txt');
 
 // 生成文件访问链接
 
-asset('storage/1.txt');
-
-Storage::get('public/1.txt');
-
-::exists('public/1.txt');
-
-::url('public/1.txt');
-
+asset('storage/1.txt');       
 ```
