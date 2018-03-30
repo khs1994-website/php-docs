@@ -13,6 +13,8 @@ categories:
 
 本文介绍了手动编译安装 PHP 的具体步骤。
 
+GitHub：https://github.com/khs1994-php/builder
+
 <!--more-->
 
 # 修订记录
@@ -155,6 +157,7 @@ configure: error: no acceptable C compiler found
 
 ```bash
 $ yum install -y gcc gcc-c++
+
 $ sudo apt install gcc g++
 ```
 
@@ -162,6 +165,7 @@ configure: error: xml2-config not found. Please check your libxml2 installation.
 
 ```bash
 $ yum install libxml2 libxml2-devel
+
 $ sudo apt install libxml2-dev
 ```
 
@@ -169,6 +173,7 @@ configure: error: Cannot find OpenSSL...
 
 ```bash
 $ yum install openssl openssl-devel
+
 $ sudo apt install libssl-dev
 ```
 
@@ -176,6 +181,7 @@ configure: error: png.h not found.
 
 ```bash
 $ yum install libcurl libcurl-devel
+
 $ sudo apt install libcurl4-openssl-dev
 ```
 
@@ -183,6 +189,7 @@ configure: error: freetype-config not found.
 
 ```bash
 $ yum install freetype freetype-devel libjpeg libjpeg-devel libpng libpng-devel
+
 $ sudo apt install libfreetype6-dev
 ```
 
@@ -190,10 +197,11 @@ configure: error: xslt-config not found. Please reinstall the libxslt >= 1.1.0 d
 
 ```bash
 $ yum install libxslt libxslt-devel
+
 $ sudo apt install libxslt1-dev
 ```
 
-## Debian9
+## Debian 9
 
 具体查看参考链接2
 
@@ -213,7 +221,6 @@ $ sudo ln -s /usr/include/x86_64-linux-gnu/curl /usr/local/include/
 ```
 
 编译选项改为 `--with-curl=/usr/local`
-
 
 # 安装
 
@@ -253,6 +260,7 @@ $ sudo pecl update-channels
 
 ```bash
 $ cp sapi/fpm/php-fpm.serviceq /etc/systemd/system/
+
 $ systemctl daemon-reload
 ```
 

@@ -72,8 +72,30 @@ class Writer{
 $writer=new Writer($container);
 ```
 
+# 依赖注入
+
+只要不是由内部生产（比如初始化、构造函数中通过工厂方法、自行手动 new 的），而是由外部以参数或其他形式注入的，都属于 `依赖注入（DI）`。
+
+# 反转
+
+所谓的反转，主要指由 主动依赖 到 被动依赖 。
+
+```php
+//主动依赖
+function __construct() {
+        $this->user = new UserModel();
+}
+
+//被动依赖
+function __construct(UserModel $user) {
+        $this->user = $user;
+}
+```
+
 # Links
 
 * https://www.cnblogs.com/sweng/p/6430374.html
 
 * https://laravel-china.org/topics/789/laravel-learning-notes-the-magic-of-the-service-container
+
+* https://laravel-china.org/topics/1954/on-laravel-design-pattern

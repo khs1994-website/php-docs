@@ -76,8 +76,13 @@ EOF;
 /**
 * @since 7.1
 */
-session_create_id();
+
+session_create_id(); // 更好，重复数据出现可能性低
 ```
+
+* `uniqid()` 可能有重复数据
+
+* https://blog.csdn.net/ghostyusheng/article/details/53788087
 
 # 其他
 
