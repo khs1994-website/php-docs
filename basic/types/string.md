@@ -31,14 +31,58 @@ mixed str_replace( mixed $search, mixed $replace , mixed $subject [, int &$count
 
 `echo '\r';` 等会原样输出。
 
+# 双引号
+
+能够解析特殊字符
+
+```php
+echo "$a";
+
+echo "{$a}b" // 与 bash 不同
+
+echo "\$a"; // 使用反斜杠转义
+
+echo "$a[1]"; // 返回字符串中指定位置的字符
+```
+
+# heredoc
+
+```php
+<<<EOF
+
+$a // 能解析变量
+
+EOF;
+
+<<<"EOF"
+
+
+EOF;
+```
+
+# nowdoc
+
+```php
+<<<'EOF'
+
+$a // 不能解析变量
+
+EOF;
+```
+
 # 生成随机字符串
 
 ```php
 /**
 * @since 7.1
 */
-session_create_id();
+
+session_create_id(); // 更好，重复数据出现可能性低
 ```
+
+* `uniqid()` 可能有重复数据
+
+* https://blog.csdn.net/ghostyusheng/article/details/53788087
 
 # 其他
 

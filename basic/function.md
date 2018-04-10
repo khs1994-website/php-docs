@@ -23,7 +23,7 @@ $example=function ($arg){
 
 $example(1);
 
-# 使用 use 指定参数。使用的是已定义变量
+# 使用 use 使用外部变量
 
 $message='hello';
 
@@ -36,6 +36,12 @@ $example();
 # use 引用变量
 # 略
 ```
+
+把第一个参数作为回调函数调用。
+
+* `call_user_func($callback,$parameter,$parameter2)`
+
+* `call_user_func_array($callback,$array)`
 
 # 类型约束
 
@@ -58,7 +64,7 @@ function getC(): C // 限定返回类型
 var_dump(getC());
 
 /**
-* :void 表名函数不返回数据
+* :void 表明函数不返回数据
 *
 * @since 7.1
 */

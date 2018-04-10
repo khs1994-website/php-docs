@@ -15,22 +15,23 @@ categories:
 
 <!--more-->
 
-扩展列表
+# 修订记录
 
-* php-reids
-* php-memcached
-* php-mongodb
-* pdo-mysql
+* PHP 7.2+  **php.ini** 中扩展的配置写法发生了变化
 
 # 依赖
 
 安装扩展时可能需要安装一些依赖库，查询出错信息，安装对应的依赖库即可。
 
-# php-reids
+# 总体步骤
 
-第一步：得到扩展文件，第二步：修改 `php.ini` 配置文件，第三步：重启 php-fpm。
+第一步：得到扩展文件（Linux 编译 / Linux pecl install / Windows 直接下载）
 
-## pecl 命令安装
+第二步：修改 `php.ini` 配置文件
+
+第三步：重启 php-fpm。
+
+## pecl install
 
 下面列举了一些常用参数，更多参数使用 `pecl help` 查看，注意 `pecl install [ext1] [ext2] ...` 一次可以安装多个扩展。
 
@@ -43,7 +44,10 @@ $ sudo pecl channel-update pecl.php.net
 
 $ sudo pecl config-show
 
+# pecl pear 同时设置了 ini 路径才能在使用 pecl 安装扩展时自动生成配置
+
 $ sudo pecl config-set php_ini /usr/local/php/etc/php.ini
+$ sudo pear config-set php_ini /usr/local/php/etc/php.ini
 
 # 安装扩展
 
@@ -95,25 +99,41 @@ $ vi /usr/locla/php/etc/php.ini
 
 # 注意 php.ini 中只能使用 ; 注释
 
-# 文件最后增加如下内容,路径根据实际修改
+# 文件最后增加如下内容,扩展不在默认编译路径（ext 指令设置的路径），请填写绝对路径
 
-# 普通扩展直接写文件名
+#
+# 格式 extension=<ext>
+#
+# @since 7.2
+# @link  https://github.com/khs1994-php/ini/compare/7.1.0...7.2.0#diff-93ba055b6b5afa0ffd531ce1ff45508aR874
+#
 
-extension=redis.so
+extension=redis
 
-# extension=redis  不加扩展名也可以
+# 旧的，未来可能废弃的写法
+#
+# extension=redis.so
+#
+# extension=php_redis.dll (Windows)
+#
 
-# zend 扩展 xdebug opcache ,扩展为 zend_extension= ，请不要与普通扩展混淆
+# zend 扩展，例如 xdebug opcache ,格式为 zend_extension=<ext> ，请不要与普通扩展混淆
 # 注意替换为自己的实际路径，每个 PHP 版本目录名可能不同
 
-zend_extension=/usr/local/php/lib/php/extensions/no-debug-zts-20160303/xdebug.so
+zend_extension=xdebug
+
+# zend_extension=c:/php-ext/php_xdebug
 ```
 
-## 测试
+## 验证
 
-使用 `phpinfo()` 查看
+使用 `phpinfo()` 查看或 `$ php -m`
 
-# php-mongodb
+# 其他扩展
+
+简要说明一下
+
+## php-mongodb
 
 mododb 数据库有两个扩展 `mongo`（已废弃，不支持 PHP7） `mongodb`。
 
@@ -121,7 +141,7 @@ mododb 数据库有两个扩展 `mongo`（已废弃，不支持 PHP7） `mongodb
 $ sudo pecl install mongodb
 ```
 
-# php-memcached
+## php-memcached
 
 ```bash
 $ sudo apt install libmemcached-dev
@@ -131,7 +151,7 @@ $ sudo pecl install memcached
 # 提示 libmemcached directory [no] : 回车跳过即可
 ```
 
-# pdo-mysql
+## pdo-mysql
 
 `PHP` 编译选项添加 `--with-pdo-mysql`
 

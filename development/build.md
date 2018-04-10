@@ -13,11 +13,15 @@ categories:
 
 本文介绍了手动编译安装 PHP 的具体步骤。
 
+GitHub：https://github.com/khs1994-php/builder
+
 <!--more-->
 
 # 修订记录
 
 * Debian9 Ubuntu17.04 出现错误请详细查看后边说明(PHP 7.1.9 不会报错了)。出现错误强烈建议使用 https://stackoverflow.com 进行搜索！
+
+* 有些编译报错，你确实是正确的安装了依赖包，可以通过建立软链接解决
 
 * 本文随着 PHP 版本升级而更新，一些增加、修改已经在注释中列出，注意查看。
 
@@ -155,6 +159,7 @@ configure: error: no acceptable C compiler found
 
 ```bash
 $ yum install -y gcc gcc-c++
+
 $ sudo apt install gcc g++
 ```
 
@@ -162,6 +167,7 @@ configure: error: xml2-config not found. Please check your libxml2 installation.
 
 ```bash
 $ yum install libxml2 libxml2-devel
+
 $ sudo apt install libxml2-dev
 ```
 
@@ -169,6 +175,7 @@ configure: error: Cannot find OpenSSL...
 
 ```bash
 $ yum install openssl openssl-devel
+
 $ sudo apt install libssl-dev
 ```
 
@@ -176,6 +183,7 @@ configure: error: png.h not found.
 
 ```bash
 $ yum install libcurl libcurl-devel
+
 $ sudo apt install libcurl4-openssl-dev
 ```
 
@@ -183,6 +191,7 @@ configure: error: freetype-config not found.
 
 ```bash
 $ yum install freetype freetype-devel libjpeg libjpeg-devel libpng libpng-devel
+
 $ sudo apt install libfreetype6-dev
 ```
 
@@ -190,10 +199,11 @@ configure: error: xslt-config not found. Please reinstall the libxslt >= 1.1.0 d
 
 ```bash
 $ yum install libxslt libxslt-devel
+
 $ sudo apt install libxslt1-dev
 ```
 
-## Debian9
+## Debian 9
 
 具体查看参考链接2
 
@@ -204,16 +214,9 @@ configure: error: Please reinstall the libcurl distribution easy.h should be in 
 
 ```bash
 $ sudo apt install libcurl4-gnutls-dev
-```
 
-注意，目前安装该包不能解决问题！需要建立软链接！！
-
-```bash
 $ sudo ln -s /usr/include/x86_64-linux-gnu/curl /usr/local/include/
 ```
-
-编译选项改为 `--with-curl=/usr/local`
-
 
 # 安装
 
@@ -253,6 +256,7 @@ $ sudo pecl update-channels
 
 ```bash
 $ cp sapi/fpm/php-fpm.serviceq /etc/systemd/system/
+
 $ systemctl daemon-reload
 ```
 

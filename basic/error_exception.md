@@ -59,7 +59,11 @@ try {
   echo $e->getMessage(); // Class 'A' not found
 }
 
-// 一个 catch 使用管道（|）捕获多个错误或异常。
+/*
+* 一个 catch 使用管道（|）捕获多个错误或异常。
+*
+* @since 7.1
+*/
 
 ...
 try{}catch (MyException | MyOtherException $e){}

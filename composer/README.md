@@ -17,6 +17,14 @@ GitHub：https://github.com/composer/composer
 
 <!--more-->
 
+# 版本表示方法
+
+https://cuiqingcai.com/3494.html
+
+* `~` `~1.2` 相当于 `>=1.2 <2.0.0` 而 `~1.2.3` 相当于 `>=1.2.3 <1.3.0`
+
+* `^` `^1.2.3` 相当于 `>=1.2.3 <2.0.0` 1.0 以下较特殊 `^0.3` 会被当作 `>=0.3.0 <0.4.0`
+
 # 安装
 
 ## 下载地址
@@ -43,7 +51,7 @@ $ brew install composer
 
 # 开发一个 SDK
 
-GitHub：https://github.com/khs1994-php/php-sdk-example
+GitHub：https://github.com/khs1994-docker/php-demo
 
 ```bash
 $ composer create-project --prefer-dist khs1994/example sdk @dev

@@ -20,12 +20,11 @@ categories:
 ```php
 // 数据源
 
-$dsn='mysql:host=localhost;dbname=imooc';
+$dsn='mysql:host=localhost;dbname=imooc;port=3306';
 
 // uri 形式
 
 $dsn='uri:file://G:\path'
-...
 
 $pdo=new PDO($dsn,$username,$password);
 

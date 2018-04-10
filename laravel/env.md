@@ -28,15 +28,7 @@ categories:
 
 以此类推
 
-# 在 `php-fpm.d/www.conf` 配置环境变量
-
-```yaml
-env[APP_ENV]=development;
-
-env[APP_ENV]=production;
-```
-
-# 也可以设置系统环境变量
+# 设置系统环境变量
 
 `/etc/profile` 文件末尾写入以下内容
 
@@ -46,28 +38,17 @@ export APP_ENV=development
 # export APP_ENV=production
 ```
 
-注意将 `php.ini` 中的选项改为：
-
-```bash
-;variables_order = "GPCS"
-
-variables_order = "EGPCS"
-```
+Windows 不再赘述。
 
 # 验证
 
-查看 `phpinfo()` 页面，搜索查看 `APP_ENV` 与预设环境相匹配即可。
-
-# 生产环境优化
-
 ```bash
-$ php artisan config:cache   # 配置缓存
+$ php artisan env
 
-$ php artisan route:cache    # 路由缓存
-
-$ php artisan down | up # 启用或关闭维护模式
-
+Current application environment: development
 ```
+
+与上一步系统变量一致说明设置成功，Windows 设置系统变量之后记得注销再登陆。
 
 # More Information
 

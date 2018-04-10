@@ -15,6 +15,16 @@ categories:
 
 <!--more-->
 
+# 生产环境优化
+
+```bash
+$ php artisan config:cache   # 配置缓存
+
+$ php artisan route:cache    # 路由缓存
+
+$ php artisan down | up      # 启用或关闭维护模式
+```
+
 # 安装
 
 ```bash
@@ -114,7 +124,7 @@ Route::get('/user/{name}/id/{id}',) // url 参数
 
 Route::get('/id/{id?}',function($id){
   return $id;
-}); // url 参数的的默认参数
+}); // url 参数的
 
 Route::get()->name('name'); // 路由命名
 

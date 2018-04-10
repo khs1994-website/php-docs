@@ -55,13 +55,13 @@ $name = [
         ]
 ];
 
-// 判断某个数组中是否存在指定的 key
+// 判断数组中是否存在指定的 key
 
-var_dump(array_key_exists('id', $name['desc']));
+bool array_key_exists('id', $name['desc']);
 
-// 搜索值
+// 检查数组中是否存在某个值
 
-var_dump(in_array(23, $name['desc']));
+bool in_array(23, $name['desc']);
 
 // 搜索值，返回键名
 
