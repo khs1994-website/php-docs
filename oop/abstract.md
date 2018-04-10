@@ -15,6 +15,10 @@ categories:
 
 <!--more-->
 
+抽象类中可以有非抽象方法。
+
+抽象方法没有（也不能有）具体实现。
+
 ```php
 abstract class A
 {

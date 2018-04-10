@@ -21,6 +21,8 @@ GitHub：https://github.com/khs1994-php/builder
 
 * Debian9 Ubuntu17.04 出现错误请详细查看后边说明(PHP 7.1.9 不会报错了)。出现错误强烈建议使用 https://stackoverflow.com 进行搜索！
 
+* 有些编译报错，你确实是正确的安装了依赖包，可以通过建立软链接解决
+
 * 本文随着 PHP 版本升级而更新，一些增加、修改已经在注释中列出，注意查看。
 
 ## 用户与用户组
@@ -212,15 +214,9 @@ configure: error: Please reinstall the libcurl distribution easy.h should be in 
 
 ```bash
 $ sudo apt install libcurl4-gnutls-dev
-```
 
-注意，目前安装该包不能解决问题！需要建立软链接！！
-
-```bash
 $ sudo ln -s /usr/include/x86_64-linux-gnu/curl /usr/local/include/
 ```
-
-编译选项改为 `--with-curl=/usr/local`
 
 # 安装
 

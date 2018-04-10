@@ -60,6 +60,7 @@
 * [其他](other/README.md)
     * [php-pm](other/php-pm.md)
     * [Guzzle](other/guzzle.md)
+    * [PHP-CS-Fixer](other/php-cs-fixer.md)
 * [开发环境](development/README.md)
     * [WNAMP 开发环境配置](development/wnamp.md)
     * [WSL](development/wsl.md)
@@ -70,6 +71,7 @@
     * [PHP 扩展记录](development/extension.md)
     * [PhpStorm + Xdebug](development/xdebug.md)
     * [PhpStorm + Docker](development/phpstorm-docker.md)
+    * [Docker](development/docker.md)
     * Apache
         * [编译安装](development/apache/build.md)
         * [配置](development/apache/config.md)
@@ -80,8 +82,7 @@
         * [配置](development/nginx/config.md)
         * [NGINX 配置陷阱和常见错误](development/nginx/error-config.md)
         * [NGINX HTTPS](development/nginx/https.md)
-        * [Let's Encrypt SSL证书](development/nginx/lets-encrypt.md)
-    * [Docker](development/docker.md)       
+        * [Let's Encrypt SSL证书](development/nginx/lets-encrypt.md)       
 * 版本变更
     * [7.0](release/7.0/README.md)
     * [7.1](release/7.1/README.md)
