@@ -60,6 +60,8 @@
 * [其他](other/README.md)
     * [php-pm](other/php-pm.md)
     * [Guzzle](other/guzzle.md)
+    * [Pimple](other/pimple.md)
+    * [Dotenv](other/dotenv.md)
     * [PHP-CS-Fixer](other/php-cs-fixer.md)
 * [开发环境](development/README.md)
     * [WNAMP 开发环境配置](development/wnamp.md)
