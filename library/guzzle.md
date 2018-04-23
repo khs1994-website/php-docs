@@ -1,13 +1,13 @@
 ---
-title: PHP Guzzle
+title: PHP Guzzle -- HTTP 客户端库
 date: 2018-03-25 13:00:00
 updated:
 comments: true
 tags:
 - PHP
-- Guzzle
 categories:
 - PHP
+- Library
 ---
 
 Guzzle 是 PHP HTTP 客户端库。

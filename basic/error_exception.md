@@ -38,17 +38,31 @@ error_log = /var/log/php-fpm/php/error.log
 
 ### 脚本中设置
 
+* http://php.net/manual/en/errorfunc.constants.php
+
 ```php
-ini_set("display_errors",0);
+ini_set("display_errors",'On');
 
-ini_set("error_reporting",E_ALL);
+ini_set("error_reporting" ,'32767'); # php5.3 30719 php5.2 6143 previousliy 2047
 
-ini_set("error_log","日志文件路径");
+ini_set("error_log", "日志文件路径");
 
-ini_set("log_errors",1);
+ini_set("log_errors", 'on');
 ```
 
-# 错误
+### 错误报告级别
+
+* http://php.net/manual/en/class.throwable.php
+
+* E_[ALL | ERROR | WARNING | PARSE | NOTICE | STRICT | RECOVERABLE_ERROR | E_DEPRECATED | ]
+
+* E_CORE_[ERROR | WARNING]
+
+* E_COMPILE_[ERROR | WARNING]
+
+* E_USER_[ERROR | WARNING | NOTICE | DEPRECATED]
+
+# 错误与异常捕获
 
 可以像捕获异常那样来捕获错误。
 
@@ -59,18 +73,35 @@ try {
   echo $e->getMessage(); // Class 'A' not found
 }
 
+try {
+  throw new Exception('发生异常');
+} catch (\Exception $e) {
+  echo $e->getMessage();
+  // 发生异常
+}
+
 /*
 * 一个 catch 使用管道（|）捕获多个错误或异常。
 *
 * @since 7.1
 */
 
-...
-try{}catch (MyException | MyOtherException $e){}
-...
+
+try{
+
+}catch (MyException | MyOtherException $e){
+
+}
+
 ```
 
 ## 错误与异常种类
+
+* https://segmentfault.com/a/1190000004219265#articleHeader0
+
+* https://github.com/khs1994-php/error
+
+`Error` 和 `Exception` 都实现了 `Throwable` 接口。
 
 * `ArithmeticError` 算术运算错误
 
@@ -84,31 +115,6 @@ try{}catch (MyException | MyOtherException $e){}
 
     * `ArgumentCountError` 参数错误，函数传入参数个数少于函数参数。
 
-## 参考链接
-
-* https://segmentfault.com/a/1190000004219265#articleHeader0
-
-# 异常
-
-```php
-try {
-  throw new Exception('发生异常');
-} catch (\Exception $e) {
-  echo $e->getMessage();
-  // 发生异常
-}
-```
-
-# 版本对比
-
-* https://github.com/khs1994-php/error
-
-# 解读
-
-`Error` 和 `Exception` 都实现了 `Throwable` 接口。
-
-官方文档：http://php.net/manual/en/class.throwable.php （暂无中文翻译）
-
 # 自定义异常类和错误类
 
-示例：https://github.com/khs1994-php/qq-login/blob/master/src/QQLogin/Error/QQError.php
+* https://github.com/khs1994-php/qq-login/blob/master/src/QQLogin/Error/QQError.php

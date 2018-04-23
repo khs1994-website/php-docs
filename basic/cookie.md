@@ -26,7 +26,7 @@ setcookie($name [, $value, $expires, $path, $domain, $secure, $httponly])
 
 `$secure` 只能通过 https 传输
 
-`$httponly` 只使用 HTTP 访问 `Cookie`，如果设置为 `true`，客户端 `JS` 无法操作这个 `Cookie`
+`$httponly` 只使用 HTTP 访问 `Cookie`，如果设置为 `true`，客户端 `JS` 无法操作、无法读取这个 `Cookie`
 
 ```php
 
