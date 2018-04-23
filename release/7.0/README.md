@@ -22,7 +22,9 @@ GitHub：https://github.com/php/php-src/releases/tag/php-7.0.0
 
 函数参数、返回值
 
-# null 合并运算符
+`string` `int` `float` `bool` + `类名` `接口` `数组` `回调类型`
+
+# null 合并运算符 `??`
 
 如果变量存在且值不为 `NULL`， 它就会返回自身的值，否则返回它的第二个操作数。
 
@@ -53,3 +55,5 @@ use some\namespace\{
       ClassC as C
     };
 ```
+
+# 匿名类

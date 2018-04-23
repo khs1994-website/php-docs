@@ -18,6 +18,12 @@ categories:
 
 <!--more-->
 
+# 必须启用严格模式
+
+```php
+declare(strict_types=1);
+```
+
 # 编码规范
 
 关键字必须小写 `true`, `false`, `null`。
