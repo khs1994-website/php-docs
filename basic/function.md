@@ -18,6 +18,8 @@ PHP 函数简介。
 
 * `sys_get_temp_dir()` 返回用于临时文件的目录
 
+* `htmlspecialchars()` 将特殊字符转换为 HTML 实体
+
 # 匿名函数
 
 ```php

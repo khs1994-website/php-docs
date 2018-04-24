@@ -5,7 +5,6 @@ updated:
 comments: true
 tags:
 - PHP
-- php-pm
 categories:
 - PHP
 - Project

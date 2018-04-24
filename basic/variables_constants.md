@@ -18,13 +18,22 @@ categories:
 
 <!--more-->
 
+# 静态变量
+
+静态变量仅在局部函数域中存在，但当程序执行离开此作用域时，其值并不丢失。
+
+```php
+function test()
+{
+    static $a = 0;
+    echo $a;
+    $a++;
+}
+```
+
 # `global` 关键字
 
 # `$GLOBALS` 数组
-
-# 静态变量
-
-函数中的静态变量，函数执行完毕后，其值被保留。
 
 # 可变变量
 
@@ -36,29 +45,31 @@ $$a='world'; // 即 $hello='world';
 
 # 超全局变量
 
-`$GLOBALS`
+* `$GLOBALS`
 
-`$_SERVER` 服务器和执行环境信息
+* `$_SERVER` 服务器和执行环境信息
 
-`$_POST`
+* `$_POST` `$_GET`
 
-`$_GET`
+* `$_REQUEST`
 
-`$_REQUEST`
+* `$_FILES`
 
-`$_FILES`
+* `$_SESSION` `$_COOKIE`
 
-`$_SESSION`
+* `$_ENV` 环境变量
 
-`$_COOKIE`
+# 其他预定义变量
 
-`$_ENV` 环境变量
+* `$http_response_header` HTTP 相应头
+
+* `argc` 传递给脚本的参数 **数目**
+
+* `argv` 传递给脚本的参数数组
 
 # 常量
 
-常量的范围是全局的。
-
-常量一旦定义就不能被重新定义或者取消定义。
+常量的范围是全局的，常量一旦定义就不能被重新定义或者取消定义。
 
 常量的值只能是标量。
 
@@ -66,20 +77,22 @@ $$a='world'; // 即 $hello='world';
 
 ```php
 define('FOO', 'bar');
-```
 
-```php
 const FOO = 'bar';
 ```
 
-`const` 不能用在函数内、循环内、if 语句之内。
+`const` 不能用在函数、循环、if 语句之内。
 
 ## 获取常量
 
-使用 `constant()` 来获取常量值。
+* `constant()` 获取常量值。
 
-使用 `get_define_constants()` 获得所有已定义的常量。
+* `get_define_constants()` 获得所有已定义的常量。
 
 ## 魔术常量
 
-`__LINE__` `__FILE__` 等
+* http://php.net/manual/zh/reserved.constants.php
+
+`__LINE__`
+
+`__FILE__` `__DIR__`
