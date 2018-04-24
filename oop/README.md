@@ -49,7 +49,7 @@ class A
 }
 ```
 
-# 静态 `static`
+# 静态 `static` 关键字
 
 * 静态方法
 
@@ -81,7 +81,7 @@ spl_autoload_register(function ($class_name) {
 
 析构函数即使在使用 `exit()` 终止脚本运行时也会被调用。在析构函数中调用 `exit()` 将会中止其余关闭操作的运行。
 
-## 重载
+## 重载 动态地 `创建` 类属性和方法
 
 * `__call()`
 
@@ -114,7 +114,7 @@ spl_autoload_register(function ($class_name) {
 
 # 多态
 
-# 对象继承
+# 对象继承 `extends`
 
 一个类可以在声明中用 `extends` 关键字继承另一个类的方法和属性。
 
@@ -142,9 +142,7 @@ spl_autoload_register(function ($class_name) {
 
 接口中的方法必须公有。
 
-## 实现接口
-
-`implements`
+## 实现接口 `implements`
 
 实现接口的类必须实现接口中定义的 **所有的** 方法。
 
@@ -176,15 +174,45 @@ class MyClass {
 
 略
 
-# 后期静态绑定
-
-`static::`
+# 后期静态绑定 `static::`
 
 `static::` 不再被解析为定义当前方法所在的类，而是在实际运行时计算的。也可以称之为 "静态绑定"，因为它可以用于（但不限于）静态方法的调用。
 
 # 对象和引用
 
 # 对象序列化
+
+```php
+// classa.inc:
+
+class A {
+    public $one = 1;
+
+    public function show_one() {
+          echo $this->one;
+    }
+}
+
+// page1.php:
+
+include("classa.inc");
+
+$a = new A;
+$s = serialize($a);
+// 把变量$s保存起来以便文件page2.php能够读到
+file_put_contents('store', $s);
+
+// page2.php:
+
+// 要正确了解序列化，必须包含下面一个文件
+include("classa.inc");
+
+$s = file_get_contents('store');
+$a = unserialize($s);
+
+// 现在可以使用对象$a里面的函数 show_one()
+$a->show_one();
+```
 
 # 对象复制 `__clone() 魔术方法`
 
@@ -207,3 +235,14 @@ $abc = clone $ab;
 # PHP 7 新特性
 
 ## 匿名类
+
+```php
+$a = (new class {
+    public function log($msg)
+    {
+        echo $msg;
+    }
+});
+
+$a->log('hello');
+```

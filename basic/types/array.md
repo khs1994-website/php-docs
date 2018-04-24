@@ -15,29 +15,23 @@ categories:
 
 <!--more-->
 
-# 数组长度
+# 常用函数
 
-```php
-int count(mixed $var [, int $mode = COUNT_NORMAL]);
-```
+* `count(mixed $var [, int $mode = COUNT_NORMAL])` 数组长度，也可以返回对象的属性个数
 
-此函数也可以返回对象的属性个数。
+* `list($a,$b,$c)=[1,2,3]` 把数组中的值赋给一组变量
+
+* `array_filter($arg [, $callback, $use_keys])` 去掉数组中的空值
+
+* `array_merge($arr1, $arrays...);`
 
 # 字符串与数组转化
 
-## 一维数组转化为字符串
-
-```php
-string implode( string $glue, array $array);
-```
+* `string implode( string $glue, array $array)` 一维数组转化为字符串
 
 返回一个字符串，由 `$glue`（默认为空） 分隔开的数组的值。
 
-## 分隔字符串，返回数组
-
-```php
-array explode( string $delimiter , string $string [, int $limit]);
-```
+* `array explode( string $delimiter , string $string [, int $limit])` 分隔字符串，返回数组
 
 使用特定的分隔符 (`$delimiter`) 分隔字符串 (`$string`)，返回一个数组。
 
@@ -66,18 +60,6 @@ bool in_array(23, $name['desc']);
 // 搜索值，返回键名
 
 var_dump(array_search(34,$name['desc']));
-```
-
-# 去掉数组中的空值
-
-```php
-array_filter($arg [, $callback, $use_keys]);
-```
-
-# 合并多个数组
-
-```php
-array_merge($arr1, $arrays...);
 ```
 
 # 排序

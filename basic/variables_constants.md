@@ -63,9 +63,9 @@ $$a='world'; // 即 $hello='world';
 
 * `$http_response_header` HTTP 相应头
 
-* `argc` 传递给脚本的参数 **数目**
+* `$argc` 传递给脚本的参数 **数目**
 
-* `argv` 传递给脚本的参数数组
+* `$argv` 传递给脚本的参数数组
 
 # 常量
 
