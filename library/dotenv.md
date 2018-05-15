@@ -13,3 +13,15 @@ categories:
 GitHub：https://github.com/vlucas/phpdotenv
 
 <!--more-->
+
+```bash
+$ composer require vlucas/phpdotenv
+```
+
+```php
+$dotenv = new Dotenv\Dotenv(__DIR__);
+
+# $dotenv = new Dotenv\Dotenv(__DIR__, 'my_env_file_name');
+
+$dotenv->load();
+```

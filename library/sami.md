@@ -13,3 +13,15 @@ categories:
 GitHub：https://github.com/khs1994-docker/php-demo/blob/master/.sami.php
 
 <!--more-->
+
+```bash
+$ curl -L http://get.sensiolabs.org/sami.phar -o sami
+
+# mv to path
+```
+
+Edit `.sami.php`
+
+```bash
+$ sami update
+```

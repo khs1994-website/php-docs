@@ -93,7 +93,7 @@ $stmt->fetch(); // 默认返回关联 + 索引数组，得到结果集中一条�
 
 // 可以在 fetch 时设置返回形式，只返回关联数组，失败返回 false
 
-$stmt->fetchAll(PDO::FETCH_ASSOC);
+$stmt->fetchAll(PDO::FETCH_ASSOC); //  PDO::FETCH_NUM PDO::FETCH_BOTH
 
 // 也可以先设置返回形式，再 fetch。和上一种方法二选一
 
@@ -110,6 +110,8 @@ $stmt->fetchAll(); // 二维数组，返回所有数据，失败返回 false
 $pdo->getAttribute($attribute);
 
 $pdo->setAttribute($attribute, $value);
+
+// PDO::ATTR_ERRMODE PDO::ERRMODE_EXCEPTION | ERRMODE_SILENT(default) | ERRMODE_WARNING
 ```
 
 # `quote()`

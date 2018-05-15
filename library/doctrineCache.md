@@ -15,3 +15,13 @@ GitHub：https://github.com/doctrine/cache
 官方文档：http://doctrine-orm.readthedocs.io/projects/doctrine-orm/en/latest/reference/caching.html
 
 <!--more-->
+
+```bash
+$ composer require "doctrine/cache"
+```
+
+```php
+$cache = new FilesystemCache(sys_get_temp_dir());
+
+$cache->save('k', 'v', $expire_time);
+```
