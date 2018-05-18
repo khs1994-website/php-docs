@@ -21,3 +21,15 @@ Guzzle 是 PHP HTTP 客户端库。
 ```bash
 $ composer require guzzlehttp/guzzle
 ```
+
+```php
+$client = new \GuzzleHttp\Client();
+
+$res = $client->request('GET', 'http://baidu.com');
+
+$res->getStatusCode();
+
+$res->getHeaderLine('content-type');
+
+$res->getBody();
+```

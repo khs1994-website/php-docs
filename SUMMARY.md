@@ -1,6 +1,6 @@
 # Summary
 
-* [khs1994.com PHP技术文档](README.md)
+* [README](README.md)
 * [CI/CD](ci/readme.md)
 * [基础](basic/README.md)
     * [类型](basic/types/README.md)
