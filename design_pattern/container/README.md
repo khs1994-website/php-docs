@@ -15,6 +15,8 @@ categories:
 
 * DI `依赖注入`
 
+* https://github.com/khs1994-php/php_di
+
 <!--more-->
 
 ```php
@@ -74,7 +76,40 @@ $writer=new Writer($container);
 
 # 依赖注入
 
+依赖注入是通过类的构造函数、方法、或者直接写入的方式，将所依赖的组件传递给类的方式。
+
+```php
+class User
+{
+  function __construct($storage)
+  {
+    $this->storage = $storage;
+  }
+}
+```
+
+```php
+class User
+{
+  function setSessionStorage($storage)
+  {
+    $this->storage = $storage;
+  }
+}
+```
+
+```php
+class User
+{
+  public $sessionStorage;
+}
+
+$user->sessionStorage = $storage;
+```
+
 只要不是由内部生产（比如初始化、构造函数中通过工厂方法、自行手动 new 的），而是由外部以参数或其他形式注入的，都属于 `依赖注入（DI）`。
+
+根据经验，一般通过构造函数注入的是强依赖关系的组件，setter 方式用来注入可选的依赖组件。
 
 # 反转
 

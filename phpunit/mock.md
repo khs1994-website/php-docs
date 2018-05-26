@@ -13,6 +13,8 @@ categories:
 
 本文介绍了 PHPUnit Mock 测试。
 
+请注意，final、private 和 static 方法无法对其进行上桩 (stub) 或模仿 (mock).
+
 <!--more-->
 
 假设 `foo` 函数调用了 `bar` 函数，那么在对 `foo` 函数进行单元测试会有两个问题：
@@ -25,12 +27,14 @@ Mock 测试就是为了解决上面的问题而出现的，使用 Mock 我们可
 
 ```php
 class MockTest extends \PHPUnit\Framework\TestCase {
-	public function testGet()
-	{  
-		$stub = $this->createMock(\App\UserService::class);     //1
-		$stub->method('get')->willReturn(3); 					//2
-		$this->assertEquals(3,$stub->get(1));  					//3
-	}
+    public function testGet()
+	  {  
+		    $stub = $this->createMock(\App\UserService::class);     //1
+
+        $stub->method('get')->willReturn(3); 				          	//2
+
+        $this->assertEquals(3,$stub->get(1));  					        //3
+	  }
 }
 ```
 

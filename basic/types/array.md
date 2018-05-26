@@ -19,7 +19,7 @@ categories:
 
 * `count(mixed $var [, int $mode = COUNT_NORMAL])` 数组长度，也可以返回对象的属性个数
 
-* `list($a,$b,$c)=[1,2,3]` 把数组中的值赋给一组变量
+* `list($a, $b, $c) = [1, 2, 3]` `list('a' => $a) = ['a' => 1]` 把数组中的值赋给一组变量
 
 * `array_filter($arg [, $callback, $use_keys])` 去掉数组中的空值
 
