@@ -46,7 +46,7 @@ $ yum install -y gcc gcc-c++ pcre-devel openssl-devel zlib-devel
 Debian 系
 
 ```bash
-$ sudo apt install libpcre3 libpcre3-dev libssl-dev zlib1g-dev zlib1g
+$ sudo apt install gcc g++ libpcre3 libpcre3-dev libssl-dev zlib1g-dev zlib1g
 ```
 
 # 编译
@@ -91,6 +91,8 @@ checking for C compiler ... not found
 
 ```bash
 $ yum install -y gcc gcc-c++
+
+$ sudo apt install gcc g++
 ```
 
 ## 错误2
@@ -99,6 +101,7 @@ $ yum install -y gcc gcc-c++
 
 ```bash
 $ yum install pcre-devel
+
 $ sudo apt install libpcre3 libpcre3-dev
 ```
 
@@ -108,6 +111,7 @@ $ sudo apt install libpcre3 libpcre3-dev
 
 ```bash
 $ yum install openssl-devel
+
 $ sudo apt install libssl-dev
 ```
 
@@ -117,6 +121,7 @@ $ sudo apt install libssl-dev
 
 ```bash
 $ yum install zlib-devel
+
 $ sudo apt install zlib1g-dev zlib1g
 ```
 

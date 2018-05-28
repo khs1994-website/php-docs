@@ -38,6 +38,10 @@ http {
 }
 ```
 
+# 内置变量
+
+* https://github.com/khs1994-docker/lnmp/issues/447
+
 # 命令
 
 ```bash

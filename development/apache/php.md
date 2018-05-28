@@ -34,7 +34,8 @@ LoadModule proxy_fcgi_module modules/mod_proxy_fcgi.so
 
 # PHP 文件只使用 .php 后缀，避免使用其他后缀！文件伪装除外
 
-AddType application/x-httpd-php  .php
+AddType application/x-httpd-php          .php
+AddType application/x-httpd-php-source   .phps
 ```
 
 ## Apache 配置
@@ -70,5 +71,6 @@ PHP7 编译安装时加上参数 `--with-apxs2=/usr/local/apache2/bin/apxs`
 ```apacheconf
 LoadModule php7_module        modules/libphp7.so
 
-AddType application/x-httpd-php .php
+AddType application/x-httpd-php          .php
+AddType application/x-httpd-php-source   .phps
 ```

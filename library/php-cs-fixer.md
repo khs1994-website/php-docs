@@ -5,7 +5,6 @@ updated:
 comments: true
 tags:
 - PHP
-- PHP-CS-Fixer
 categories:
 - PHP
 - Project
@@ -14,3 +13,17 @@ categories:
 GitHub：https://github.com/khs1994-docker/php-demo/blob/master/.php_cs
 
 <!--more-->
+
+```bash
+$ curl -L https://cs.sensiolabs.org/download/php-cs-fixer-v2.phar -o php-cs-fixer
+
+$ sudo mv php-cs-fixer /usr/local/bin
+
+$ sudo chmod +x /usr/local/bin/php-cs-fixer
+```
+
+Edit `.php_cs`
+
+```bash
+$ php-cs-fixer fix
+```

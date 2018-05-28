@@ -17,3 +17,19 @@ Guzzle 是 PHP HTTP 客户端库。
 中文文档：http://guzzle-cn.readthedocs.io/zh_CN/latest/overview.html
 
 <!--more-->
+
+```bash
+$ composer require guzzlehttp/guzzle
+```
+
+```php
+$client = new \GuzzleHttp\Client();
+
+$res = $client->request('GET', 'http://baidu.com');
+
+$res->getStatusCode();
+
+$res->getHeaderLine('content-type');
+
+$res->getBody();
+```

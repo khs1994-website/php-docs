@@ -25,6 +25,34 @@ mixed str_replace( mixed $search, mixed $replace , mixed $subject [, int &$count
 
 上述函数区分大小写，`str_ireplace()` 不区分大小写。
 
+# 特殊字符相关函数
+
+## 增加反斜线
+
+以 C 语言风格使用反斜线转义字符串中的字符
+
+```php
+string addcslashes ( string $str , string $charlist )
+```
+
+使用反斜线引用字符串 单引号（'）、双引号（"）、反斜线（\）与 NUL
+
+```php
+string addslashes ( string $str )
+```
+
+## 去掉反斜线
+
+```php
+string stripcslashes ( string $str )
+```
+
+`\'` 转换为 `'` 等等
+
+```php
+string stripslashes ( string $str )
+```
+
 # 单引号
 
 想要输出 `\`，须输入 `echo '\\'`。

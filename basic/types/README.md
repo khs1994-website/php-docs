@@ -39,19 +39,13 @@ PHP 支持三大类 8 种数据类型。
 
 * `NULL`
 
-# 伪类型
-
-* 混合类型 `mixed`
-
-* 数字类型 `number`
+# 其他类型
 
 * 回调类型 `callback`
 
-* array | object
-
-* `void`
-
 * 伪变量 `...$var`
+
+* 函数返回值为空 `void`
 
 # 相关函数
 
@@ -59,7 +53,7 @@ PHP 支持三大类 8 种数据类型。
 
 * `gettype()` 获得类型
 
-* `is_type` 函数，例如 `is_int` `is_string` 返回布尔类型
+* `is_type` 函数，例如 `is_int()` `is_string()` 返回布尔类型
 
 * 类型转换，强制转换或 `settype()` 函数
 
