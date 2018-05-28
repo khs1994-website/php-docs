@@ -18,29 +18,46 @@ categories:
 
 <!--more-->
 
+# HTML 上传文件
+
+```html
+<form action="url" method="post" enctype="multipart/form-data">
+  <input type="file" name="name" id='file' />
+  <input type="submit" />
+</form>
+```
+
+PHP 会将文件存到临时文件中，脚本结束就会销毁，所以必须存到另外的位置。
+
+```php
+$file = $_FILE('file');
+
+// 文件名
+$file['name'];
+
+// 类型
+$file['type'];
+
+// 临时文件名
+$file['tmp_name'];
+
+// error
+$file['error'];
+
+// size
+$file['size'];
+
+// 保存文件
+move_uploaded_file($_FILES['file']['tmp_name'], '/path/filename');
+```
+
 # 获取路径
 
-* 执行命令所在路径
+* 执行命令所在路径 `getcwd()`
 
-  ```php
-  getcwd()
-  ```
+* 文件所在路径 `__FILE__`
 
-* 文件所在路径
-
-  ```php
-  __FILE__
-  ```
-
-* 文件所在目录路径
-
-  ```php
-  __DIR__
-  ```
-
-  ```php
-  dirname(__FILE__)
-  ```
+* 文件所在目录路径 `__DIR__ `dirname(__FILE__)`
 
 # 目录相关函数
 
@@ -82,6 +99,28 @@ array scandir ( string $directory [, int $sorting_order [, resource $context ]] 
 
 返回包含文件和目录的数组。
 
+# SPL
+
+## `SplFileInfo`
+
+```php
+$file = SplFileInfo('file');
+
+$file->getExtension();
+
+$file->getRealPath();
+```
+
+## `SplFileObject`
+
+```php
+$file = new SplFileObject($file_name [, $open_mode, $use_include_path, $context])
+
+$file->eof();
+
+$file->fgets();
+```
+
 # 文件操作相关函数
 
 * 更改权限
@@ -99,8 +138,6 @@ array scandir ( string $directory [, int $sorting_order [, resource $context ]] 
 * 判断
 
   `is_dir()` `is_file()` `is_executable()` `is_link()`
-
-# HTML 上传文件
 
 # 读写文件
 
