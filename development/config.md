@@ -15,7 +15,9 @@ categories:
 
 <!--more-->
 
-# PHP-FPM 后台执行
+# PHP-FPM
+
+## PHP-FPM 后台执行
 
 ```bash
 daemonize = yes
@@ -25,6 +27,36 @@ daemonize = yes
 
 ```bash
 $ sudo php-fpm -D | -F
+```
+
+## 进程数量管理方式
+
+```bash
+pm = dynamic | static | ondemand
+
+; static 静态，固定数量 ( pm.max_children )的子进程
+
+; dynamic 动态 最大数量、启动时数量 ( pm.start_servers )、空闲状态下的最小、最大进程数量 (pm.min_spare_servers)
+
+; ondemand 当有连接时启动进程，闲置 pm.process_idle_timeout 秒后杀掉进程。
+```
+
+队列长度
+
+```bash
+listen.backlog
+```
+
+最大请求数优化，指一个 php-fpm 的工作进程在处理多少个请求后就终止掉
+
+```bash
+pm.max_requests
+```
+
+最长执行时间
+
+```bash
+request_terminate_timeout
 ```
 
 # `php.ini`

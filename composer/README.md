@@ -15,6 +15,8 @@ GitHub：https://github.com/composer/composer
 
 官方网站：https://getcomposer.org/
 
+* http://docs.phpcomposer.com/04-schema.html#Root-Package
+
 <!--more-->
 
 # 版本表示方法
@@ -24,6 +26,56 @@ https://cuiqingcai.com/3494.html
 * `~` `~1.2` 相当于 `>=1.2 <2.0.0` 而 `~1.2.3` 相当于 `>=1.2.3 <1.3.0`
 
 * `^` `^1.2.3` 相当于 `>=1.2.3 <2.0.0` 1.0 以下较特殊 `^0.3` 会被当作 `>=0.3.0 <0.4.0`
+
+# 稳定性标志
+
+* `dev`、`alpha`、`beta`、`RC`、`stable`
+
+# 从 VCS 加载包
+
+```json
+{
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "http://packages.example.com"
+        },
+        {
+            "type": "composer",
+            "url": "https://packages.example.com",
+            "options": {
+                "ssl": {
+                    "verify_peer": "true"
+                }
+            }
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/Seldaek/monolog"
+        },
+        {
+            "type": "pear",
+            "url": "http://pear2.php.net"
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "smarty/smarty",
+                "version": "3.1.7",
+                "dist": {
+                    "url": "http://www.smarty.net/files/Smarty-3.1.7.zip",
+                    "type": "zip"
+                },
+                "source": {
+                    "url": "http://smarty-php.googlecode.com/svn/",
+                    "type": "svn",
+                    "reference": "tags/Smarty_3_1_7/distribution/"
+                }
+            }
+        }
+    ]
+}
+```
 
 # 安装
 
