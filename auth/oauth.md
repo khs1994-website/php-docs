@@ -5,10 +5,9 @@ updated:
 comments: true
 tags:
 - PHP
-- OAuth2
 categories:
 - PHP
-- OAuth2
+- Auth
 ---
 
 开放式授权。
@@ -57,6 +56,6 @@ categories:
 
 # 获取信息
 
-网站可以使用 `AccessToken` 从 QQ 获取用户的信息信息。
+网站可以使用 `AccessToken` 从 QQ 获取用户的信息。
 
 `RefreshToken` 刷新 `AccessToken`

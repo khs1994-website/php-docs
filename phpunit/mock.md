@@ -29,11 +29,11 @@ Mock 测试就是为了解决上面的问题而出现的，使用 Mock 我们可
 class MockTest extends \PHPUnit\Framework\TestCase {
     public function testGet()
 	  {  
-		    $stub = $this->createMock(\App\UserService::class);     //1
+		    $stub = $this->createMock(\App\UserService::class);
 
-        $stub->method('get')->willReturn(3); 				          	//2
+        $stub->method('get')->willReturn(3);
 
-        $this->assertEquals(3,$stub->get(1));  					        //3
+        $this->assertEquals(3,$stub->get(1));
 	  }
 }
 ```

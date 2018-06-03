@@ -11,6 +11,6 @@ categories:
 - NGINX
 ---
 
-GitHub:https://github.com/khs1994-docker/lnmp/tree/master/wsl#try-nginx-unit
+GitHub：https://github.com/khs1994-docker/lnmp/tree/master/wsl#try-nginx-unit
 
 <!--more-->
