@@ -25,7 +25,8 @@
     * [GD](basic/gd/README.md)
     * [输出控制](basic/outcontrol.md)
     * [SSE](basic/sse.md)
-    * [WebSocket](basic/websocket.md)  
+    * [WebSocket](basic/websocket.md)
+    * [pcntl_*](basic/pcntl.md)
 * [OOP](oop/README.md)
     * [多继承 trait](oop/trait.md)
     * [抽象类](oop/abstract.md)
@@ -47,6 +48,7 @@
 * [Auth](auth/README.md)
     * [OAuth2](auth/oauth.md)
     * [JWT](auth/jwt.md)
+    * [加密函数](auth/encrypt.md)
 * [HTTP](http/README.md)
 * [Laravel](laravel/README.md)
     * [PhpStorm 配置](laravel/ide.md)
@@ -68,6 +70,7 @@
     * [Pimple](library/pimple.md)
     * [Dotenv](library/dotenv.md)
     * [Doctrine Cache](library/doctrineCache.md)
+    * [PHPMailer](library/phpmailer.md)
     * [php-pm](library/php-pm.md)
     * [PHP-CS-Fixer](library/php-cs-fixer.md)
     * [Sami](library/sami.md)
@@ -93,7 +96,10 @@
         * [NGINX 配置陷阱和常见错误](development/nginx/error-config.md)
         * [NGINX HTTPS](development/nginx/https.md)
         * [Let's Encrypt SSL 证书](development/nginx/lets-encrypt.md)   
-        * [Unit](development/nginx/unit.md)    
+        * [Unit](development/nginx/unit.md)
+
+## 版本变更
+
 * 版本变更
     * [7.0](release/7.0/README.md)
     * [7.1](release/7.1/README.md)

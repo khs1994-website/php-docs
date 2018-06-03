@@ -1,5 +1,5 @@
 ---
-title: PHP JSON XML 相关函数
+title: PHP JSON XML YAML 相关函数
 date: 2016-10-15 13:00:00
 updated:
 comments: true
@@ -10,7 +10,7 @@ categories:
 - Basic
 ---
 
-本文介绍了 JSON 与 XML 相关函数。
+本文介绍了 `JSON` `XML` `YAML` 相关函数。
 
 <!--more-->
 
@@ -37,3 +37,9 @@ json_decode($json [, $assoc, $depth, $options]);
 ```
 
 # XML
+
+# YAML
+
+yaml 转数组 `yaml_parse()`
+
+数组转 yaml `yaml_emil()`
