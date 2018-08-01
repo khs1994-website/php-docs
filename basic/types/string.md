@@ -66,7 +66,7 @@ string stripslashes ( string $str )
 ```php
 echo "$a";
 
-echo "{$a}b" // 与 bash 不同
+echo "{$a}b"; echo "${a}b"
 
 echo "\$a"; // 使用反斜杠转义
 

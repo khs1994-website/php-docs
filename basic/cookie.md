@@ -12,6 +12,8 @@ categories:
 
 `Cookie` 保存在客户端，分为 `内存 Cookie` 和 `硬盘 Cookie`。
 
+* http://php.net/manual/zh/function.setcookie.php
+
 <!--more-->
 
 # 设置 Cookie
@@ -19,6 +21,8 @@ categories:
 ```php
 setcookie($name [, $value, $expires, $path, $domain, $secure, $httponly])
 ```
+
+`$expires` 时间戳
 
 `$path` 有效路径，默认是当前目录及其子目录
 

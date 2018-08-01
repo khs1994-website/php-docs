@@ -12,9 +12,9 @@ categories:
 
 本文介绍了 PHP 变量与常量。
 
-官方文档：http://php.net/manual/zh/language.variables.php
+* http://php.net/manual/zh/language.variables.php
 
-官方文档：http://php.net/manual/zh/language.constants.php
+* http://php.net/manual/zh/language.constants.php
 
 <!--more-->
 
@@ -49,9 +49,7 @@ $$a='world'; // 即 $hello='world';
 
 * `$_SERVER` 服务器和执行环境信息
 
-* `$_POST` `$_GET`
-
-* `$_REQUEST`
+* `$_POST` `$_GET` `$_REQUEST`
 
 * `$_FILES`
 

@@ -16,9 +16,13 @@ categories:
 
 官方文档：https://www.nginx.com/resources/wiki/start/topics/examples/full/
 
-GitHub：https://github.com/khs1994-website/https
+HTTPS https://github.com/khs1994-website/https
 
 <!--more-->
+
+* 内置变量 https://github.com/khs1994-docker/lnmp/issues/447
+
+* 中文文档 https://github.com/oopsguy/nginx-docs)
 
 修改主配置文件 `/etc/nginx/nginx.conf`
 
@@ -154,5 +158,3 @@ server {
 * http://blog.csdn.net/benbendy1984/article/details/6025663
 
 * http://nginx.org/en/docs/http/ngx_http_autoindex_module.html
-
-* [Nginx 中文文档](https://github.com/oopsguy/nginx-docs)

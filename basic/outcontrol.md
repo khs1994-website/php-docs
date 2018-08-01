@@ -12,6 +12,8 @@ categories:
 
 本文介绍 PHP `ob_*` 系列函数。
 
+* http://php.net/manual/zh/ref.outcontrol.php
+
 <!--more-->
 
 `ob_flush()` 是刷新 PHP 自身的缓冲区

@@ -53,7 +53,7 @@ $example();
 
 ## 参数
 
-匿名函数类型 `closure`。
+匿名函数类型 `Closure`。
 
 ## 返回值
 

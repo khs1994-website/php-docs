@@ -8,6 +8,7 @@ tags:
 - Laravel
 categories:
 - PHP
+- Framework
 - Laravel
 ---
 

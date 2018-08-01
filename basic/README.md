@@ -16,6 +16,8 @@ categories:
 
 * GitHub https://github.com/php-fig
 
+* https://laravel-china.org/docs/psr
+
 <!--more-->
 
 # 必须启用严格模式

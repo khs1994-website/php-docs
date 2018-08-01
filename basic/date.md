@@ -12,6 +12,8 @@ categories:
 
 # 设置时区
 
+* http://php.net/manual/zh/function.date.php
+
 ```php
 date_default_timezone_get();
 

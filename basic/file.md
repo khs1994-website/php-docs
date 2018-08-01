@@ -12,9 +12,9 @@ categories:
 
 本文介绍了 PHP 文件的相关函数。本文只是部分列举，详情请查看官方文档。
 
-官方文档：http://php.net/manual/zh/book.dir.php
+* http://php.net/manual/zh/book.dir.php
 
-官方文档：http://php.net/manual/zh/book.filesystem.php
+* http://php.net/manual/zh/book.filesystem.php
 
 <!--more-->
 
@@ -30,7 +30,7 @@ categories:
 PHP 会将文件存到临时文件中，脚本结束就会销毁，所以必须存到另外的位置。
 
 ```php
-$file = $_FILE('file');
+$file = $_FILE['file'];
 
 // 文件名
 $file['name'];

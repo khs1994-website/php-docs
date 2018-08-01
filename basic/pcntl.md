@@ -12,6 +12,8 @@ categories:
 
 `pcntl_*` 系列函数介绍。
 
+* http://php.net/manual/zh/ref.pcntl.php
+
 <!--more-->
 
 `$pid = pcntl_fork()` 之后，当前进程和 `fork` 出来的子进程同时执行。

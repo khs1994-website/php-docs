@@ -12,6 +12,8 @@ categories:
 
 `Session` 保存在服务端。保存在超全局变量 `$_SESSION`。
 
+* http://php.net/manual/zh/book.session.php
+
 <!--more-->
 
 Session 文件驱动注意 `阻塞` 问题。

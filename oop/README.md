@@ -111,7 +111,6 @@ spl_autoload_register(function ($class_name) {
 
 * `__debugInfo()` 对对象使用 `var_dump()` 时，该方法被调用。例如 `var_dump(new MyClass(42));`
 
-
 # 多态
 
 # 对象继承 `extends`

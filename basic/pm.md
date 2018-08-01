@@ -12,6 +12,8 @@ categories:
 
 PHP 流程控制简介。
 
+* http://php.net/manual/zh/language.control-structures.php
+
 <!--more-->
 
 ```php

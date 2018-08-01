@@ -12,9 +12,9 @@ categories:
 
 PHP 7 可以通过 `try_catch` 来捕获错误 `Error` 和异常 `Exception`。
 
-官方文档：http://php.net/manual/en/class.exception.php
+* http://php.net/manual/en/class.exception.php
 
-官方文档：http://php.net/manual/en/class.throwable.php
+* http://php.net/manual/en/class.throwable.php
 
 <!--more-->
 

@@ -8,6 +8,7 @@ tags:
 - Laravel
 categories:
 - PHP
+- Framework
 - Laravel
 ---
 
@@ -19,9 +20,7 @@ categories:
 
 ```bash
 $ php artisan config:cache   # 配置缓存
-
 $ php artisan route:cache    # 路由缓存
-
 $ php artisan down | up      # 启用或关闭维护模式
 ```
 
@@ -234,4 +233,88 @@ Log::warning($message);
 Log::notice($message);
 Log::info($message);
 Log::debug($message);
+```
+
+# 文件
+
+```php
+$request->file('photo'); // ->photo; 也可以直接通过文件名调用
+        ->hasFile('photo'); // 请求是否包含某文件
+        ->isValid(); // 验证文件是否有效
+        ->path();      // 文件路径
+        ->extension(); // 文件扩展名
+        ->store('images'); // 目录名，文件名会自动生成
+        ->storeAs('images', 'filename.jpg'); // 指定目录及文件名
+```
+
+# Session
+
+```php
+Illuminate\Http\Request 实例
+
+->session()->get(); // 获取
+
+           ->put(); // 新增
+
+           ->forget(); // 删除
+
+           ->flush(); // 清空
+
+           ->pull(); // 取值之后删除
+
+           ->flash(); // 闪存
+
+// 辅助函数
+
+session();
+
+// 辅助函数新增值
+
+session(['key'=>1])
+```
+
+# Cookie
+
+```php
+Illuminate\Http\Request 实例
+
+->cookie('key'); // 获取 cookie
+
+// 辅助函数设置 cookie，生成的是 cookie 实例，之后附加到响应。
+
+$a=cookie(); // 与 PHP 原生 setcookie() 参数一致
+
+return response()->cookie($a);
+
+// 响应时设置 cookie
+
+return response()->cookie(
+  'name', 1 , 100
+);
+```
+
+# 文件系统
+
+建立链接 `storage/app/public` -> `public/storage`
+
+```bash
+$ php artisan storage:link
+```
+
+```php
+Storage::disk('local')->
+
+// 默认路径为 storage/app
+
+Srorage::put('public/1.txt', 1); // 写入文件
+
+       ::get('public/1.txt');
+
+       ::exists('public/1.txt');
+
+       ::url('public/1.txt');
+
+// 生成文件访问链接
+
+asset('storage/1.txt');       
 ```

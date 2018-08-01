@@ -9,6 +9,7 @@ tags:
 - MySQL
 categories:
 - PHP
+- Framework
 - Laravel
 ---
 

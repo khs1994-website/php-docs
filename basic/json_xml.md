@@ -16,6 +16,8 @@ categories:
 
 # JSON
 
+* http://php.net/manual/zh/book.json.php
+
 ## `json_encode()`
 
 >将 `数组` 编码为 `json`
@@ -38,7 +40,11 @@ json_decode($json [, $assoc, $depth, $options]);
 
 # XML
 
+* http://php.net/manual/zh/refs.xml.php
+
 # YAML
+
+* http://php.net/manual/zh/book.yaml.php
 
 yaml 转数组 `yaml_parse()`
 

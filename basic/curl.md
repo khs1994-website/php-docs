@@ -12,7 +12,7 @@ categories:
 
 本文详细记录了 PHP 使用 `curl` 遇到的问题。
 
-官方文档：http://php.net/manual/zh/book.curl.php
+* http://php.net/manual/zh/book.curl.php
 
 GitHub：https://github.com/khs1994-php/curl
 
@@ -28,6 +28,12 @@ https://curl.haxx.se/docs/caextract.html
 
 ```bash
 curl.cainfo="c:\cacert-2018-03-07.pem"
+```
+
+# 初始化
+
+```php
+$ch=curl_init();
 ```
 
 # 设置网址

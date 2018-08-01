@@ -12,6 +12,8 @@ categories:
 
 `PHP` 命名空间解决了可能发生的冲突的问题。
 
+* http://php.net/manual/zh/language.namespaces.php
+
 <!--more-->
 
 # 一般规则
@@ -36,7 +38,7 @@ use Foo\Bar\{
     Baz,
 };
 
-use \Error; // 全局空间
+use Error; // 全局空间
 
 use Foo\Bar as BarBase; // 别名
 
