@@ -12,7 +12,7 @@
     * [变量和常量](basic/variables_constants.md)    
     * [内置常量](basic/const.md)   
     * [命名空间](basic/namespace.md)    
-    * [流程控制](basic/pm.md)      
+    * [流程控制](basic/control_structures.md)      
     * [函数](basic/function.md)    
     * [curl](basic/curl.md)
     * [Cookie](basic/cookie.md)
@@ -20,7 +20,7 @@
     * [Shell](basic/shell.md)
     * [JSON 和 XML](basic/json_xml.md)
     * [日期](basic/date.md)
-    * [文件](basic/file.md)
+    * [文件](basic/storage.md)
     * [错误和异常](basic/error_exception.md)
     * [正则表达式](basic/preg/README.md)
     * [PDO](basic/pdo/README.md)
@@ -30,6 +30,7 @@
     * [SSE](basic/sse.md)
     * [WebSocket](basic/websocket.md)
     * [pcntl_*](basic/pcntl.md)
+    * [CLI](basic/cli.md)
 
 ## OOP
 

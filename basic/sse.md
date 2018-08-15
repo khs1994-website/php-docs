@@ -30,16 +30,24 @@ source.onerror(); // 当发生错误
 ```
 
 ```php
+ini_set('max_execution_time', '0');
+
 header('X-Accel-Buffering: no');
 header('Content-Type: text/event-stream');
 header('Cache-Control: no-cache');
 
 while(1){
   // id event retry data \n\n
-  echo "id: X\nevent:X\nretry:X\ndata: XXX \n\n"
+  echo "id: 1\nevent: my_event\nretry: 100\ndata: my_data \n\n";
+
   ob_flush();
+  flush();
+
+  sleep(1);
 }
 ```
+
+* `retry` 服务器端 N 秒内没有发送任何信息，则开始重连。
 
 ## More Information
 

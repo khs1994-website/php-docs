@@ -25,3 +25,27 @@ categories:
 `pcntl_wait()` 等待或返回 fork 的子进程状态
 
 `pcntl_wifexited()` 检查子进程状态代码是否代表正常退出
+
+```php
+$ppid = posix_getppid();
+
+$pid = pcntl_fork();
+
+if ($pid === -1) {
+    echo "error";
+};
+
+if ($pid === 0) {
+    echo "子进程 ...";
+    sleep(10);
+} else {
+    echo "父进程 $ppid ...";
+
+    //  等待或返回 fork 的子进程状态
+    pcntl_wait($status, WUNTRACED);
+    // 检查状态代码是否代表一个正常的退出
+    if(pcntl_wifexited($status)){
+      return;
+    };
+}
+```

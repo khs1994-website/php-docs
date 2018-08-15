@@ -113,6 +113,47 @@ spl_autoload_register(function ($class_name) {
 
 # 多态
 
+使用接口和类型提示实现多态
+
+* 根据使用类的上下文来重新定义或改变类的性质和行为
+
+* 不同的对象，执行相同的方法，而又取得不同的结果
+
+```php
+interface Animal
+{
+  public function eat();
+}
+
+class Cat implements Animal
+{
+  public function eat(){
+    echo "cat eat";
+  }
+}
+
+class Dog implements Animal
+{
+  public function eat(){
+    echo "dog eat";
+  }
+}
+
+class Demo
+{
+  public function eat(Animal $animal)
+  {
+    $animal->eat();
+  }
+}
+
+$demo=new Demo;
+
+$demo->eat(new Dog());
+
+$demo->eat(new Cat());
+```
+
 # 对象继承 `extends`
 
 一个类可以在声明中用 `extends` 关键字继承另一个类的方法和属性。
@@ -214,6 +255,8 @@ $a->show_one();
 ```
 
 # 对象复制 `__clone() 魔术方法`
+
+深拷贝、浅拷贝
 
 ```php
 class AB{

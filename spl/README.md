@@ -25,4 +25,18 @@ categories:
 
 自定义遍历
 
-自动加载
+# 自动加载
+
+各种形式 回调函数、静态加载类
+
+```php
+spl_autoload_register("Test::autoload");
+
+spl_autoload_register(['Test','autoload']);
+
+spl_autoload_register(function($class){});
+
+spl_autoload_register('function_name');
+
+spl_autoload_register( [$autoload_function, $throw, $prepend]);
+```

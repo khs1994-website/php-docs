@@ -18,6 +18,24 @@ categories:
 
 <!--more-->
 
+# 读取文件最后一行
+
+```php
+$pos = -2;		//偏移量
+$eof = " ";		//行尾标识
+$data = "";
+while ($line > 0){//逐行遍历
+  while ($eof != "\n"){ //不是行尾
+    fseek($fp, $pos, SEEK_END);//fseek成功返回0，失败返回-1  
+    $eof = fgetc($fp);//读取一个字符并赋给行尾标识
+    $pos--;//向前偏移
+  }
+  $eof = " ";
+  $data .= fgets($fp);//读取一行
+  $line--;
+}
+```
+
 # HTML 上传文件
 
 ```html
@@ -57,7 +75,7 @@ move_uploaded_file($_FILES['file']['tmp_name'], '/path/filename');
 
 * 文件所在路径 `__FILE__`
 
-* 文件所在目录路径 `__DIR__ `dirname(__FILE__)`
+* 文件所在目录路径 `__DIR__` `dirname(__FILE__)`
 
 # 目录相关函数
 
@@ -66,6 +84,17 @@ resource opendir( string $path [, resource $context ] )
 ```
 
 打开一个目录句柄，可用于之后的 `closedir()` `readdir()` `rewinddir()`。
+
+```php
+if (is_dir($dir)) {
+    if ($dh = opendir($dir)) {
+        while (($file = readdir($dh)) !== false) {
+            echo "filename: $file : filetype: " . filetype($dir . $file) . "\n";
+        }
+        closedir($dh);
+    }
+}
+```
 
 * `readdir()` 从目录句柄中读取条目。
 
@@ -160,6 +189,8 @@ $fh = fopen($filePath, $mode);
 
 // 返回类型为资源
 
+fgetc($fp); // 读取一个字符
+
 fgets($fh); // 读取一行
 
 fread($fh, $length);
@@ -168,7 +199,5 @@ fwrite($fh, $string);
 
 fclose($fh);
 
-file($filePath);
-
-// 返回结果为数组，一行一个值
+file($filePath); // 返回结果为数组，一行一个值
 ```

@@ -27,6 +27,14 @@ variables_order = "GPCS"
 
 若设置为 `EGPCS` ，此时 `$_ENV` 包含有系统的环境变量。
 
+# `eval()`
+
 * `eval()` 把字符串作为 PHP 代码执行 `eval('echo 1;')`
 
-* `fastcgi_finish_request()` PHP-FPM 结束网页请求，但后台 PHP 脚本仍然在执行。
+# `fastcgi_finish_request()`
+
+* PHP-FPM 结束网页请求，但后台 PHP 脚本仍然在执行。
+
+# 纯 PHP 文件末尾不加 ?>
+
+* https://github.com/khs1994-docker/lnmp/issues/578

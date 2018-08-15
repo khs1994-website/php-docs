@@ -155,19 +155,14 @@ Route::middleware()->group(function(){
 
 public function handle($request, Closure $next)
 {
-    if (){
-      return redirect();
-    }
+    // 前置中间件
 
     // 执行动作
 
     return $next($request);
-}
 
-// 后置中间件
+    // 后置中间件
 
-public function handle($request, Closure $next)
-{
     $response = next($request);
 
     // 执行动作
@@ -189,6 +184,21 @@ protected $middleware =[
 # 控制器
 
 `__invoke` 魔术方法来定义单个控制器。
+
+```php
+public function __construct(){
+  $this->middleware('auth')
+       ->only('method')
+       ->except('method');
+
+  $this->middleware(function($request, Closure $next){
+
+      // code
+
+      return $next($request);
+  });
+}
+```
 
 # 响应
 
@@ -306,7 +316,7 @@ Storage::disk('local')->
 
 // 默认路径为 storage/app
 
-Srorage::put('public/1.txt', 1); // 写入文件
+       ::put('public/1.txt', 1); // 写入文件
 
        ::get('public/1.txt');
 
@@ -318,3 +328,52 @@ Srorage::put('public/1.txt', 1); // 写入文件
 
 asset('storage/1.txt');       
 ```
+
+# 邮件
+
+```bash
+$ php artisan make:mail MailClass
+```
+
+在 `build` 方法中完成邮件的配置
+
+```php
+Mail::to()->send(new MailClass);
+
+      ->queue(new QueueClass())
+```
+
+# 消息通知
+
+```bash
+$ php artisan make:notification NotificationClass
+```
+
+```php
+class DemoClass
+{
+    use Notifiable;
+}
+
+$demoClass->notify(new NotificationClass());
+
+Notification::send($users, new InvoicePaid($invoice));
+```
+
+# 事件
+
+事件（Events） 监听器（Listeners）
+
+例如一个 用户注册事件 可以对应 邮件 短信 等监听器
+
+控制器中调用一个事件
+
+event(new MyEvents());
+
+将 事件 与 监听器 注册
+
+`EventServiceProvider` $listeners=['事件'=>['监听器'，'监听器2']]
+
+监听器接收 事件 示例 进行逻辑处理
+
+监听器可以放入队列中

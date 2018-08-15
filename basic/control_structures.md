@@ -10,11 +10,31 @@ categories:
 - Basic
 ---
 
-PHP 流程控制简介。
+PHP 流程控制
 
 * http://php.net/manual/zh/language.control-structures.php
 
 <!--more-->
+
+```php
+$a = 0;
+
+switch ($a){ // switch(true)
+  case $a >= 0:
+  echo 0;
+  break;
+  case $a >=10:
+  echo 1;
+  break;
+  default:
+  echo 2;
+  break;
+}
+
+exit();
+```
+
+结果为 1。switch($a) 实际为 switch(false)，所以匹配 false
 
 ```php
 if (condition) {

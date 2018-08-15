@@ -20,29 +20,28 @@ categories:
 工厂方法或者类生成对象，而不是直接 `new` 对象。
 
 ```php
-class F
+class Factory
 {
-    public static function createDocker($arg){
+    public static function createFactory($arg){
         // return new Docker($arg);
 
         // 单例模式
 
-        $docker = B::getDocker($arg);
+        $docker = Instance::getInstance($arg);
 
         // 注册树模式
-        // 将对象注册到 docker
 
-        R::set('docker',$docker);
+        Register::set('docker',$docker);
 
         // 返回对象
 
-        //return $docker;
+        // return $docker;
     }
 }
 
-$docker = F::createDocker($arg);
+$docker = Factory::createFactory($arg);
 
-$docker = R::get('docker');
+$docker = Register::get('docker');
 
 $docker->container->list();
 ```
@@ -54,9 +53,9 @@ $docker->container->list();
 三私一公。
 
 ```php
-Class D
+Class Instance
 {
-    private $docker;
+    private $instance;
 
     // 构造函数为私有，外部不能直接 new
 
@@ -69,17 +68,17 @@ Class D
 
     }
 
-    public static function getDocker($arg){
-        if (!(self::$docker instanceof self)){
+    public static function getInstance($arg){
+        if (!(self::$instance instanceof self)){
           // 静态函数中 new 对象
-          self::$docker=new self();
+          self::$instance=new self();
         }
 
-        return self::$docker;
+        return self::$instance;
     }
 }
 
-$docker = B::getDocker($arg);
+$docker = Instance::getInstance($arg);
 
 $docker->container->list();
 ```
@@ -105,4 +104,46 @@ class R
         return self::$obj[$name];
     }
 }
+```
+
+# 观察者模式
+
+将 观察者实例 注入到 主题 中
+
+```php
+// 主题
+class Subject
+{
+  public $observers;
+
+  public function register(ObServer $observer){
+    $this->observers[]=$arg;
+  }
+
+  public function notify(){
+    foreach ($this->observers as $key) {
+      $key->watch();
+    }
+  }
+}
+
+// 观察者接口
+interface Observer
+{
+  public function watch();
+}
+
+// 观察者
+class Cat implements Observer
+{
+  public function watch(){
+    echo "cat watch";
+  }
+}
+
+$subject = new Subject();
+
+$subject->register(new Cat());
+
+$subject->notify();
 ```

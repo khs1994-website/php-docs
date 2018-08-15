@@ -31,11 +31,9 @@ $pdo=new PDO($dsn,$username,$password);
 var_dump($pdo);
 ```
 
-# `exec()`
+# `exec()` 对于 `select` 没有作用。
 
 >执行一条 `SQL` 语句，并返回其受影响的行数。
-
-* 对于 `select` 没有作用。
 
 * 可用于 `创建表 数据库` `插入记录` `更新` `删除`
 
