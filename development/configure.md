@@ -5,10 +5,9 @@ updated:
 comments: true
 tags:
 - PHP
-- php-dev-env
+- PHPer
 categories:
 - PHP
-- php-dev-env
 ---
 
 GitHub：https://github.com/khs1994-php/configure

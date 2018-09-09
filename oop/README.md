@@ -119,41 +119,6 @@ spl_autoload_register(function ($class_name) {
 
 * 不同的对象，执行相同的方法，而又取得不同的结果
 
-```php
-interface Animal
-{
-  public function eat();
-}
-
-class Cat implements Animal
-{
-  public function eat(){
-    echo "cat eat";
-  }
-}
-
-class Dog implements Animal
-{
-  public function eat(){
-    echo "dog eat";
-  }
-}
-
-class Demo
-{
-  public function eat(Animal $animal)
-  {
-    $animal->eat();
-  }
-}
-
-$demo=new Demo;
-
-$demo->eat(new Dog());
-
-$demo->eat(new Cat());
-```
-
 # 对象继承 `extends`
 
 一个类可以在声明中用 `extends` 关键字继承另一个类的方法和属性。

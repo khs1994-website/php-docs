@@ -31,6 +31,19 @@ https://cuiqingcai.com/3494.html
 
 * `dev`、`alpha`、`beta`、`RC`、`stable`
 
+# 本地开发
+
+从 本地 路径加载
+
+```json
+"repositories":{
+  "tilte": {
+    "type":"path",
+    "url":"/path/my-package"
+  }
+}
+```
+
 # 从 VCS 加载包
 
 ```json

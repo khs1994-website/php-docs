@@ -16,3 +16,12 @@ categories:
 GitHub: https://github.com/phpDocumentor
 
 <!--more-->
+
+```php
+/**
+ * @version 18.06
+ *
+ * @method static staticMethod()
+ * @property property
+ */
+```

@@ -8,7 +8,6 @@ tags:
 - NGINX
 categories:
 - PHP
-- php-dev-env
 - NGINX
 ---
 

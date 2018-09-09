@@ -7,8 +7,6 @@ tags:
 - HTTPD
 categories:
 - PHP
-- php-dev-env
-- HTTPD
 ---
 
 本文介绍了手动编译安装 Apache 的具体步骤。

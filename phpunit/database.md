@@ -30,7 +30,7 @@ class TestExample extends TestCase
     public function getConnection()
     {
         // $pdo = new PDO();
-        $pdo = DB::connect();
+        $pdo = DB::connection();
 
         return $this->createDefaultDBConnection($pdo, ':memory');
     }

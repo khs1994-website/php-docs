@@ -5,10 +5,9 @@ updated:
 comments: true
 tags:
 - PHP
-- php-dev-env
+- PHPer
 categories:
 - PHP
-- php-dev-env
 ---
 
 本文简要介绍了手动搭建 `LNMP` 开发环境的步骤。

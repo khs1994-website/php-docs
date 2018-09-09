@@ -8,7 +8,6 @@ tags:
 - https
 categories:
 - PHP
-- php-dev-env
 - NGINX
 ---
 

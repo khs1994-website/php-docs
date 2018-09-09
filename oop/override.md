@@ -1,5 +1,5 @@
 ---
-title: PHP 面向对象 重载
+title: PHP 重载
 date: 2016-12-04T13:00:00.000Z
 updated: null
 comments: true

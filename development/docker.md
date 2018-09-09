@@ -5,10 +5,9 @@ updated:
 comments: true
 tags:
 - PHP
-- php-dev-env
+- PHPer
 categories:
 - PHP
-- php-dev-env
 ---
 
 `khs1994.com` 开发 `PHP` 项目 `Docker` 化最佳实践。

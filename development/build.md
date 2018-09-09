@@ -5,10 +5,9 @@ updated:
 comments: true
 tags:
 - PHP
-- php-dev-env
+- PHPer
 categories:
 - PHP
-- php-dev-env
 ---
 
 本文介绍了手动编译安装 PHP 的具体步骤。

@@ -8,7 +8,6 @@ tags:
 - HTTPD
 categories:
 - PHP
-- php-dev-env
 - HTTPD
 ---
 
