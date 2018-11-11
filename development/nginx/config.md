@@ -41,26 +41,68 @@ http {
 }
 ```
 
-# 内置变量
-
-* https://github.com/khs1994-docker/lnmp/issues/447
-
 # 命令
 
 ```bash
 # stop 是快速停止 nginx，可能并不保存相关信息，quit 是完整有序的停止 nginx 并保存相关信息
-
 $ nginx -s stop
 
 $ nginx -s quit
 
 # 重新打开日志文件命令
-
 $ nginx -s reopen
 
 # 重新载入配置文件
-
 $ nginx -s reload
+```
+
+# 超时设置
+
+```nginx
+# 配置段: http, server, location 参数是一个请求完成之后还要保持连接多久，不是请求时间多久，目的是保持长连接
+keepalive_timeout 75s;
+
+# 配置段: http, server, location 接收客户端 body 超时
+client_body_timeout 20s;
+
+# 配置段: http, server, location 接收客户端 header 超时
+client_header_timeout 10s;
+
+# 配置段: http, server, location 服务端向客户端传输数据的超时时间。
+send_timeout 30s;
+
+# nginx 与 upstream server 的连接超时时间
+proxy_connect_timeout 60s;
+
+# nginx 接收 upstream server 数据超时, 默认 60s
+proxy_read_timeout 60s;
+
+# nginx 发送数据至 upstream server 超时
+proxy_send_timeout 60s;
+
+# 设置了某一个 upstream 后端失败了指定次数（max_fails）后，该后端不可操作的时间，默认为10秒
+proxy_upstream_fail_timeout 10s;
+
+# fastcgi php-fpm 等配置下列选项，上边的无用
+
+fastcgi_connect_timeout 300;
+fastcgi_send_timeout 300;
+fastcgi_read_timeout 300;
+```
+
+## PHP
+
+```php
+ini_set('max_execution_time', '0'); // set_time_limit(0);
+
+print str_repeat(" ", 4096);  //先输出4096的字节，保证缓冲数据量
+
+For ($j = 1; $j <= 1000000; $j++) {
+    echo $j.'';
+    ob_flush();
+    flush();//这一部会使cache新增的内容被挤出去，显示到阅读器上
+    sleep(1);//让程序“睡”一秒钟，会让你把效果看得更清楚
+}
 ```
 
 # PHP

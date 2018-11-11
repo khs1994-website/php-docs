@@ -23,6 +23,8 @@ GitHub：https://github.com/composer/composer
 
 https://cuiqingcai.com/3494.html
 
+* `~1.2` `^1.2` 没有区别
+
 * `~` `~1.2` 相当于 `>=1.2 <2.0.0` 而 `~1.2.3` 相当于 `>=1.2.3 <1.3.0`
 
 * `^` `^1.2.3` 相当于 `>=1.2.3 <2.0.0` 1.0 以下较特殊 `^0.3` 会被当作 `>=0.3.0 <0.4.0`
@@ -102,8 +104,13 @@ https://cuiqingcai.com/3494.html
 
 ## 中国镜像
 
+注意关注镜像网站，部分镜像可能不可用
+
 ```bash
+# 不可用
 $ composer config -g repo.packagist composer https://packagist.phpcomposer.com
+
+$ composer config -g repo.packagist composer https://packagist.laravel-china.org
 ```
 
 * https://pkg.phpcomposer.com/
@@ -124,11 +131,15 @@ $ composer create-project --prefer-dist khs1994/example sdk @dev
 
 ## GitHub 设置
 
-git 仓库设置中 `Integration & services` 中搜索添加 `Packagist`。
+> 之前在 github 添加 service 的方法已经废弃，请 PHPer 注意按以下方法升级
 
-`Token` 在 https://packagist.org/profile/ 中查看
+首先在 https://github.com/settings/applications 把 `Packagist` Revoke 掉。
 
-`Domain` 为 https://packagist.org
+之后在 https://packagist.org 选择 github 账号登录，授予权限的时候注意将 **GitHub 组织(如果有的话)** 的权限一并勾选。
+
+在 My packages 界面没有看到警告即可。
+
+* https://packagist.org/about#how-to-update-packages
 
 # 在项目中使用
 

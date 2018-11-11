@@ -18,6 +18,10 @@ PHP 7 可以通过 `try_catch` 来捕获错误 `Error` 和异常 `Exception`。
 
 <!--more-->
 
+# 参考资料
+
+* 如何捕获语法解析错误 https://segmentfault.com/a/1190000014926703
+
 # ini 设置
 
 生产环境中不启用错误显示。
