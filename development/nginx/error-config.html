@@ -1,0 +1,2101 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>NGINX 配置陷阱和常见错误 · khs1994.com PHP 技术文档</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="khs1994.com">
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-prism/prism-solarizedlight.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-page-treeview/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="https.html" />
+    
+    
+    <link rel="prev" href="config.html" />
+    
+
+    
+        <link rel="shortcut icon" href='../../favicon.ico' type="image/x-icon">
+    
+    
+        <link rel="bookmark" href='../../favicon.ico' type="image/x-icon">
+    
+    
+        <link rel="apple-touch-icon" href='../../favicon.ico'>
+    
+    
+        
+        <link rel="apple-touch-icon" sizes="120x120" href="../../favicon.ico">
+        
+        <link rel="apple-touch-icon" sizes="180x180" href="../../favicon.ico">
+        
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="输入并搜索" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+    
+        
+        <li>
+            <a href="//www.khs1994.com/more" target="_blank" class="custom-link">Home</a>
+        </li>
+    
+    
+
+    
+    <li class="divider"></li>
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    README
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../../ci/readme.html">
+            
+                <a href="../../ci/readme.html">
+            
+                    
+                    CI/CD
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">基础</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="../../basic/">
+            
+                <a href="../../basic/">
+            
+                    
+                    基础
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.1" data-path="../../basic/types/">
+            
+                <a href="../../basic/types/">
+            
+                    
+                    类型
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.1.1" data-path="../../basic/types/string.html">
+            
+                <a href="../../basic/types/string.html">
+            
+                    
+                    字符串
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.1.2" data-path="../../basic/types/array.html">
+            
+                <a href="../../basic/types/array.html">
+            
+                    
+                    数组
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.2" data-path="../../basic/variables_constants.html">
+            
+                <a href="../../basic/variables_constants.html">
+            
+                    
+                    变量和常量
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.3" data-path="../../basic/const.html">
+            
+                <a href="../../basic/const.html">
+            
+                    
+                    内置常量
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.4" data-path="../../basic/namespace.html">
+            
+                <a href="../../basic/namespace.html">
+            
+                    
+                    命名空间
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.5" data-path="../../basic/control_structures.html">
+            
+                <a href="../../basic/control_structures.html">
+            
+                    
+                    流程控制
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.6" data-path="../../basic/function.html">
+            
+                <a href="../../basic/function.html">
+            
+                    
+                    函数
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.7" data-path="../../basic/curl.html">
+            
+                <a href="../../basic/curl.html">
+            
+                    
+                    curl
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.8" data-path="../../basic/cookie.html">
+            
+                <a href="../../basic/cookie.html">
+            
+                    
+                    Cookie
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.9" data-path="../../basic/session.html">
+            
+                <a href="../../basic/session.html">
+            
+                    
+                    Session
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.10" data-path="../../basic/shell.html">
+            
+                <a href="../../basic/shell.html">
+            
+                    
+                    Shell
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.11" data-path="../../basic/json_xml.html">
+            
+                <a href="../../basic/json_xml.html">
+            
+                    
+                    JSON 和 XML
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.12" data-path="../../basic/date.html">
+            
+                <a href="../../basic/date.html">
+            
+                    
+                    日期
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.13" data-path="../../basic/storage.html">
+            
+                <a href="../../basic/storage.html">
+            
+                    
+                    文件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.14" data-path="../../basic/error_exception.html">
+            
+                <a href="../../basic/error_exception.html">
+            
+                    
+                    错误和异常
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.15" data-path="../../basic/preg/">
+            
+                <a href="../../basic/preg/">
+            
+                    
+                    正则表达式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.16" data-path="../../basic/pdo/">
+            
+                <a href="../../basic/pdo/">
+            
+                    
+                    PDO
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.16.1" data-path="../../basic/pdo/mysql/">
+            
+                <a href="../../basic/pdo/mysql/">
+            
+                    
+                    MySQL
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.17" data-path="../../basic/gd/">
+            
+                <a href="../../basic/gd/">
+            
+                    
+                    GD
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.18" data-path="../../basic/outcontrol.html">
+            
+                <a href="../../basic/outcontrol.html">
+            
+                    
+                    输出控制
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.19" data-path="../../basic/sse.html">
+            
+                <a href="../../basic/sse.html">
+            
+                    
+                    SSE
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.20" data-path="../../basic/websocket.html">
+            
+                <a href="../../basic/websocket.html">
+            
+                    
+                    WebSocket
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.21" data-path="../../basic/pcntl.html">
+            
+                <a href="../../basic/pcntl.html">
+            
+                    
+                    pcntl_*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.22" data-path="../../basic/cli.html">
+            
+                <a href="../../basic/cli.html">
+            
+                    
+                    CLI
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">OOP</li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="../../oop/">
+            
+                <a href="../../oop/">
+            
+                    
+                    OOP
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1.1" data-path="../../oop/trait.html">
+            
+                <a href="../../oop/trait.html">
+            
+                    
+                    多继承 trait
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2" data-path="../../oop/abstract.html">
+            
+                <a href="../../oop/abstract.html">
+            
+                    
+                    抽象类
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.3" data-path="../../oop/interface.html">
+            
+                <a href="../../oop/interface.html">
+            
+                    
+                    接口
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.4" data-path="../../oop/override.html">
+            
+                <a href="../../oop/override.html">
+            
+                    
+                    重载
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.5" data-path="../../oop/polymorphism.html">
+            
+                <a href="../../oop/polymorphism.html">
+            
+                    
+                    多态
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.6" data-path="../../design_pattern/">
+            
+                <a href="../../design_pattern/">
+            
+                    
+                    设计模式
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1.6.1" data-path="../../design_pattern/container/">
+            
+                <a href="../../design_pattern/container/">
+            
+                    
+                    服务容器
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">SPL</li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" data-path="../../spl/">
+            
+                <a href="../../spl/">
+            
+                    
+                    SPL
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">队列</li>
+        
+        
+    
+        <li class="chapter " data-level="5.1" >
+            
+                <span>
+            
+                    
+                    队列
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.1.1" data-path="../../rabbitmq/">
+            
+                <a href="../../rabbitmq/">
+            
+                    
+                    RabbitMQ
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Composer</li>
+        
+        
+    
+        <li class="chapter " data-level="6.1" data-path="../../composer/">
+            
+                <a href="../../composer/">
+            
+                    
+                    Composer
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">PHPUnit</li>
+        
+        
+    
+        <li class="chapter " data-level="7.1" data-path="../../phpunit/">
+            
+                <a href="../../phpunit/">
+            
+                    
+                    PHPUnit
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="7.1.1" data-path="../../phpunit/mock.html">
+            
+                <a href="../../phpunit/mock.html">
+            
+                    
+                    Mock
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.1.2" data-path="../../phpunit/database.html">
+            
+                <a href="../../phpunit/database.html">
+            
+                    
+                    数据库测试
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">PHPDoc</li>
+        
+        
+    
+        <li class="chapter " data-level="8.1" data-path="../../phpdoc/">
+            
+                <a href="../../phpdoc/">
+            
+                    
+                    PHPDoc
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="8.1.1" data-path="../../phpdoc/tag.html">
+            
+                <a href="../../phpdoc/tag.html">
+            
+                    
+                    tag
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">RESTful</li>
+        
+        
+    
+        <li class="chapter " data-level="9.1" data-path="../../restful/">
+            
+                <a href="../../restful/">
+            
+                    
+                    RESTful API
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Auth</li>
+        
+        
+    
+        <li class="chapter " data-level="10.1" data-path="../../auth/">
+            
+                <a href="../../auth/">
+            
+                    
+                    Auth
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="10.1.1" data-path="../../auth/oauth.html">
+            
+                <a href="../../auth/oauth.html">
+            
+                    
+                    OAuth2
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="10.1.2" data-path="../../auth/jwt.html">
+            
+                <a href="../../auth/jwt.html">
+            
+                    
+                    JWT
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="10.1.3" data-path="../../auth/encrypt.html">
+            
+                <a href="../../auth/encrypt.html">
+            
+                    
+                    加密函数
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Framework</li>
+        
+        
+    
+        <li class="chapter " data-level="11.1" >
+            
+                <span>
+            
+                    
+                    Framework
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="11.1.1" data-path="../../framework/laravel/">
+            
+                <a href="../../framework/laravel/">
+            
+                    
+                    Laravel
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="11.1.1.1" data-path="../../framework/laravel/database/">
+            
+                <a href="../../framework/laravel/database/">
+            
+                    
+                    Database
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="11.1.1.1.1" data-path="../../framework/laravel/database/create.html">
+            
+                <a href="../../framework/laravel/database/create.html">
+            
+                    
+                    创建
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="11.1.1.2" data-path="../../framework/laravel/env.html">
+            
+                <a href="../../framework/laravel/env.html">
+            
+                    
+                    Env
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="11.1.1.3" data-path="../../framework/laravel/ide.html">
+            
+                <a href="../../framework/laravel/ide.html">
+            
+                    
+                    IDE
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="11.1.2" data-path="../../framework/thinkphp/">
+            
+                <a href="../../framework/thinkphp/">
+            
+                    
+                    ThinkPHP
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">HTTP</li>
+        
+        
+    
+        <li class="chapter " data-level="12.1" data-path="../../http/">
+            
+                <a href="../../http/">
+            
+                    
+                    HTTP
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Library</li>
+        
+        
+    
+        <li class="chapter " data-level="13.1" data-path="../../library/">
+            
+                <a href="../../library/">
+            
+                    
+                    Library
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="13.1.1" data-path="../../library/monolog.html">
+            
+                <a href="../../library/monolog.html">
+            
+                    
+                    Monolog
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="13.1.2" data-path="../../library/guzzle.html">
+            
+                <a href="../../library/guzzle.html">
+            
+                    
+                    Guzzle
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="13.1.3" data-path="../../library/pimple.html">
+            
+                <a href="../../library/pimple.html">
+            
+                    
+                    Pimple
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="13.1.4" data-path="../../library/dotenv.html">
+            
+                <a href="../../library/dotenv.html">
+            
+                    
+                    Dotenv
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="13.1.5" data-path="../../library/doctrineCache.html">
+            
+                <a href="../../library/doctrineCache.html">
+            
+                    
+                    Doctrine Cache
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="13.1.6" data-path="../../library/phpmailer.html">
+            
+                <a href="../../library/phpmailer.html">
+            
+                    
+                    PHPMailer
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="13.1.7" data-path="../../library/php-pm.html">
+            
+                <a href="../../library/php-pm.html">
+            
+                    
+                    php-pm
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="13.1.8" data-path="../../library/php-cs-fixer.html">
+            
+                <a href="../../library/php-cs-fixer.html">
+            
+                    
+                    PHP-CS-Fixer
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="13.1.9" data-path="../../library/sami.html">
+            
+                <a href="../../library/sami.html">
+            
+                    
+                    Sami
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">开发环境</li>
+        
+        
+    
+        <li class="chapter " data-level="14.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    开发环境
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="14.1.1" data-path="../wnamp.html">
+            
+                <a href="../wnamp.html">
+            
+                    
+                    WNAMP 开发环境配置
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="14.1.2" data-path="../wsl.html">
+            
+                <a href="../wsl.html">
+            
+                    
+                    WSL
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="14.1.3" data-path="../mnamp.html">
+            
+                <a href="../mnamp.html">
+            
+                    
+                    MNAMP 开发环境配置
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="14.1.4" data-path="../build.html">
+            
+                <a href="../build.html">
+            
+                    
+                    PHP7 编译
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="14.1.5" data-path="../configure.html">
+            
+                <a href="../configure.html">
+            
+                    
+                    PHP 编译选项
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="14.1.6" data-path="../config.html">
+            
+                <a href="../config.html">
+            
+                    
+                    PHP7 配置
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="14.1.7" data-path="../extension.html">
+            
+                <a href="../extension.html">
+            
+                    
+                    PHP 扩展记录
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="14.1.8" data-path="../xdebug.html">
+            
+                <a href="../xdebug.html">
+            
+                    
+                    PhpStorm + Xdebug
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="14.1.9" data-path="../phpstorm-docker.html">
+            
+                <a href="../phpstorm-docker.html">
+            
+                    
+                    PhpStorm + Docker
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="14.1.10" data-path="../docker.html">
+            
+                <a href="../docker.html">
+            
+                    
+                    Docker
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="14.1.11" >
+            
+                <span>
+            
+                    
+                    Apache
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="14.1.11.1" data-path="../apache/build.html">
+            
+                <a href="../apache/build.html">
+            
+                    
+                    编译安装
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="14.1.11.2" data-path="../apache/config.html">
+            
+                <a href="../apache/config.html">
+            
+                    
+                    配置
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="14.1.11.3" data-path="../apache/php.html">
+            
+                <a href="../apache/php.html">
+            
+                    
+                    PHP
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="14.1.12" >
+            
+                <span>
+            
+                    
+                    NGINX
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="14.1.12.1" data-path="configure.html">
+            
+                <a href="configure.html">
+            
+                    
+                    NGINX 编译选项
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="14.1.12.2" data-path="build.html">
+            
+                <a href="build.html">
+            
+                    
+                    编译安装
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="14.1.12.3" data-path="config.html">
+            
+                <a href="config.html">
+            
+                    
+                    配置
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="14.1.12.4" data-path="error-config.html">
+            
+                <a href="error-config.html">
+            
+                    
+                    NGINX 配置陷阱和常见错误
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="14.1.12.5" data-path="https.html">
+            
+                <a href="https.html">
+            
+                    
+                    NGINX HTTPS
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="14.1.12.6" data-path="lets-encrypt.html">
+            
+                <a href="lets-encrypt.html">
+            
+                    
+                    Let's Encrypt SSL 证书
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="14.1.12.7" data-path="unit.html">
+            
+                <a href="unit.html">
+            
+                    
+                    Unit
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">版本变更</li>
+        
+        
+    
+        <li class="chapter " data-level="15.1" >
+            
+                <span>
+            
+                    
+                    版本变更
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="15.1.1" data-path="../../release/7.0/">
+            
+                <a href="../../release/7.0/">
+            
+                    
+                    7.0
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="15.1.2" data-path="../../release/7.1/">
+            
+                <a href="../../release/7.1/">
+            
+                    
+                    7.1
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="15.1.3" data-path="../../release/7.2/">
+            
+                <a href="../../release/7.2/">
+            
+                    
+                    7.2
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="15.1.3.1" data-path="../../release/7.2/mcrypt.html">
+            
+                <a href="../../release/7.2/mcrypt.html">
+            
+                    
+                    废弃 mcrypt
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本书使用 GitBook 发布
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >NGINX 配置陷阱和常见错误</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <div class="treeview__container"><div class="treeview__container-title"><span class="treeview__main-title">Treeview</span><span class="treeview__copyright">Copyright &#xA9; khs1994.com all right reserved, powered by <a href="https://github.com/aleen42" target="_blank">aleen42</a></span></div><ul>
+<li><div><a href="#&#x5173;&#x4E8E;&#x672C;&#x6307;&#x5357;">&#x5173;&#x4E8E;&#x672C;&#x6307;&#x5357;</a><i></i></div></li>
+<li><div><a href="#&#x6211;&#x7684;&#x95EE;&#x9898;&#x672A;&#x5217;&#x51FA;">&#x6211;&#x7684;&#x95EE;&#x9898;&#x672A;&#x5217;&#x51FA;</a><i></i></div></li>
+<li><div><a href="#chmod-777">Chmod 777</a><i></i></div></li>
+<li><div><a href="#root-&#x5728;-location-&#x533A;&#x5757;">Root &#x5728; Location &#x533A;&#x5757;</a><i class="level__parent level__item level__parent--opened" state="opened" onclick="var curState = this.getAttribute(&apos;state&apos;);var nextState = curState === &apos;opened&apos; ? &apos;hidden&apos; : &apos;opened&apos;;this.setAttribute(&apos;state&apos;, nextState);this.className = this.className.split(curState).join(nextState);var list = this.parentNode.nextElementSibling;if (nextState === &apos;hidden&apos;) {    list.style.display = &apos;none&apos;;} else {    list.style.display = &apos;block&apos;;}"></i></div>
+<ul>
+<li><div><a href="#bad">BAD</a><i></i></div></li>
+<li><div><a href="#good">GOOD</a><i></i></div></li>
+</ul></li>
+<li><div><a href="#&#x591A;&#x91CD;-index-&#x6307;&#x4EE4;">&#x591A;&#x91CD; Index &#x6307;&#x4EE4;</a><i class="level__parent level__item level__parent--opened" state="opened" onclick="var curState = this.getAttribute(&apos;state&apos;);var nextState = curState === &apos;opened&apos; ? &apos;hidden&apos; : &apos;opened&apos;;this.setAttribute(&apos;state&apos;, nextState);this.className = this.className.split(curState).join(nextState);var list = this.parentNode.nextElementSibling;if (nextState === &apos;hidden&apos;) {    list.style.display = &apos;none&apos;;} else {    list.style.display = &apos;block&apos;;}"></i></div>
+<ul>
+<li><div><a href="#bad">BAD</a><i></i></div></li>
+<li><div><a href="#good">GOOD</a><i></i></div></li>
+</ul></li>
+<li><div><a href="#&#x4F7F;&#x7528;-if">&#x4F7F;&#x7528; If</a><i></i></div></li>
+<li><div><a href="#server-name-if">Server Name (if)</a><i class="level__parent level__item level__parent--opened" state="opened" onclick="var curState = this.getAttribute(&apos;state&apos;);var nextState = curState === &apos;opened&apos; ? &apos;hidden&apos; : &apos;opened&apos;;this.setAttribute(&apos;state&apos;, nextState);this.className = this.className.split(curState).join(nextState);var list = this.parentNode.nextElementSibling;if (nextState === &apos;hidden&apos;) {    list.style.display = &apos;none&apos;;} else {    list.style.display = &apos;block&apos;;}"></i></div>
+<ul>
+<li><div><a href="#bad">BAD</a><i></i></div></li>
+<li><div><a href="#good">GOOD</a><i></i></div></li>
+</ul></li>
+<li><div><a href="#&#x68C0;&#x67E5;&#x6587;&#x4EF6;-if-&#x5B58;&#x5728;">&#x68C0;&#x67E5;&#x6587;&#x4EF6; (if) &#x5B58;&#x5728;</a><i class="level__parent level__item level__parent--opened" state="opened" onclick="var curState = this.getAttribute(&apos;state&apos;);var nextState = curState === &apos;opened&apos; ? &apos;hidden&apos; : &apos;opened&apos;;this.setAttribute(&apos;state&apos;, nextState);this.className = this.className.split(curState).join(nextState);var list = this.parentNode.nextElementSibling;if (nextState === &apos;hidden&apos;) {    list.style.display = &apos;none&apos;;} else {    list.style.display = &apos;block&apos;;}"></i></div>
+<ul>
+<li><div><a href="#bad">BAD</a><i></i></div></li>
+<li><div><a href="#good">GOOD</a><i></i></div></li>
+</ul></li>
+<li><div><a href="#front-controller-&#x6A21;&#x5F0F;-web-&#x5E94;&#x7528;">Front Controller &#x6A21;&#x5F0F; WEB &#x5E94;&#x7528;</a><i></i></div></li>
+<li><div><a href="#&#x628A;&#x4E0D;&#x53D7;&#x63A7;&#x5236;&#x7684;&#x8BF7;&#x6C42;&#x7ED9;-php">&#x628A;&#x4E0D;&#x53D7;&#x63A7;&#x5236;&#x7684;&#x8BF7;&#x6C42;&#x7ED9; PHP</a><i></i></div></li>
+<li><div><a href="#script-filename-&#x4E2D;&#x7684;-fastcgi-path">Script Filename &#x4E2D;&#x7684; FastCGI Path</a><i class="level__parent level__item level__parent--opened" state="opened" onclick="var curState = this.getAttribute(&apos;state&apos;);var nextState = curState === &apos;opened&apos; ? &apos;hidden&apos; : &apos;opened&apos;;this.setAttribute(&apos;state&apos;, nextState);this.className = this.className.split(curState).join(nextState);var list = this.parentNode.nextElementSibling;if (nextState === &apos;hidden&apos;) {    list.style.display = &apos;none&apos;;} else {    list.style.display = &apos;block&apos;;}"></i></div>
+<ul>
+<li><div><a href="#good">GOOD</a><i></i></div></li>
+<li><div><a href="#bad">BAD</a><i></i></div></li>
+</ul></li>
+<li><div><a href="#&#x7E41;&#x6742;&#x7684;-rewrites">&#x7E41;&#x6742;&#x7684; Rewrites</a><i class="level__parent level__item level__parent--opened" state="opened" onclick="var curState = this.getAttribute(&apos;state&apos;);var nextState = curState === &apos;opened&apos; ? &apos;hidden&apos; : &apos;opened&apos;;this.setAttribute(&apos;state&apos;, nextState);this.className = this.className.split(curState).join(nextState);var list = this.parentNode.nextElementSibling;if (nextState === &apos;hidden&apos;) {    list.style.display = &apos;none&apos;;} else {    list.style.display = &apos;block&apos;;}"></i></div>
+<ul>
+<li><div><a href="#bad">BAD</a><i></i></div></li>
+<li><div><a href="#good">GOOD</a><i></i></div></li>
+<li><div><a href="#better">BETTER</a><i></i></div></li>
+</ul></li>
+<li><div><a href="#rewrite-&#x4E22;&#x5931;-http">Rewrite &#x4E22;&#x5931; http://</a><i class="level__parent level__item level__parent--opened" state="opened" onclick="var curState = this.getAttribute(&apos;state&apos;);var nextState = curState === &apos;opened&apos; ? &apos;hidden&apos; : &apos;opened&apos;;this.setAttribute(&apos;state&apos;, nextState);this.className = this.className.split(curState).join(nextState);var list = this.parentNode.nextElementSibling;if (nextState === &apos;hidden&apos;) {    list.style.display = &apos;none&apos;;} else {    list.style.display = &apos;block&apos;;}"></i></div>
+<ul>
+<li><div><a href="#bad">BAD</a><i></i></div></li>
+<li><div><a href="#good">GOOD</a><i></i></div></li>
+</ul></li>
+<li><div><a href="#&#x4EE3;&#x7406;&#x4E00;&#x5207;">&#x4EE3;&#x7406;&#x4E00;&#x5207;</a><i class="level__parent level__item level__parent--opened" state="opened" onclick="var curState = this.getAttribute(&apos;state&apos;);var nextState = curState === &apos;opened&apos; ? &apos;hidden&apos; : &apos;opened&apos;;this.setAttribute(&apos;state&apos;, nextState);this.className = this.className.split(curState).join(nextState);var list = this.parentNode.nextElementSibling;if (nextState === &apos;hidden&apos;) {    list.style.display = &apos;none&apos;;} else {    list.style.display = &apos;block&apos;;}"></i></div>
+<ul>
+<li><div><a href="#bad">BAD</a><i></i></div></li>
+<li><div><a href="#good">GOOD</a><i></i></div></li>
+<li><div><a href="#also-good">Also GOOD</a><i></i></div></li>
+</ul></li>
+<li><div><a href="#&#x914D;&#x7F6E;&#x66F4;&#x6539;&#x6CA1;&#x6709;&#x751F;&#x6548;">&#x914D;&#x7F6E;&#x66F4;&#x6539;&#x6CA1;&#x6709;&#x751F;&#x6548;</a><i></i></div></li>
+<li><div><a href="#virtualbox">VirtualBox</a><i></i></div></li>
+<li><div><a href="#&#x7F3A;&#x5931;&#x7684;-http-&#x5934;">&#x7F3A;&#x5931;&#x7684; HTTP &#x5934;</a><i></i></div></li>
+<li><div><a href="#&#x6CA1;&#x6709;&#x4F7F;&#x7528;&#x6807;&#x51C6;&#x7684;-document-root-locations">&#x6CA1;&#x6709;&#x4F7F;&#x7528;&#x6807;&#x51C6;&#x7684; Document Root Locations</a><i></i></div></li>
+<li><div><a href="#&#x4F7F;&#x7528;&#x9ED8;&#x8BA4;&#x7684;-document-root">&#x4F7F;&#x7528;&#x9ED8;&#x8BA4;&#x7684; Document Root</a><i></i></div></li>
+<li><div><a href="#&#x4F7F;&#x7528;-hostname-&#x53BB;&#x89E3;&#x6790;&#x5730;&#x5740;">&#x4F7F;&#x7528; Hostname &#x53BB;&#x89E3;&#x6790;&#x5730;&#x5740;</a><i class="level__parent level__item level__parent--opened" state="opened" onclick="var curState = this.getAttribute(&apos;state&apos;);var nextState = curState === &apos;opened&apos; ? &apos;hidden&apos; : &apos;opened&apos;;this.setAttribute(&apos;state&apos;, nextState);this.className = this.className.split(curState).join(nextState);var list = this.parentNode.nextElementSibling;if (nextState === &apos;hidden&apos;) {    list.style.display = &apos;none&apos;;} else {    list.style.display = &apos;block&apos;;}"></i></div>
+<ul>
+<li><div><a href="#bad">BAD</a><i></i></div></li>
+<li><div><a href="#good">GOOD</a><i></i></div></li>
+</ul></li>
+<li><div><a href="#https-&#x4E2D;&#x4F7F;&#x7528;-sslv3">HTTPS &#x4E2D;&#x4F7F;&#x7528; SSLv3</a><i></i></div></li>
+</ul>
+</div>
+
+
+<p>NGINX &#x914D;&#x7F6E;&#x9677;&#x9631;&#x3002;</p>
+<!--more-->
+<p>&#x539F;&#x6587;&#xFF1A;<a href="https://www.nginx.com/resources/wiki/start/topics/tutorials/config_pitfalls/" target="_blank">https://www.nginx.com/resources/wiki/start/topics/tutorials/config_pitfalls/</a></p>
+<p>&#x7FFB;&#x8BD1;&#xFF1A;<a href="http://www.7rack.info/Nginx-Config-Pitfalls.html" target="_blank">http://www.7rack.info/Nginx-Config-Pitfalls.html</a></p>
+<h1 id="&#x5173;&#x4E8E;&#x672C;&#x6307;&#x5357;">&#x5173;&#x4E8E;&#x672C;&#x6307;&#x5357;</h1>
+<p>&#x6700;&#x5E38;&#x89C1;&#x7684;&#x662F;&#x6709;&#x4EBA;&#x8BD5;&#x56FE;&#x4ECE;&#x5176;&#x4ED6;&#x6307;&#x5357;&#x62F7;&#x8D1D;&#x914D;&#x7F6E;&#x7247;&#x6BB5;&#x3002;&#x5E76;&#x975E;&#x6240;&#x6709;&#x7684;&#x6307;&#x5357;&#x662F;&#x9519;&#x8BEF;&#x7684;&#xFF0C;&#x4F46;&#x7EDD;&#x5927;&#x90E8;&#x5206;&#x662F;&#x6709;&#x95EE;&#x9898;&#x7684;&#x3002; &#x751A;&#x81F3; Linode library &#x7684;&#x8D28;&#x91CF;&#x4E5F;&#x4E0D;&#x9AD8;&#xFF0C;NGINX &#x793E;&#x533A;&#x6210;&#x5458;&#x6709;&#x4E49;&#x52A1;&#x53BB;&#x5C1D;&#x8BD5;&#x66F4;&#x6B63;&#x3002;&#x8FD9;&#x4E9B;&#x6587;&#x6863;&#x7531;&#x793E;&#x533A;&#x6210;&#x5458;&#x521B;&#x5EFA;&#x5E76;&#x5BA1;&#x6838;&#x3002;&#x5B58;&#x5728;&#x8BE5;&#x6307;&#x5357;&#x7684;&#x610F;&#x4E49;&#x5728;&#x4E8E;&#x793E;&#x533A;&#x6210;&#x5458;&#x5E38;&#x89C1;&#x53CA;&#x53CD;&#x590D;&#x51FA;&#x73B0;&#x7684;&#x95EE;&#x9898;&#x3002;</p>
+<!--more-->
+<h1 id="&#x6211;&#x7684;&#x95EE;&#x9898;&#x672A;&#x5217;&#x51FA;">&#x6211;&#x7684;&#x95EE;&#x9898;&#x672A;&#x5217;&#x51FA;</h1>
+<p>&#x4F60;&#x9047;&#x5230;&#x7684;&#x95EE;&#x9898;&#x5728;&#x8FD9;&#x91CC;&#x6CA1;&#x6709;&#x770B;&#x5230;&#xFF0C;&#x4E5F;&#x8BB8;&#x6211;&#x4EEC;&#x5728;&#x8FD9;&#x91CC;&#x6CA1;&#x6709;&#x6307;&#x660E;&#x4F60;&#x7ECF;&#x5386;&#x7684;&#x95EE;&#x9898;&#x3002;&#x4E0D;&#x8981;&#x4EE5;&#x4E3A;&#x4F60;&#x65E0;&#x7F18;&#x65E0;&#x6545;&#x7684;&#x6D4F;&#x89C8;&#x5230;&#x8BE5;&#x9875;&#x9762;&#xFF0C;&#x4F60;&#x770B;&#x5230;&#x8FD9;&#x4E9B;&#x662F;&#x56E0;&#x4E3A;&#x4F60;&#x505A;&#x9519;&#x7684;&#x4E8B;&#x60C5;&#x5217;&#x5728;&#x8FD9;&#x91CC;&#x3002;</p>
+<p>&#x5F53;&#x6D89;&#x53CA;&#x5230;&#x652F;&#x6301;&#x8BB8;&#x591A;&#x7528;&#x6237;&#x7684;&#x5F88;&#x591A;&#x95EE;&#x9898;&#xFF0C;&#x793E;&#x533A;&#x6210;&#x5458;&#x4E0D;&#x60F3;&#x53BB;&#x652F;&#x6301;&#x672A;&#x9075;&#x5B88;&#x7EA6;&#x5B9A;&#x7684;&#x914D;&#x7F6E;&#x3002;&#x901A;&#x8FC7;&#x9605;&#x8BFB;&#x4EE5;&#x4E0B;&#x6307;&#x5357;&#xFF0C;&#x4FEE;&#x590D;&#x4F60;&#x7684;&#x914D;&#x7F6E;&#x3002;</p>
+<h1 id="chmod-777">Chmod 777</h1>
+<p>&#x7EDD;&#x4E0D;&#x4F7F;&#x7528; 777&#x3002;&#x5B83;&#x53EF;&#x80FD;&#x662F;&#x4E2A;&#x6F02;&#x4EAE;&#x7684;&#x53F7;&#x7801;&#xFF0C;&#x5373;&#x4F7F;&#x5728;&#x6D4B;&#x8BD5;&#x4E2D;&#x4E5F;&#x8868;&#x73B0;&#x7684;&#x4F60;&#x6CA1;&#x6709;&#x4EFB;&#x4F55;&#x7EBF;&#x7D22;&#x5728;&#x505A;&#x4EC0;&#x4E48;&#x3002;&#x5728;&#x6574;&#x4E2A;&#x8DEF;&#x5F84;&#x4E2D; &#x67E5;&#x770B;&#x6743;&#x9650;&#xFF0C;&#x60F3;&#x60F3;&#x4F1A;&#x53D1;&#x751F;&#x4EC0;&#x4E48;&#x3002;</p>
+<p>&#x8F7B;&#x677E;&#x7684;&#x663E;&#x793A;&#x8DEF;&#x5F84;&#x6743;&#x9650;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash">$ namei -om /path/to/check
+</code></pre>
+<h1 id="root-&#x5728;-location-&#x533A;&#x5757;">Root &#x5728; Location &#x533A;&#x5757;</h1>
+<h2 id="bad">BAD</h2>
+<pre class="language-"><code class="lang-nginx"><span class="token keyword">server</span> <span class="token punctuation">{</span>
+    <span class="token keyword">server_name</span> www<span class="token punctuation">.</span>example<span class="token punctuation">.</span>com<span class="token punctuation">;</span>
+    <span class="token keyword">location</span> <span class="token operator">/</span> <span class="token punctuation">{</span>
+        <span class="token keyword">root</span> <span class="token operator">/</span>var<span class="token operator">/</span>www<span class="token operator">/</span>nginx<span class="token operator">-</span>default<span class="token operator">/</span><span class="token punctuation">;</span>
+        <span class="token comment"># [...]</span>
+      <span class="token punctuation">}</span>
+    <span class="token keyword">location</span> <span class="token operator">/</span>foo <span class="token punctuation">{</span>
+        <span class="token keyword">root</span> <span class="token operator">/</span>var<span class="token operator">/</span>www<span class="token operator">/</span>nginx<span class="token operator">-</span>default<span class="token operator">/</span><span class="token punctuation">;</span>
+        <span class="token comment"># [...]</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">location</span> <span class="token operator">/</span>bar <span class="token punctuation">{</span>
+        <span class="token keyword">root</span> <span class="token operator">/</span>var<span class="token operator">/</span>www<span class="token operator">/</span>nginx<span class="token operator">-</span>default<span class="token operator">/</span><span class="token punctuation">;</span>
+        <span class="token comment"># [...]</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>&#x8FD9;&#x6709;&#x6548;&#x3002;&#x628A; root &#x653E;&#x5728; location &#x533A;&#x5757;&#x53EF;&#x4EE5;&#x751F;&#x6548;&#x800C;&#x4E14;&#x5B8C;&#x5168;&#x6709;&#x6548;&#x3002;&#x9519;&#x8BEF;&#x4E4B;&#x5904;&#x5728;&#x4E8E;&#x5F00;&#x59CB;&#x6DFB;&#x52A0; location &#x533A;&#x5757;&#xFF0C;&#x5982;&#x679C;&#x4F60;&#x5728;&#x6BCF;&#x4E2A; location &#x533A;&#x5757;&#x6DFB;&#x52A0; root &#x6307;&#x4EE4;&#xFF0C;&#x6CA1;&#x6709;&#x5339;&#x914D; location &#x533A;&#x5757;&#x5C06;&#x6CA1;&#x6709; root&#x3002;&#x4E0B;&#x9762;&#x770B;&#x770B;&#x6B63;&#x786E;&#x7684;&#x914D;&#x7F6E;&#x3002;</p>
+<h2 id="good">GOOD</h2>
+<pre class="language-"><code class="lang-nginx"><span class="token keyword">server</span> <span class="token punctuation">{</span>
+    <span class="token keyword">server_name</span> www<span class="token punctuation">.</span>example<span class="token punctuation">.</span>com<span class="token punctuation">;</span>
+    <span class="token keyword">root</span> <span class="token operator">/</span>var<span class="token operator">/</span>www<span class="token operator">/</span>nginx<span class="token operator">-</span>default<span class="token operator">/</span><span class="token punctuation">;</span>
+    <span class="token keyword">location</span> <span class="token operator">/</span> <span class="token punctuation">{</span>
+        <span class="token comment"># [...]</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">location</span> <span class="token operator">/</span>foo <span class="token punctuation">{</span>
+        <span class="token comment"># [...]</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">location</span> <span class="token operator">/</span>bar <span class="token punctuation">{</span>
+        <span class="token comment"># [...]</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h1 id="&#x591A;&#x91CD;-index-&#x6307;&#x4EE4;">&#x591A;&#x91CD; Index &#x6307;&#x4EE4;</h1>
+<h2 id="bad">BAD</h2>
+<pre class="language-"><code class="lang-nginx"><span class="token keyword">http</span> <span class="token punctuation">{</span>
+    <span class="token keyword">index</span> <span class="token keyword">index</span><span class="token punctuation">.</span>php <span class="token keyword">index</span><span class="token punctuation">.</span>htm <span class="token keyword">index</span><span class="token punctuation">.</span>html<span class="token punctuation">;</span>
+    <span class="token keyword">server</span> <span class="token punctuation">{</span>
+        <span class="token keyword">server_name</span> www<span class="token punctuation">.</span>example<span class="token punctuation">.</span>com<span class="token punctuation">;</span>
+        <span class="token keyword">location</span> <span class="token operator">/</span> <span class="token punctuation">{</span>
+            <span class="token keyword">index</span> <span class="token keyword">index</span><span class="token punctuation">.</span>php <span class="token keyword">index</span><span class="token punctuation">.</span>htm <span class="token keyword">index</span><span class="token punctuation">.</span>html<span class="token punctuation">;</span>
+            <span class="token comment"># [...]</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">server</span> <span class="token punctuation">{</span>
+        <span class="token keyword">server_name</span> example<span class="token punctuation">.</span>com<span class="token punctuation">;</span>
+        <span class="token keyword">location</span> <span class="token operator">/</span> <span class="token punctuation">{</span>
+            <span class="token keyword">index</span> <span class="token keyword">index</span><span class="token punctuation">.</span>php <span class="token keyword">index</span><span class="token punctuation">.</span>htm <span class="token keyword">index</span><span class="token punctuation">.</span>html<span class="token punctuation">;</span>
+            <span class="token comment"># [...]</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">location</span> <span class="token operator">/</span>foo <span class="token punctuation">{</span>
+            <span class="token keyword">index</span> <span class="token keyword">index</span><span class="token punctuation">.</span>php<span class="token punctuation">;</span>
+            <span class="token comment"># [...]</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>&#x4E3A;&#x4EC0;&#x4E48;&#x5728;&#x4E0D;&#x9700;&#x8981;&#x65F6;&#x91CD;&#x590D;&#x90A3;&#x4E48;&#x591A;&#x884C;&#x3002;&#x7B80;&#x5355;&#x7684;&#x4F7F;&#x7528;&#x4E00;&#x6B21; index &#x6307;&#x4EE4;&#x3002;&#x4EC5;&#x4EC5;&#x9700;&#x8981;&#x6DFB;&#x52A0;&#x5230; http{} &#x533A;&#x5757;&#xFF0C;&#x5C06;&#x4F1A;&#x88AB;&#x7EE7;&#x627F;&#x3002;</p>
+<h2 id="good">GOOD</h2>
+<pre class="language-"><code class="lang-nginx"><span class="token keyword">http</span> <span class="token punctuation">{</span>
+    <span class="token keyword">index</span> <span class="token keyword">index</span><span class="token punctuation">.</span>php <span class="token keyword">index</span><span class="token punctuation">.</span>htm <span class="token keyword">index</span><span class="token punctuation">.</span>html<span class="token punctuation">;</span>
+    <span class="token keyword">server</span> <span class="token punctuation">{</span>
+        <span class="token keyword">server_name</span> www<span class="token punctuation">.</span>example<span class="token punctuation">.</span>com<span class="token punctuation">;</span>
+        <span class="token keyword">location</span> <span class="token operator">/</span> <span class="token punctuation">{</span>
+            <span class="token comment"># [...]</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">server</span> <span class="token punctuation">{</span>
+        <span class="token keyword">server_name</span> example<span class="token punctuation">.</span>com<span class="token punctuation">;</span>
+        <span class="token keyword">location</span> <span class="token operator">/</span> <span class="token punctuation">{</span>
+            <span class="token comment"># [...]</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">location</span> <span class="token operator">/</span>foo <span class="token punctuation">{</span>
+            <span class="token comment"># [...]</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h1 id="&#x4F7F;&#x7528;-if">&#x4F7F;&#x7528; If</h1>
+<p>&#x6709;&#x51E0;&#x4E2A;&#x9875;&#x9762;&#x4ECB;&#x7ECD;&#x4F7F;&#x7528; if &#x8BED;&#x53E5;&#x3002;&#x5B83;&#x53EB;&#x505A; IfIsEvil&#xFF0C;&#x4F60;&#x771F;&#x7684;&#x5E94;&#x8BE5;&#x770B;&#x770B;&#x3002;&#x8BA9;&#x6211;&#x4EEC;&#x770B;&#x770B;&#x4F7F;&#x7528; if &#x7684;&#x574F;&#x5904;&#x3002;<a href="https://www.nginx.com/resources/wiki/start/topics/depth/ifisevil/" target="_blank">If Is Evil</a></p>
+<h1 id="server-name-if">Server Name (if)</h1>
+<h2 id="bad">BAD</h2>
+<pre class="language-"><code class="lang-nginx"><span class="token keyword">server</span> <span class="token punctuation">{</span>
+    <span class="token keyword">server_name</span> example<span class="token punctuation">.</span>com <span class="token operator">*</span><span class="token punctuation">.</span>example<span class="token punctuation">.</span>com<span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token variable">$host</span> <span class="token operator">~</span><span class="token operator">*</span> <span class="token operator">^</span>www\<span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">.</span><span class="token operator">+</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">set</span> <span class="token variable">$raw_domain</span> $<span class="token number">1</span><span class="token punctuation">;</span>
+            <span class="token keyword">rewrite</span> <span class="token operator">^</span><span class="token operator">/</span><span class="token punctuation">(</span><span class="token punctuation">.</span><span class="token operator">*</span><span class="token punctuation">)</span>$ <span class="token variable">$raw_domain</span><span class="token operator">/</span>$<span class="token number">1</span> permanent<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token comment"># [...]</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>&#x8FD9;&#x91CC;&#x6709;3&#x4E2A;&#x95EE;&#x9898;&#x3002;&#x7B2C;&#x4E00;&#x4E2A;&#x662F; if&#xFF0C;&#x6211;&#x4EEC;&#x5173;&#x5FC3;&#x7684;&#x3002;&#x5F53; NGINX &#x63A5;&#x53D7;&#x4E00;&#x4E2A;&#x8BF7;&#x6C42;&#x4E0D;&#x7BA1;&#x662F;&#x5B50;&#x57DF;&#x540D; www.example.com &#x8FD8;&#x662F; example.com&#xFF0C;if &#x6307;&#x4EE4;&#x603B;&#x662F;&#x4F1A;&#x5224;&#x65AD;&#x3002;&#x56E0;&#x4E3A;&#x4F60;&#x8981;&#x6C42; NGINX &#x68C0;&#x67E5;&#x6BCF;&#x4E2A;&#x8BF7;&#x6C42;&#x7684; Host &#x5934;&#x3002; &#x8FD9;&#x6837;&#x6548;&#x7387;&#x4F4E;&#x4E0B;&#xFF0C;&#x4F60;&#x5E94;&#x8BE5;&#x907F;&#x514D;&#x3002;&#x50CF;&#x4E0B;&#x9762;&#x4E00;&#x6837;&#x4F7F;&#x7528; 2 &#x4E2A; server &#x6307;&#x4EE4;&#x3002;</p>
+<h2 id="good">GOOD</h2>
+<pre class="language-"><code class="lang-nginx"><span class="token keyword">server</span> <span class="token punctuation">{</span>
+    <span class="token keyword">server_name</span> www<span class="token punctuation">.</span>example<span class="token punctuation">.</span>com<span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token number">301</span> <span class="token variable">$scheme</span><span class="token punctuation">:</span><span class="token operator">/</span><span class="token operator">/</span>example<span class="token punctuation">.</span>com<span class="token variable">$request_uri</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">server</span> <span class="token punctuation">{</span>
+    <span class="token keyword">server_name</span> example<span class="token punctuation">.</span>com<span class="token punctuation">;</span>
+    <span class="token comment"># [...]</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>&#x9664;&#x4E86;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x66F4;&#x6613;&#x4E8E;&#x9605;&#x8BFB;&#xFF0C;&#x8FD9;&#x79CD;&#x65B9;&#x6CD5;&#x51CF;&#x5C11; NGINX &#x5904;&#x7406;&#x9700;&#x6C42;&#x3002;&#x6211;&#x4EEC;&#x6446;&#x8131;&#x4E86;&#x865A;&#x5047;&#x7684; if&#xFF0C;&#x540C;&#x65F6;&#x4F7F;&#x7528; $scheme,&#x6CA1;&#x6709;&#x786C;&#x7F16;&#x7801; URI &#x7684;&#x7ED3;&#x6784;&#xFF0C;&#x53EF;&#x4EE5;&#x662F; http &#x6216;&#x8005; https&#x3002;</p>
+<h1 id="&#x68C0;&#x67E5;&#x6587;&#x4EF6;-if-&#x5B58;&#x5728;">&#x68C0;&#x67E5;&#x6587;&#x4EF6; (if) &#x5B58;&#x5728;</h1>
+<p>&#x4F7F;&#x7528; if &#x53BB;&#x68C0;&#x67E5;&#x6587;&#x4EF6;&#x662F;&#x5426;&#x5B58;&#x5728;&#x662F;&#x7CDF;&#x7CD5;&#x7684;&#x3002;&#x5982;&#x679C;&#x4F60;&#x4F7F;&#x7528;&#x6700;&#x65B0;&#x7248;&#x672C;&#x7684; NGINX &#xFF0C;&#x5E94;&#x8BE5;&#x770B;&#x770B; try_files,&#x66F4;&#x6613;&#x4F7F;&#x7528;&#x3002;</p>
+<h2 id="bad">BAD</h2>
+<pre class="language-"><code class="lang-nginx"><span class="token keyword">server</span> <span class="token punctuation">{</span>
+    <span class="token keyword">root</span> <span class="token operator">/</span>var<span class="token operator">/</span>www<span class="token operator">/</span>example<span class="token punctuation">.</span>com<span class="token punctuation">;</span>
+    <span class="token keyword">location</span> <span class="token operator">/</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token operator">-</span>f <span class="token variable">$request_filename</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">break</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h2 id="good">GOOD</h2>
+<pre class="language-"><code class="lang-nginx"><span class="token keyword">server</span> <span class="token punctuation">{</span>
+    <span class="token keyword">root</span> <span class="token operator">/</span>var<span class="token operator">/</span>www<span class="token operator">/</span>example<span class="token punctuation">.</span>com<span class="token punctuation">;</span>
+    <span class="token keyword">location</span> <span class="token operator">/</span> <span class="token punctuation">{</span>
+        <span class="token keyword">try_files</span> <span class="token variable">$uri</span> <span class="token variable">$uri</span><span class="token operator">/</span> <span class="token operator">/</span><span class="token keyword">index</span><span class="token punctuation">.</span>html<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>&#x8FD9;&#x91CC;&#x6211;&#x4EEC;&#x5224;&#x65AD; $uri &#x662F;&#x5426;&#x5B58;&#x5728;&#x4E0D;&#x518D;&#x9700;&#x8981; if&#x3002;&#x4F7F;&#x7528; try_files &#x610F;&#x5473;&#x7740;&#x53EF;&#x4EE5;&#x4F9D;&#x5E8F;&#x6D4B;&#x8BD5;&#x3002; &#x5982;&#x679C; $uri &#x4E0D;&#x5B58;&#x5728;&#xFF0C;&#x5C1D;&#x8BD5; $uri/&#xFF0C;&#x5982;&#x679C;&#x8FD8;&#x4E0D;&#x5B58;&#x5728;&#xFF0C;&#x5C1D;&#x8BD5;&#x5907;&#x7528;&#x7684; location&#x3002;</p>
+<p>&#x5728;&#x8FD9;&#x4E2A;&#x6848;&#x4F8B;&#x4E2D;&#xFF0C;&#x4F1A;&#x5148;&#x67E5;&#x770B; $uri &#x6587;&#x4EF6;&#x662F;&#x5426;&#x5B58;&#x5728;&#xFF0C;&#x5B58;&#x5728;&#x5C31;&#x8FD4;&#x56DE;&#x3002;&#x5982;&#x679C;&#x4E0D;&#x5B58;&#x5728;&#xFF0C;&#x5C31;&#x68C0;&#x67E5;&#x8BE5;&#x76EE;&#x5F55;&#x662F;&#x5426;&#x5B58;&#x5728;&#x3002; &#x5982;&#x679C;&#x4E0D;&#x5B58;&#x5728;&#xFF0C;&#x5C06;&#x8FD4;&#x56DE; index.html,&#x4F60;&#x5FC5;&#x987B;&#x786E;&#x5B9A;&#x5B58;&#x5728;&#x8BE5;&#x6587;&#x4EF6;&#x3002;</p>
+<h1 id="front-controller-&#x6A21;&#x5F0F;-web-&#x5E94;&#x7528;">Front Controller &#x6A21;&#x5F0F; WEB &#x5E94;&#x7528;</h1>
+<p>&#x201C;Front Controller &#x6A21;&#x5F0F;&#x201D;&#x8BBE;&#x8BA1;&#x662F;&#x53D7;&#x6B22;&#x8FCE;&#x7684;&#xFF0C;&#x4E14;&#x7528;&#x5728;&#x8BB8;&#x591A;&#x6700;&#x6D41;&#x884C;&#x7684; PHP &#x8F6F;&#x4EF6;&#x5305;&#x4E2D;&#x3002; &#x5F88;&#x591A;&#x5B9E;&#x4F8B;&#x6BD4;&#x5E94;&#x6709;&#x7684;&#x66F4;&#x590D;&#x6742;&#x3002;&#x8BA9; Drupal, Joomla &#x7B49;&#x8FD0;&#x884C;&#xFF0C;&#x4F7F;&#x7528;&#xFF1A;</p>
+<pre class="language-"><code class="lang-nginx"><span class="token keyword">try_files</span> <span class="token variable">$uri</span> <span class="token variable">$uri</span><span class="token operator">/</span> <span class="token operator">/</span><span class="token keyword">index</span><span class="token punctuation">.</span>php<span class="token operator">?</span>q<span class="token operator">=</span><span class="token variable">$uri</span><span class="token operator">&amp;</span><span class="token variable">$args</span><span class="token punctuation">;</span>
+</code></pre>
+<p>&#x6CE8;&#x89E3; - &#x53C2;&#x6570;&#x540D;&#x79F0;&#x6839;&#x636E;&#x4F60;&#x4F7F;&#x7528;&#x7684;&#x5305;&#x662F;&#x4E0D;&#x540C;&#x7684;&#x3002;&#x4F8B;&#x5982;</p>
+<ul>
+<li>&#x201C;q&#x201D; &#x662F; Drupal&#x3001;Joomla&#x3001;WordPress &#x4F7F;&#x7528;&#x7684;&#x53C2;&#x6570;</li>
+<li>&#x201C;page&#x201D; &#x662F; CMS Made Simple &#x4F7F;&#x7528;&#x7684;&#x53C2;&#x6570;</li>
+</ul>
+<p>&#x4E00;&#x4E9B;&#x8F6F;&#x4EF6;&#x751A;&#x81F3;&#x4E0D;&#x7528;&#x67E5;&#x8BE2;&#x5B57;&#x7B26;&#x4E32;&#xFF0C;&#x800C;&#x4E14;&#x53EF;&#x4EE5;&#x4ECE; REQUEST_URI &#x8BFB;&#x53D6;&#xFF08; WordPress &#x652F;&#x6301;&#xFF0C;&#x4F8B;&#x5982;&#xFF09;&#xFF1A;</p>
+<pre class="language-"><code class="lang-nginx"><span class="token keyword">try_files</span> <span class="token variable">$uri</span> <span class="token variable">$uri</span><span class="token operator">/</span> <span class="token operator">/</span><span class="token keyword">index</span><span class="token punctuation">.</span>php<span class="token punctuation">;</span>
+</code></pre>
+<p>&#x5F53;&#x7136;&#x4F60;&#x7684;&#x60C5;&#x51B5;&#x53EF;&#x80FD;&#x4E0D;&#x540C;&#xFF0C;&#x4F60;&#x53EF;&#x80FD;&#x6839;&#x636E;&#x9700;&#x6C42;&#x6DFB;&#x52A0;&#x590D;&#x6742;&#x7684;&#x89C4;&#x5219;&#xFF0C;&#x4F46;&#x4E00;&#x4E2A;&#x57FA;&#x672C;&#x7684;&#x7F51;&#x7AD9;&#xFF0C;&#x8FD9;&#x4E9B;&#x5C06;&#x5B8C;&#x7F8E;&#x7684;&#x5DE5;&#x4F5C;&#x3002; &#x4F60;&#x53EF;&#x4EE5;&#x4ECE;&#x7B80;&#x5355;&#x7684;&#x5F00;&#x59CB;&#x3002;</p>
+<p>&#x5982;&#x679C;&#x4F60;&#x4E0D;&#x5728;&#x4E4E;&#x76EE;&#x5F55;&#x662F;&#x5426;&#x5B58;&#x5728;&#xFF0C;&#x4F60;&#x4E5F;&#x53EF;&#x4EE5;&#x51B3;&#x5B9A;&#x8DF3;&#x8FC7;&#x76EE;&#x5F55;&#x68C0;&#x67E5;&#xFF0C;&#x4ECE;&#x4E2D;&#x5220;&#x9664; $uri/&#x3002;</p>
+<h1 id="&#x628A;&#x4E0D;&#x53D7;&#x63A7;&#x5236;&#x7684;&#x8BF7;&#x6C42;&#x7ED9;-php">&#x628A;&#x4E0D;&#x53D7;&#x63A7;&#x5236;&#x7684;&#x8BF7;&#x6C42;&#x7ED9; PHP</h1>
+<p>&#x5F88;&#x591A;&#x5BF9; PHP &#x7684; NGINX &#x914D;&#x7F6E;&#x6837;&#x4F8B;&#x628A;&#x6BCF;&#x4E2A;&#x4EE5; .php &#x7ED3;&#x5C3E;&#x7684; URI &#x7ED9; PHP &#x89E3;&#x91CA;&#x5668;&#x3002;&#x8BF7;&#x6CE8;&#x610F;&#x5728;&#x5927;&#x591A;&#x6570; PHP &#x8BBE;&#x7F6E;&#x4E2D;&#xFF0C;&#x8FD9;&#x5C06;&#x662F;&#x4E2A;&#x4E25;&#x91CD;&#x7684;&#x5B89;&#x5168;&#x95EE;&#x9898;&#xFF0C;&#x56E0;&#x4E3A;&#x5B83;&#x5141;&#x8BB8;&#x4EFB;&#x610F;&#x7B2C;&#x4E09;&#x65B9;&#x4EE3;&#x7801;&#x6267;&#x884C;&#x3002;</p>
+<p>&#x51FA;&#x95EE;&#x9898;&#x7684;&#x533A;&#x57DF;&#x901A;&#x5E38;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre class="language-"><code class="lang-nginx"><span class="token keyword">location</span> <span class="token operator">~</span><span class="token operator">*</span> \<span class="token punctuation">.</span>php$ <span class="token punctuation">{</span>
+    <span class="token keyword">fastcgi_pass</span> backend<span class="token punctuation">;</span>
+    <span class="token comment"># [...]</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>&#x8FD9;&#x91CC;&#x6BCF;&#x4E00;&#x4E2A;&#x4EE5; .php &#x7ED3;&#x5C3E;&#x6587;&#x4EF6;&#x7684;&#x8BF7;&#x6C42;&#x5C06;&#x4F1A;&#x7ED9; FastCGI &#x540E;&#x7AEF;&#x3002; &#x8FD9;&#x91CC;&#x7684;&#x95EE;&#x9898;&#x662F;&#x5982;&#x679C;&#x5168;&#x8DEF;&#x5F84;&#x5E76;&#x4E0D;&#x6307;&#x5411;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x4E0A;&#x5B9E;&#x9645;&#x7684;&#x6587;&#x4EF6;&#xFF0C;&#x9ED8;&#x8BA4;&#x7684; PHP &#x914D;&#x7F6E;&#x4F1A;&#x8BD5;&#x56FE;&#x731C;&#x6D4B;&#x4F60;&#x9700;&#x8981;&#x6267;&#x884C;&#x54EA;&#x4E2A;&#x6587;&#x4EF6;&#x3002;</p>
+<p>&#x4F8B;&#x5982;&#xFF0C;&#x5982;&#x679C;&#x8BF7;&#x6C42;&#x4E0D;&#x5B58;&#x5728;&#x7684;&#x6587;&#x4EF6; /forum/avatar/1232.jpg/file.php&#xFF0C;&#x4F46; /forum/avatar/1232.jpg &#x5B58;&#x5728;&#xFF0C; PHP &#x89E3;&#x91CA;&#x5668;&#x5C06;&#x5904;&#x7406; /forum/avatar/1232.jpg&#x3002;&#x5982;&#x679C;&#x5B83;&#x5305;&#x542B; PHP &#x4EE3;&#x7801;&#xFF0C;&#x8FD9;&#x6BB5;&#x4EE3;&#x7801;&#x5C06;&#x76F8;&#x5E94;&#x7684;&#x6267;&#x884C;&#x3002;</p>
+<p>&#x4E0B;&#x9762;&#x7684;&#x9009;&#x9879;&#x53EF;&#x4EE5;&#x907F;&#x514D;&#x4E0A;&#x8FF0;&#x60C5;&#x51B5;&#xFF1A;</p>
+<ul>
+<li>&#x5728; php.ini &#x4E2D;&#x8BBE;&#x7F6E; cgi.fix_pathinfo=0&#x3002;&#x4F7F;&#x5F97; PHP &#x89E3;&#x91CA;&#x5668;&#x4EC5;&#x5C1D;&#x8BD5;&#x7ED9;&#x51FA;&#x7684;&#x8DEF;&#x5F84;&#xFF0C;&#x5982;&#x679C;&#x6587;&#x4EF6;&#x6CA1;&#x6709;&#x627E;&#x5230;&#x5C31;&#x505C;&#x6B62;&#x5904;&#x7406;&#x3002;</li>
+<li>&#x4FDD;&#x8BC1; NGINX &#x4EC5;&#x4F20;&#x7ED9;&#x540E;&#x7AEF;&#x6307;&#x5B9A;&#x7684; PHP</li>
+</ul>
+<pre class="language-"><code class="lang-nginx"><span class="token keyword">location</span> <span class="token operator">~</span><span class="token operator">*</span> <span class="token punctuation">(</span>file_a<span class="token operator">|</span>file_b<span class="token operator">|</span>file_c<span class="token punctuation">)</span>\<span class="token punctuation">.</span>php$ <span class="token punctuation">{</span>
+    <span class="token keyword">fastcgi_pass</span> backend<span class="token punctuation">;</span>
+    <span class="token comment"># [...]</span>
+<span class="token punctuation">}</span>
+
+   <span class="token comment"># &#x7279;&#x522B;&#x5730;&#x5728;&#x4EFB;&#x4F55;&#x5305;&#x542B;&#x7528;&#x6237;&#x4E0A;&#x4F20;&#x7684;&#x76EE;&#x5F55;&#x4E2D;&#x7981;&#x7528; PHP &#x6587;&#x4EF6;&#x7684;&#x6267;&#x884C;</span>
+
+<span class="token keyword">location</span> <span class="token operator">/</span>uploaddir <span class="token punctuation">{</span>
+    <span class="token keyword">location</span> <span class="token operator">~</span> \<span class="token punctuation">.</span>php$ <span class="token punctuation">{</span><span class="token keyword">return</span> <span class="token number">403</span><span class="token punctuation">;</span><span class="token punctuation">}</span>
+    <span class="token comment"># [...]</span>
+<span class="token punctuation">}</span>
+
+    <span class="token comment"># &#x4F7F;&#x7528;try_files&#x6307;&#x4EE4;&#x8FC7;&#x6EE4;</span>
+
+<span class="token keyword">location</span> <span class="token operator">~</span><span class="token operator">*</span> \<span class="token punctuation">.</span>php$ <span class="token punctuation">{</span>
+    <span class="token keyword">try_files</span> <span class="token variable">$uri</span> <span class="token operator">=</span><span class="token number">404</span><span class="token punctuation">;</span>
+    <span class="token keyword">fastcgi_pass</span> backend<span class="token punctuation">;</span>
+    <span class="token comment"># [...]</span>
+<span class="token punctuation">}</span>
+
+    <span class="token comment"># &#x4F7F;&#x7528;&#x5D4C;&#x5957;&#x7684; location &#x8FC7;&#x6EE4;</span>
+
+<span class="token keyword">location</span> <span class="token operator">~</span><span class="token operator">*</span> \<span class="token punctuation">.</span>php$ <span class="token punctuation">{</span>
+    <span class="token keyword">location</span> <span class="token operator">~</span> \<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token operator">*</span><span class="token operator">/</span><span class="token punctuation">.</span><span class="token operator">*</span>\<span class="token punctuation">.</span>php$ <span class="token punctuation">{</span><span class="token keyword">return</span> <span class="token number">404</span><span class="token punctuation">;</span><span class="token punctuation">}</span>
+    <span class="token keyword">fastcgi_pass</span> backend<span class="token punctuation">;</span>
+    <span class="token comment"># [...]</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h1 id="script-filename-&#x4E2D;&#x7684;-fastcgi-path">Script Filename &#x4E2D;&#x7684; FastCGI Path</h1>
+<p>&#x4E00;&#x4E9B;&#x6307;&#x5357;&#x503E;&#x5411;&#x4F7F;&#x7528;&#x7EDD;&#x5BF9;&#x8DEF;&#x5F84;&#x5F97;&#x5230;&#x4FE1;&#x606F;&#x3002;&#x8FD9;&#x5728; PHP &#x533A;&#x5757;&#x5F88;&#x5E38;&#x89C1;&#x3002;&#x5F53;&#x4F60;&#x4ECE;&#x6E90;&#x5B89;&#x88C5; NGINX &#xFF0C;&#x901A;&#x5E38;&#x4F60;&#x80FD;&#x591F;&#x628A; include fastcgi_params;&#x52A0;&#x5165;&#x5230;&#x914D;&#x7F6E;&#x4E2D;&#x3002;&#x8BE5;&#x6587;&#x4EF6;&#x901A;&#x5E38;&#x5728; NGINX &#x914D;&#x7F6E;&#x76EE;&#x5F55;/etc/nginx/&#x3002;</p>
+<h2 id="good">GOOD</h2>
+<pre class="language-"><code class="lang-nginx"><span class="token keyword">fastcgi_param</span>  SCRIPT_FILENAME    <span class="token variable">$document_root</span><span class="token variable">$fastcgi_script_name</span><span class="token punctuation">;</span>
+</code></pre>
+<h2 id="bad">BAD</h2>
+<pre class="language-"><code class="lang-nginx"><span class="token keyword">fastcgi_param</span>  SCRIPT_FILENAME    <span class="token operator">/</span>var<span class="token operator">/</span>www<span class="token operator">/</span>yoursite<span class="token punctuation">.</span>com<span class="token operator">/</span><span class="token variable">$fastcgi_script_name</span><span class="token punctuation">;</span>
+</code></pre>
+<p>$document_root&#x5728;&#x54EA;&#x91CC;&#x8BBE;&#x7F6E;&#xFF1F;&#x662F;&#x901A;&#x8FC7; root &#x6307;&#x4EE4;&#x5728; server &#x533A;&#x5757;&#x8BBE;&#x7F6E;&#x3002;root &#x6307;&#x4EE4;&#x6CA1;&#x6709;&#x914D;&#x7F6E;&#xFF1F;&#x770B;&#x770B; &#x7B2C;&#x4E00;&#x4E2A;&#x9677;&#x9631;&#x3002;</p>
+<h1 id="&#x7E41;&#x6742;&#x7684;-rewrites">&#x7E41;&#x6742;&#x7684; Rewrites</h1>
+<p>&#x4E0D;&#x8981;&#x611F;&#x89C9;&#x7CDF;&#x7CD5;&#xFF0C;&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;&#x5BB9;&#x6613;&#x8BA9;&#x4EBA;&#x56F0;&#x60D1;&#x3002;&#x5B9E;&#x9645;&#x4E0A;&#xFF0C;&#x6211;&#x4EEC;&#x5E94;&#x8BE5;&#x52AA;&#x529B;&#x4FDD;&#x6301;&#x6574;&#x6D01;&#x3001;&#x7B80;&#x5355;&#xFF0C;&#x4E0D;&#x589E;&#x52A0;&#x7E41;&#x7410;&#x7684;&#x4E1C;&#x897F;&#xFF0C;&#x8FD9;&#x5BB9;&#x6613;&#x505A;&#x5230;&#x3002;</p>
+<h2 id="bad">BAD</h2>
+<pre class="language-"><code class="lang-nginx"><span class="token keyword">rewrite</span> <span class="token operator">^</span><span class="token operator">/</span><span class="token punctuation">(</span><span class="token punctuation">.</span><span class="token operator">*</span><span class="token punctuation">)</span>$ <span class="token keyword">http</span><span class="token punctuation">:</span><span class="token operator">/</span><span class="token operator">/</span>example<span class="token punctuation">.</span>com<span class="token operator">/</span>$<span class="token number">1</span> permanent<span class="token punctuation">;</span>
+</code></pre>
+<h2 id="good">GOOD</h2>
+<pre class="language-"><code class="lang-nginx"><span class="token keyword">rewrite</span> <span class="token operator">^</span> <span class="token keyword">http</span><span class="token punctuation">:</span><span class="token operator">/</span><span class="token operator">/</span>example<span class="token punctuation">.</span>com<span class="token variable">$request_uri</span><span class="token operator">?</span> permanent<span class="token punctuation">;</span>
+</code></pre>
+<h2 id="better">BETTER</h2>
+<pre class="language-"><code class="lang-nginx"><span class="token keyword">return</span> <span class="token number">301</span> <span class="token keyword">http</span><span class="token punctuation">:</span><span class="token operator">/</span><span class="token operator">/</span>example<span class="token punctuation">.</span>com<span class="token variable">$request_uri</span><span class="token punctuation">;</span>
+</code></pre>
+<p>&#x7B2C;&#x4E00;&#x4E2A; rewrite &#x6355;&#x83B7;&#x5728;&#x7B2C;&#x4E00;&#x4E2A;/&#x4E4B;&#x540E;&#x7684; URI&#x3002;&#x901A;&#x8FC7;&#x4F7F;&#x7528;&#x5185;&#x5EFA;&#x53D8;&#x91CF; $request_uri&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x6709;&#x6548;&#x7684;&#x907F;&#x514D;&#x505A;&#x4EFB;&#x4F55;&#x6355;&#x83B7;&#x6216;&#x8005;&#x5339;&#x914D;&#x3002;</p>
+<h1 id="rewrite-&#x4E22;&#x5931;-http">Rewrite &#x4E22;&#x5931; http://</h1>
+<p>rewrite &#x662F;&#x7B80;&#x5355;&#xFF0C;&#x8BB0;&#x5F97;&#x6DFB;&#x52A0;scheme&#x3002;</p>
+<h2 id="bad">BAD</h2>
+<pre class="language-"><code class="lang-nginx"><span class="token keyword">rewrite</span> <span class="token operator">^</span> example<span class="token punctuation">.</span>com permanent<span class="token punctuation">;</span>
+</code></pre>
+<h2 id="good">GOOD</h2>
+<pre class="language-"><code class="lang-nginx"><span class="token keyword">rewrite</span> <span class="token operator">^</span> <span class="token keyword">http</span><span class="token punctuation">:</span><span class="token operator">/</span><span class="token operator">/</span>example<span class="token punctuation">.</span>com permanent<span class="token punctuation">;</span>
+</code></pre>
+<p>&#x5728;&#x4E0A;&#x9762;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;&#x6211;&#x4EEC;&#x5728; rewrite &#x6DFB;&#x52A0;&#x4E86;<a href="http://&#x3002;&#x7B80;&#x5355;&#x6709;&#x6548;&#x3002;" target="_blank">http://&#x3002;&#x7B80;&#x5355;&#x6709;&#x6548;&#x3002;</a></p>
+<h1 id="&#x4EE3;&#x7406;&#x4E00;&#x5207;">&#x4EE3;&#x7406;&#x4E00;&#x5207;</h1>
+<h2 id="bad">BAD</h2>
+<pre class="language-"><code class="lang-nginx"><span class="token keyword">server</span> <span class="token punctuation">{</span>
+    <span class="token keyword">server_name</span> _<span class="token punctuation">;</span>
+    <span class="token keyword">root</span> <span class="token operator">/</span>var<span class="token operator">/</span>www<span class="token operator">/</span>site<span class="token punctuation">;</span>
+    <span class="token keyword">location</span> <span class="token operator">/</span> <span class="token punctuation">{</span>
+        <span class="token keyword">include</span> fastcgi_params<span class="token punctuation">;</span>
+        <span class="token keyword">fastcgi_param</span> SCRIPT_FILENAME <span class="token variable">$document_root</span><span class="token variable">$fastcgi_script_name</span><span class="token punctuation">;</span>
+        <span class="token keyword">fastcgi_pass</span> unix<span class="token punctuation">:</span><span class="token operator">/</span>tmp<span class="token operator">/</span>phpcgi<span class="token punctuation">.</span>socket<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>&#x4EE4;&#x4EBA;&#x8BA8;&#x538C;&#x7684;&#xFF0C;&#x5728;&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#x4E0B;&#x628A;&#x6240;&#x6709;&#x7684;&#x8BF7;&#x6C42;&#x90FD;&#x7ED9; PHP &#x5904;&#x7406;&#x3002;&#x4E3A;&#x4EC0;&#x4E48;&#xFF1F;Apache &#x4E5F;&#x8BB8;&#x662F;&#x8FD9;&#x6837;&#x505A;&#xFF0C;&#x4F46;&#x4F60;&#x4E0D;&#x5FC5;&#x3002;&#x8BA9;&#x6211;&#x8FD9;&#x4E48;&#x8BF4;&#x5427;... try_files &#x6307;&#x4EE4;&#x5B58;&#x5728;&#x7684;&#x539F;&#x56E0;&#xFF0C;&#x5B83;&#x6309;&#x7279;&#x5B9A;&#x7684;&#x987A;&#x5E8F;&#x5C1D;&#x8BD5;&#x6587;&#x4EF6;&#x3002;&#x610F;&#x5473;&#x7740; NGINX &#x53EF;&#x4EE5;&#x5148;&#x5C1D;&#x8BD5;&#x63D0;&#x4F9B;&#x9759;&#x6001;&#x5185;&#x5BB9;&#x3002;&#x5982;&#x679C;&#x4E0D;&#x80FD;&#xFF0C;&#x7EE7;&#x7EED;&#x5C1D;&#x8BD5;&#x3002; &#x8FD9;&#x6837; PHP &#x6839;&#x672C;&#x4E0D;&#x53C2;&#x4E0E;&#xFF0C;&#x5FEB;&#x7684;&#x591A;&#x3002;&#x7279;&#x522B;&#x662F;&#x5982;&#x679C;&#x4F60;&#x901A;&#x8FC7; PHP &#x63D0;&#x4F9B; 1MB &#x56FE;&#x7247;&#x7684;&#x65F6;&#x95F4;&#x662F;&#x76F4;&#x63A5;&#x63D0;&#x4F9B;&#x7684;1000&#x500D;&#xFF0C;&#x8BA9;&#x6211;&#x4EEC;&#x770B;&#x770B;&#x8BE5;&#x600E;&#x4E48;&#x505A;&#x3002;</p>
+<h2 id="good">GOOD</h2>
+<pre class="language-"><code class="lang-nginx"><span class="token keyword">server</span> <span class="token punctuation">{</span>
+    <span class="token keyword">server_name</span> _<span class="token punctuation">;</span>
+    <span class="token keyword">root</span> <span class="token operator">/</span>var<span class="token operator">/</span>www<span class="token operator">/</span>site<span class="token punctuation">;</span>
+    <span class="token keyword">location</span> <span class="token operator">/</span> <span class="token punctuation">{</span>
+        <span class="token keyword">try_files</span> <span class="token variable">$uri</span> <span class="token variable">$uri</span><span class="token operator">/</span> @<span class="token keyword">proxy</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">location</span> @<span class="token keyword">proxy</span> <span class="token punctuation">{</span>
+        <span class="token keyword">include</span> fastcgi_params<span class="token punctuation">;</span>
+        <span class="token keyword">fastcgi_param</span> SCRIPT_FILENAME <span class="token variable">$document_root</span><span class="token variable">$fastcgi_script_name</span><span class="token punctuation">;</span>
+        <span class="token keyword">fastcgi_pass</span> unix<span class="token punctuation">:</span><span class="token operator">/</span>tmp<span class="token operator">/</span>phpcgi<span class="token punctuation">.</span>socket<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h2 id="also-good">Also GOOD</h2>
+<pre class="language-"><code class="lang-nginx"><span class="token keyword">server</span> <span class="token punctuation">{</span>
+    <span class="token keyword">server_name</span> _<span class="token punctuation">;</span>
+    <span class="token keyword">root</span> <span class="token operator">/</span>var<span class="token operator">/</span>www<span class="token operator">/</span>site<span class="token punctuation">;</span>
+    <span class="token keyword">location</span> <span class="token operator">/</span> <span class="token punctuation">{</span>
+        <span class="token keyword">try_files</span> <span class="token variable">$uri</span> <span class="token variable">$uri</span><span class="token operator">/</span> <span class="token operator">/</span><span class="token keyword">index</span><span class="token punctuation">.</span>php<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">location</span> <span class="token operator">~</span> \<span class="token punctuation">.</span>php$ <span class="token punctuation">{</span>
+        <span class="token keyword">include</span> fastcgi_params<span class="token punctuation">;</span>
+        <span class="token keyword">fastcgi_param</span> SCRIPT_FILENAME <span class="token variable">$document_root</span><span class="token variable">$fastcgi_script_name</span><span class="token punctuation">;</span>
+        <span class="token keyword">fastcgi_pass</span> unix<span class="token punctuation">:</span><span class="token operator">/</span>tmp<span class="token operator">/</span>phpcgi<span class="token punctuation">.</span>socket<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>&#x5F88;&#x7B80;&#x5355;&#xFF0C;&#x662F;&#x4E0D;&#x662F;&#xFF1F;&#x5982;&#x679C;&#x8BF7;&#x6C42;&#x7684; URI &#x5B58;&#x5728;&#xFF0C;NGINX &#x76F4;&#x63A5;&#x63D0;&#x4F9B;&#x3002;&#x5982;&#x679C;&#x4E0D;&#x5B58;&#x5728;&#xFF0C;&#x68C0;&#x67E5;&#x76EE;&#x5F55;&#x662F;&#x5426;&#x5B58;&#x5728;&#x3002;&#x5982;&#x679C;&#x4E0D;&#x5B58;&#x5728;&#xFF0C;&#x4F20;&#x9012;&#x7ED9;&#x4F60;&#x7684;&#x4EE3;&#x7406;&#x3002; &#x53EA;&#x6709;&#x5F53; NGINX &#x4E0D;&#x80FD;&#x76F4;&#x63A5;&#x670D;&#x52A1;&#x8BF7;&#x6C42;&#x7684; URI&#xFF0C;&#x4F60;&#x7684;&#x4EE3;&#x7406;&#x5C06;&#x53C2;&#x4E0E;&#x5F00;&#x9500;&#x3002;</p>
+<p>&#x73B0;&#x5728;&#x60F3;&#x60F3;&#x4F60;&#x7684;&#x591A;&#x5C11;&#x8BF7;&#x6C42;&#x662F;&#x9759;&#x6001;&#x8D44;&#x6E90;&#xFF0C;&#x6BD4;&#x5982; images&#x3001;css&#x3001;javascript &#x7B49;&#x3002;&#x4F60;&#x53EF;&#x80FD;&#x8282;&#x7701;&#x5F88;&#x591A;&#x5F00;&#x9500;&#x3002;</p>
+<h1 id="&#x914D;&#x7F6E;&#x66F4;&#x6539;&#x6CA1;&#x6709;&#x751F;&#x6548;">&#x914D;&#x7F6E;&#x66F4;&#x6539;&#x6CA1;&#x6709;&#x751F;&#x6548;</h1>
+<p>&#x6D4F;&#x89C8;&#x5668;&#x7F13;&#x5B58;&#x3002;&#x4F60;&#x7684;&#x914D;&#x7F6E;&#x4E5F;&#x8BB8;&#x662F;&#x5F88;&#x68D2;&#x7684;&#xFF0C;&#x4F46;&#x4F60;&#x4F1A;&#x5750;&#x5728;&#x90A3;&#xFF0C;&#x649E;&#x5899;&#x4E00;&#x4E2A;&#x6708;&#x3002;&#x95EE;&#x9898;&#x51FA;&#x5728;&#x4F60;&#x7684;&#x6D4F;&#x89C8;&#x5668;&#x7F13;&#x5B58;&#x3002; &#x5F53;&#x4F60;&#x4E0B;&#x8F7D;&#x4E86;&#x4E1C;&#x897F;&#xFF0C;&#x4F60;&#x7684;&#x6D4F;&#x89C8;&#x5668;&#x4F1A;&#x4FDD;&#x5B58;&#x4E0B;&#x6765;&#x3002;&#x540C;&#x65F6;&#x4E5F;&#x4FDD;&#x5B58;&#x4E86;&#x6587;&#x4EF6;&#x662F;&#x5982;&#x4F55;&#x63D0;&#x4F9B;&#x7684;&#x3002;&#x5982;&#x679C;&#x4F60;&#x914D;&#x7F6E;&#x6709; types &#x533A;&#x5757;&#xFF0C;&#x4F60;&#x4F1A;&#x9047;&#x5230;&#x8FD9;&#x60C5;&#x51B5;&#x3002;</p>
+<p>&#x5904;&#x7406;&#x65B9;&#x6CD5;&#xFF1A;</p>
+<ul>
+<li>&#x5728; Firefox &#x6D4F;&#x89C8;&#x5668;&#x4E2D;&#x6309; Ctrl+Shift+Delete&#xFF0C;&#x68C0;&#x67E5;&#x7F13;&#x5B58;&#xFF0C;&#x70B9;&#x51FB; Clear Now&#x3002;&#x5176;&#x4ED6;&#x6D4F;&#x89C8;&#x5668;&#xFF0C;&#x53EF;&#x641C;&#x7D22;&#x4E0B;&#x65B9;&#x6CD5;&#x3002; &#x6BCF;&#x6B21;&#x66F4;&#x6539;&#x4E4B;&#x540E;&#x90FD;&#x6E05;&#x9664;&#x4E0B;&#xFF0C;&#x4F1A;&#x4E3A;&#x4F60;&#x8282;&#x7701;&#x4E0D;&#x5C11;&#x9EBB;&#x70E6;&#x3002;</li>
+<li>&#x4F7F;&#x7528; curl&#x3002;</li>
+</ul>
+<h1 id="virtualbox">VirtualBox</h1>
+<p>&#x5982;&#x679C;&#x8FD9;&#x4E0D;&#x8D77;&#x4F5C;&#x7528;,&#x800C;&#x4E14;&#x4F60;&#x5728; VirtualBox &#x4E2D;&#x7684;&#x865A;&#x62DF;&#x673A;&#x4E2D;&#x8FD0;&#x884C; NGINX&#xFF0C;&#x4E5F;&#x8BB8;&#x662F; sendfile()&#x5F15;&#x8D77;&#x7684;&#x95EE;&#x9898;&#x3002; &#x7B80;&#x5355;&#x7684;&#x6CE8;&#x91CA;&#x6389; sendfile &#x6307;&#x4EE4;&#xFF0C;&#x6216;&#x8005;&#x8BBE;&#x7F6E;&#x4E3A; off&#x3002;</p>
+<p>sendfile off;</p>
+<h1 id="&#x7F3A;&#x5931;&#x7684;-http-&#x5934;">&#x7F3A;&#x5931;&#x7684; HTTP &#x5934;</h1>
+<p>&#x5982;&#x679C;&#x4F60;&#x6CA1;&#x6709;&#x660E;&#x786E;&#x7684;&#x8BBE;&#x7F6E; underscores_in_headers on&#xFF0C;NGINX &#x5C06;&#x4F1A;&#x9ED8;&#x9ED8;&#x5730;&#x5FFD;&#x7565;&#x6389;&#x5E26;&#x6709;&#x4E0B;&#x5212;&#x7EBF;&#x7684;&#x5934;&#x4FE1;&#x606F;&#xFF08;&#x6839;&#x636E; HTTP &#x6807;&#x51C6;&#x662F;&#x5B8C;&#x5168;&#x6709;&#x6548;&#x7684;&#xFF09;&#x3002; &#x8FD9;&#x6837;&#x505A;&#x4E3A;&#x4E86;&#x9632;&#x6B62;&#x5934;&#x4FE1;&#x606F;&#x6620;&#x5C04;&#x5230; CGI &#x53D8;&#x91CF;&#x8FC7;&#x7A0B;&#x4E2D;&#x7834;&#x6298;&#x53F7;&#x548C;&#x4E0B;&#x5212;&#x7EBF;&#x90FD;&#x6620;&#x5C04;&#x6210;&#x4E0B;&#x5212;&#x7EBF;&#x5F15;&#x8D77;&#x6B67;&#x4E49;&#x3002;</p>
+<h1 id="&#x6CA1;&#x6709;&#x4F7F;&#x7528;&#x6807;&#x51C6;&#x7684;-document-root-locations">&#x6CA1;&#x6709;&#x4F7F;&#x7528;&#x6807;&#x51C6;&#x7684; Document Root Locations</h1>
+<p>&#x6709;&#x4E9B;&#x76EE;&#x5F55;&#x5728;&#x4EFB;&#x4F55;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x4E2D;&#x4E0D;&#x5E94;&#x8BE5;&#x7528;&#x4E8E;&#x6258;&#x7BA1;&#x6570;&#x636E;&#x3002;&#x5176;&#x4E2D;&#x5305;&#x62EC; <code>/</code> &#x548C; <code>/root</code>&#x3002;&#x4F60;&#x4E0D;&#x5E94;&#x8BE5;&#x4F7F;&#x7528;&#x8FD9;&#x4E9B;&#x4F5C;&#x4E3A;&#x7F51;&#x7AD9;&#x6839;&#x76EE;&#x5F55;&#x3002;</p>
+<p>&#x8FD9;&#x6837;&#x4F5C;&#x8BA9;&#x4F60;&#x7684;&#x9690;&#x79C1;&#x6570;&#x636E;&#x6BEB;&#x65E0;&#x9884;&#x671F;&#x7684;&#x8FD4;&#x56DE;&#x7ED9;&#x8BF7;&#x6C42;&#x3002;</p>
+<p>&#x6C38;&#x8FDC;&#x4E0D;&#x8981;&#x8FD9;&#x6837;&#x505A;&#xFF01;&#xFF01;&#xFF01;</p>
+<pre class="language-"><code class="lang-nginx"><span class="token keyword">server</span> <span class="token punctuation">{</span>
+    <span class="token keyword">root</span> <span class="token operator">/</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">location</span> <span class="token operator">/</span> <span class="token punctuation">{</span>
+        <span class="token keyword">try_files</span> <span class="token operator">/</span>web<span class="token operator">/</span><span class="token variable">$uri</span> <span class="token variable">$uri</span> @php<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">location</span> @php <span class="token punctuation">{</span>
+        <span class="token comment"># [...]</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>&#x5F53;&#x4E00;&#x4E2A;&#x8BF7;&#x6C42; /foo&#xFF0C;&#x56E0;&#x4E3A;&#x6587;&#x4EF6;&#x627E;&#x4E0D;&#x5230;&#x5C06;&#x4EE3;&#x7406;&#x5230; php &#x3002;&#x8FD9;&#x770B;&#x8D77;&#x6765;&#x6B63;&#x5E38;&#xFF0C;&#x76F4;&#x5230;&#x8BF7;&#x6C42; /etc/passwd&#x3002;&#x662F;&#x7684;&#xFF0C;&#x4F60;&#x7ED9;&#x4E86;&#x670D;&#x52A1;&#x5668;&#x4E0A;&#x6240;&#x6709;&#x7528;&#x6237;&#x5217;&#x8868;&#x3002; &#x5728;&#x67D0;&#x4E9B;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;Nginx &#x670D;&#x52A1;&#x5668;&#x8FDB;&#x7A0B;&#x88AB;&#x8BBE;&#x7F6E;&#x4EE5; root &#x7528;&#x6237;&#x8FD0;&#x884C;&#x3002;&#x662F;&#x7684;&#xFF0C;&#x6211;&#x4EEC;&#x73B0;&#x5728;&#x6709;&#x4F60;&#x7684;&#x7528;&#x6237;&#x5217;&#x8868;&#x4EE5;&#x53CA;&#x5BC6;&#x7801; hash &#x5BC6;&#x7801;&#xFF0C;&#x4EE5;&#x53CA;&#x5982;&#x4F55; hash &#x7684;&#x3002;</p>
+<p>&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x5C42;&#x7EA7;&#x6807;&#x51C6;&#x5B9A;&#x4E49;&#x4E86;&#x6570;&#x636E;&#x5E94;&#x8BE5;&#x5B58;&#x5728;&#x54EA;&#x91CC;&#x3002;&#x4F60;&#x5E94;&#x8BE5;&#x770B;&#x770B;&#x3002; &#x7B80;&#x800C;&#x8A00;&#x4E4B;&#xFF0C;&#x4F60;&#x7684; web &#x5185;&#x5BB9;&#x53EF;&#x4EE5;&#x5B58;&#x653E;&#x5728;/var/www/&#x3001;/srv&#x3001;/usr/share/www&#x3002;</p>
+<h1 id="&#x4F7F;&#x7528;&#x9ED8;&#x8BA4;&#x7684;-document-root">&#x4F7F;&#x7528;&#x9ED8;&#x8BA4;&#x7684; Document Root</h1>
+<p>Ubuntu&#x3001;Debian &#x7B49;&#x5176;&#x4ED6;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x4E2D; NGINX &#x5305;&#xFF0C;&#x4F5C;&#x4E3A;&#x6613;&#x4E8E;&#x5B89;&#x88C5;&#x7684;&#x5305;&#x4F1A;&#x63D0;&#x4F9B;&#x9ED8;&#x8BA4;&#x7684;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x7528;&#x4F5C;&#x4E00;&#x4E2A;&#x4F8B;&#x5B50;&#xFF0C;&#x800C;&#x4E14;&#x4F1A;&#x5305;&#x542B;&#x7F51;&#x7AD9;&#x6839;&#x76EE;&#x5F55;&#x5B58;&#x50A8;&#x57FA;&#x672C;&#x7684; HTML &#x6587;&#x4EF6;&#x3002;</p>
+<p>&#x591A;&#x6570;&#x7CFB;&#x7EDF;&#x5305;&#x4E0D;&#x68C0;&#x67E5;&#x9ED8;&#x8BA4;&#x7684; Document Root&#x4E2D;&#x6587;&#x4EF6;&#x662F;&#x5426;&#x5B58;&#x5728;&#x6216;&#x8005;&#x4FEE;&#x6539;&#x3002;&#x8FD9;&#x6837;&#x4F1A;&#x5728;&#x8F6F;&#x4EF6;&#x5305;&#x5347;&#x7EA7;&#x65F6;&#x5BFC;&#x81F4;&#x4EE3;&#x7801;&#x4E22;&#x5931;&#x3002;&#x7ECF;&#x9A8C;&#x4E30;&#x5BCC;&#x7684;&#x7CFB;&#x7EDF;&#x7BA1;&#x7406;&#x5458;&#x6CA1;&#x6709;&#x671F;&#x671B;&#x5728; &#x5347;&#x7EA7;&#x671F;&#x95F4;&#x9ED8;&#x8BA4;&#x7684; document root &#x5185;&#x5BB9;&#x4FDD;&#x6301;&#x4E0D;&#x53D8;&#x3002;</p>
+<p>&#x4F60;&#x4E0D;&#x5E94;&#x8BE5;&#x5BF9;&#x5C06;&#x7F51;&#x7AD9;&#x7684;&#x5173;&#x952E;&#x6587;&#x4EF6;&#x4F7F;&#x7528;&#x9ED8;&#x8BA4;&#x7684; document root&#x3002;&#x5728;&#x4F60;&#x7684;&#x7CFB;&#x7EDF;&#x5347;&#x7EA7;&#x6216;&#x8005;&#x66F4;&#x65B0; NGINX &#x5305;&#x65F6;&#x6709;&#x5F88;&#x5927;&#x53EF;&#x80FD;&#x6027;&#x4F1A;&#x5BFC;&#x81F4;&#x9ED8;&#x8BA4;&#x7684; document root &#x5185;&#x5BB9;&#x4F1A;&#x6539;&#x53D8;&#x3002;</p>
+<h1 id="&#x4F7F;&#x7528;-hostname-&#x53BB;&#x89E3;&#x6790;&#x5730;&#x5740;">&#x4F7F;&#x7528; Hostname &#x53BB;&#x89E3;&#x6790;&#x5730;&#x5740;</h1>
+<h2 id="bad">BAD</h2>
+<pre class="language-"><code class="lang-nginx"><span class="token keyword">upstream</span> <span class="token punctuation">{</span>
+    <span class="token keyword">server</span> <span class="token keyword">http</span><span class="token punctuation">:</span><span class="token operator">/</span><span class="token operator">/</span>someserver<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">server</span> <span class="token punctuation">{</span>
+    <span class="token keyword">listen</span> myhostname<span class="token punctuation">:</span><span class="token number">80</span><span class="token punctuation">;</span>
+    <span class="token comment"># [...]</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>&#x4F60;&#x4E0D;&#x5E94;&#x8BE5;&#x5728; listen &#x6307;&#x4EE4;&#x4E2D;&#x4F7F;&#x7528; hostname&#x3002;&#x4E5F;&#x8BB8;&#x8FD9;&#x6837;&#x6709;&#x6548;&#xFF0C;&#x4E5F;&#x5C06;&#x4F1A;&#x6709;&#x5927;&#x91CF;&#x7684;&#x95EE;&#x9898;&#x3002; &#x5176;&#x4E2D;&#x4E00;&#x4E2A;&#x95EE;&#x9898;&#x662F;&#x5728;&#x670D;&#x52A1;&#x542F;&#x52A8;&#x6216;&#x8005;&#x91CD;&#x542F;&#x65F6; hostname &#x4E0D;&#x80FD;&#x89E3;&#x6790;&#x3002;&#x8FD9;&#x4F1A;&#x5F15;&#x8D77; NGINX &#x65E0;&#x6CD5;&#x7ED1;&#x5B9A;&#x5230;&#x7279;&#x5B9A;&#x7684; TCP &#x7AEF;&#x53E3;&#xFF0C;&#x6700;&#x7EC8; NGINX &#x542F;&#x52A8;&#x5931;&#x8D25;&#x3002;</p>
+<p>&#x66F4;&#x5B89;&#x5168;&#x7684;&#x505A;&#x6CD5;&#x662F;&#x77E5;&#x9053;&#x9700;&#x8981;&#x7ED1;&#x5B9A;&#x7684; IP &#x5730;&#x5740;&#xFF0C;&#x5E76;&#x4F7F;&#x7528; IP &#x800C;&#x4E0D;&#x662F; hostname&#x3002; &#x963B;&#x6B62; NGINX &#x9700;&#x8981;&#x67E5;&#x627E; IP &#xFF0C;&#x4E0D;&#x4F9D;&#x8D56;&#x5185;&#x90E8;&#x6216;&#x8005;&#x5916;&#x90E8;&#x7684;&#x89E3;&#x6790;&#x3002;</p>
+<p>upstream &#x533A;&#x5757;&#x4E5F;&#x6709;&#x540C;&#x6837;&#x7684;&#x95EE;&#x9898;&#x3002;&#x5E76;&#x4E0D;&#x662F;&#x603B;&#x8981;&#x5728; upstream &#x533A;&#x5757;&#x907F;&#x514D;&#x4F7F;&#x7528; hostname&#xFF0C;&#x8FD9;&#x4E0D;&#x662F;&#x597D;&#x7684;&#x505A;&#x6CD5;&#xFF0C;&#x4F7F;&#x7528;&#x65F6;&#x8981;&#x8003;&#x8651;&#x6E05;&#x695A;&#x3002;</p>
+<h2 id="good">GOOD</h2>
+<pre class="language-"><code class="lang-nginx"><span class="token keyword">upstream</span> <span class="token punctuation">{</span>
+    <span class="token keyword">server</span> <span class="token keyword">http</span><span class="token punctuation">:</span><span class="token operator">/</span><span class="token operator">/</span><span class="token number">10.48</span><span class="token number">.41</span><span class="token number">.12</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">server</span> <span class="token punctuation">{</span>
+    <span class="token keyword">listen</span> <span class="token number">127.0</span><span class="token number">.0</span><span class="token number">.16</span><span class="token punctuation">:</span><span class="token number">80</span><span class="token punctuation">;</span>
+    <span class="token comment"># [...]</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h1 id="https-&#x4E2D;&#x4F7F;&#x7528;-sslv3">HTTPS &#x4E2D;&#x4F7F;&#x7528; SSLv3</h1>
+<p>&#x7531;&#x4E8E; SSLv3 &#x7684; POODLE &#x6F0F;&#x6D1E;&#xFF0C;&#x5EFA;&#x8BAE;&#x5728; SSL &#x7684;&#x7F51;&#x7AD9;&#x4E0D;&#x542F;&#x7528; SSLv3&#x3002;&#x4F60;&#x53EF;&#x4EE5;&#x5F88;&#x7B80;&#x5355;&#x7684;&#x7981;&#x7528; SSLv3&#xFF0C;&#x53EA;&#x63D0;&#x4F9B; TLS &#x534F;&#x8BAE;&#x3002;</p>
+<pre class="language-"><code class="lang-nginx"><span class="token keyword">ssl_protocols</span> TLSv1 TLSv1<span class="token punctuation">.</span><span class="token number">1</span> TLSv1<span class="token punctuation">.</span><span class="token number">2</span><span class="token punctuation">;</span>
+</code></pre>
+<footer class="page-footer"><span class="copyright">&#xA9; 2018 khs1994.com</span><span class="footer-modification">&#x4FEE;&#x8BA2;&#x65F6;&#x95F4;&#xFF1A;
+2018-11-11 16:16:02
+</span></footer>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="config.html" class="navigation navigation-prev " aria-label="Previous page: 配置">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="https.html" class="navigation navigation-next " aria-label="Next page: NGINX HTTPS">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"NGINX 配置陷阱和常见错误","date":"2016-09-17T12:00:00.000Z","updated":null,"comments":true,"tags":["NGINX"],"categories":["PHP","NGINX"],"level":"14.1.12.4","depth":3,"next":{"title":"NGINX HTTPS","level":"14.1.12.5","depth":3,"path":"development/nginx/https.md","ref":"development/nginx/https.md","articles":[]},"previous":{"title":"配置","level":"14.1.12.3","depth":3,"path":"development/nginx/config.md","ref":"development/nginx/config.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-sharing","-highlight","-livereload","tbfed-pagefooter@git+https://github.com/khs1994/gitbook-plugin-tbfed-pagefooter.git","prism","page-treeview","favicon"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-solarizedlight.css"]},"tbfed-pagefooter":{"copyright":"&copy 2018 khs1994.com","modify_label":"修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"page-treeview":{"copyright":"Copyright &#169; khs1994.com","minHeaderCount":"2","minHeaderDeep":"2"},"favicon":{"shortcut":"favicon.ico","bookmark":"favicon.ico","appleTouch":"favicon.ico","appleTouchMore":{"120x120":"favicon.ico","180x180":"favicon.ico"}},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"khs1994.com","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"khs1994.com PHP 技术文档","language":"zh-hans","links":{"sidebar":{"Home":"//www.khs1994.com/more"}},"gitbook":"*"},"file":{"path":"development/nginx/error-config.md","mtime":"2018-11-11T08:16:02.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-11-11T08:17:36.025Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
